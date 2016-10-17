@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to "index" classNames="navbar-brand"}}Booker{{/link-to}}
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active">{{#link-to "index"}}Home{{/link-to}}</li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    {{#if model.isAuthenticated}}
+      <div class="col-md-2 sidebar">
+        <div class="list-group">
+          {{#link-to "incomes" classNames="list-group-item"}}Incomes{{/link-to}}
+          {{#link-to "outcomes" classNames="list-group-item"}}Outcomes{{/link-to}}
+          {{#link-to "wallets" classNames="list-group-item"}}Wallets{{/link-to}}
+          {{#link-to "categories" classNames="list-group-item"}}Categories{{/link-to}}
+          {{#link-to "currencies" classNames="list-group-item"}}Currencies{{/link-to}}
+        </div>
+      </div>
+    {{/if}}
+    <div {{bind-attr class="model.isAuthenticated:col-md-10:center-block"}}>
+      {{outlet}}
+    </div>
+  </div>
+</div>

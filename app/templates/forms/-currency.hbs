@@ -1,0 +1,18 @@
+<form>
+  {{#input-wrapper for="name" model=model}}
+    {{input
+      type="text"
+      value=model.name
+      classNames="form-control
+      currency-name"
+      placeholder="Currency name"}}
+  {{/input-wrapper}}
+  {{#input-wrapper for="icon" model=model}}
+    {{input
+      type="text"
+      value=model.icon
+      classNames="form-control
+      currency-icon"
+      placeholder="Icon"}}
+  {{/input-wrapper}}
+</form>

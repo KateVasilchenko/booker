@@ -1,0 +1,11 @@
+<tr>
+  {{#each values as |value|}}
+    <td>{{value}}</td>
+  {{/each}}
+  <td>
+    {{#link-to "categories.edit" content.id  classNames="btn btn-primary primary"}}Edit{{/link-to}}
+  </td>
+  <td>
+    <button class="btn btn-danger delete-item" {{action "deleteEntity"}}>Delete</button>
+  </td>
+</tr>

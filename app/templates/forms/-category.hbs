@@ -1,0 +1,18 @@
+<form>
+  {{#input-wrapper for="name" model=model save="save"}}
+    {{input
+      type="text"
+      value=model.name
+      classNames="form-control
+      category-name"
+      placeholder="Category name"}}
+  {{/input-wrapper}}
+  {{#input-wrapper for="icon" model=model save="save"}}
+    {{input
+      type="text"
+      value=model.icon
+      classNames="form-control
+      category-icon"
+      placeholder="Icon"}}
+  {{/input-wrapper}}
+</form>

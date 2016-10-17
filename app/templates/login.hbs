@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h3 class="text-center">Log in</h3>
+      <p>
+        <button class="btn btn-default social-network" {{action "loginViaSocialNetwork"}}>Google</button>
+        <button class="btn btn-default social-network" {{action "loginViaSocialNetwork"}}>Facebook</button>
+        <button class="btn btn-default social-network" {{action "loginViaSocialNetwork"}}>Github</button>
+        <button class="btn btn-default social-network" {{action "loginViaSocialNetwork"}}>VK</button>
+      </p>
+      <br>
+      <form>
+        <div class="form-group">
+          {{input type="email" value=email classNames="form-control" placeholder="Email"}}
+        </div>
+        <div class="form-group">
+          {{input type="password" value=password classNames="form-control" placeholder="Password"}}
+        </div>
+        <p>
+          <button type="submit" class="btn btn-primary login" {{action "login" email password}}>Log in</button>
+          {{#link-to "register" classNames="btn btn-default register"}}Register{{/link-to}}
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
