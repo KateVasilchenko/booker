@@ -17,8 +17,8 @@ export default Ember.Route.extend({
         sortable: false,
       },
       {
-        label: 'Icon',
-        valuePath: 'icon',
+        label: 'Sign',
+        valuePath: 'sign',
         sortable: false,
       },
       {

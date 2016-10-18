@@ -17,11 +17,6 @@ export default Ember.Route.extend({
         sortable: false,
       },
       {
-        label: 'Icon',
-        valuePath: 'icon',
-        sortable: false,
-      },
-      {
         sortable: false,
         cellComponent: 'cell-actions'
       }

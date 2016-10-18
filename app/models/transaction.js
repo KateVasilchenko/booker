@@ -11,6 +11,10 @@ export default DS.Model.extend(EmberValidations, {
   }),
   wallet: DS.belongsTo('wallet', { async: true }),
   category: DS.belongsTo('category', { async: true }),
+
+  // createdAt: DS.attr(),
+  // updatedAt: DS.attr(),
+
   validations: {
     amount: {
       presence: true,

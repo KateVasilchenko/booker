@@ -3,8 +3,17 @@ module.exports = function(app) {
   var categoriesRouter = express.Router();
 
   var categories = [
-    {id: 1, name: "Main", icon: 3},
-    {id: 2, name: "Another", icon: 5}
+    {id: 1, name: "Food"},
+    {id: 2, name: "Drink"},
+    {id: 3, name: "Entertainment"},
+    {id: 4, name: "Medicine"},
+    {id: 5, name: "Tourism"},
+    {id: 6, name: "Fuel"},
+    {id: 7, name: "House"},
+    {id: 8, name: "Children"},
+    {id: 9, name: "Gifts"},
+    {id: 10, name: "Games"},
+    {id: 11, name: "Clothes"},
   ];
 
   categoriesRouter.get('/', function(req, res) {
@@ -15,21 +24,17 @@ module.exports = function(app) {
 
   categoriesRouter.post('/', function(req, res) {
     function getRandomId(min, max) {
-      var random =  Math.random() * (max - min) + min;
-      var roundRandom = Math.round(random);
-      return roundRandom;
-    };
+      return Math.round(Math.random() * (max - min) + min);
+    }
 
     var jsonString = '';
     req.on('data', function (data) {
       jsonString += data;
     });
     req.on('end', function () {
-      var category = JSON.parse(jsonString); //Читаем обьект jsonString из строки формата JSON и работаем с ним.
+      var category = JSON.parse(jsonString);
       category.category.id = getRandomId(1, 100);
-      console.log(category);
-      responseData = JSON.stringify(category); //Для передачи данных из JS по сети используем метод stringify(). Преобразуем обьект в строку формата JSON.
-      res.end(responseData);
+      res.end(JSON.stringify(category));
       res.status(201).end();
     });
   });

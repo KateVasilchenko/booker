@@ -3,8 +3,8 @@ module.exports = function(app) {
   var currenciesRouter = express.Router();
 
   var currencies = [
-    {id: 1, name: "Russian Ruble", icon: "http://allIconForCurrencies.com"},
-    {id: 2, name: "US Dollar", icon: "http://allIconForCurrencies.com"}
+    {id: 1, name: "Ukrainian Hryvnia", sign: "HR"},
+    {id: 2, name: "US Dollar", sign: "$"}
   ];
 
   currenciesRouter.get('/', function(req, res) {
