@@ -1,40 +1,7 @@
-{{#link-to "outcomes.new" classNames="btn btn-info new-outcome"}}Add outcome{{/link-to}}
-<div class="row">
-  <div class="col-md-8">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Wallet</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |outcome|}}
-        <tr>
-          <td>{{outcome.id}}</td>
-          <td>{{outcome.name}}</td>
-          <td>{{outcome.amount}}</td>
-          <td>{{outcome.category.name}}</td>
-          <td>{{outcome.wallet.name}}</td>
-          <td>
-            {{#link-to "outcomes.edit" outcome.id classNames="btn btn-primary" class="primary"}}Edit{{/link-to}}
-            <button class="btn btn-danger delete-item" {{action "openDialog" outcome}}>Delete</button>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
-</div>
-{{#if isModalDialogActive}}
-  {{modal-window
+{{table-light
+    modelName='outcome'
     model=model
-    delete="delete"
-    close="closeDialog"
-    title="Delete income"
-    isDeleteConfirm=true}}
-{{/if}}
+    editEntity=(action 'editEntity')
+    deleteEntity=(action 'deleteEntity')
+    columns=columns}}
 {{outlet}}

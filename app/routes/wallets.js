@@ -1,23 +1,38 @@
 import Ember from 'ember';
+const { computed } = Ember;
 
 export default Ember.Route.extend({
   model() {
-    return this.store.findAll("wallet");
+    return this.store.findAll('wallet');
   },
-  // afterModel(model) {
-  //   var ico = model.get('content')[0];
-  //   console.log(ico);
-  // },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('columns', this.get('columns'));
+  },
+  columns: computed(function() {
+    return [
+      {
+        label: 'Name',
+        valuePath: 'name',
+        sortable: false,
+      },
+      {
+        label: 'Balance',
+        valuePath: 'balance',
+        sortable: false,
+      },
+      {
+        sortable: false,
+        cellComponent: 'cell-actions'
+      }
+    ];
+  }),
   actions: {
-    openDialog: function (wallet) {
-      this.get("controller").set('isModalDialogActive', true);
-      this.get("controller").set('wallet', wallet);
+    edit(entity) {
+      this.transitionTo('wallets.edit', entity);
     },
-    closeDialog: function () {
-      this.get("controller").set('isModalDialogActive', false);
-    },
-    delete: function () {
-      this.get('controller.wallet').destroyRecord();
+    delete: function (entity) {
+      entity.destroyRecord();
       this.get("controller").set('isModalDialogActive', false);
     }
   }

@@ -1,0 +1,10 @@
+{{#light-table table tableActions=(hash delete=(action "delete") edit=(action "edit")) as |t|}}
+    {{t.head}}
+    {{#t.body canSelect=false as |body|}}
+        {{#if isLoading}}
+            {{#body.loader}}
+                {{table-loader}}
+            {{/body.loader}}
+        {{/if}}
+    {{/t.body}}
+{{/light-table}}

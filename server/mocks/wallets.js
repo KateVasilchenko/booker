@@ -17,10 +17,8 @@ module.exports = function(app) {
   //Create wallet
   walletsRouter.post('/', function(req, res) {
     function getRandomId(min, max) {
-      var random =  Math.random() * (max - min) + min;
-      var roundRandom = Math.round(random);
-      return roundRandom;
-    };
+      return Math.round(Math.random() * (max - min) + min);
+    }
     var jsonString = '';
     req.on('data', function (data) {
       jsonString += data;
@@ -28,9 +26,7 @@ module.exports = function(app) {
     req.on('end', function () {
       var wallet = JSON.parse(jsonString);
       wallet.wallet.id = getRandomId(1, 100);
-      console.log(wallet);
-      responseData = JSON.stringify(wallet);
-      res.end(responseData);
+      res.end(JSON.stringify(wallet));
       res.status(201).end();
     });
   });

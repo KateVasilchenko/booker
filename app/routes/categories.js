@@ -1,23 +1,38 @@
 import Ember from 'ember';
+const { computed } = Ember;
 
 export default Ember.Route.extend({
   model() {
     return this.store.findAll("category");
   },
-  // afterModel(model) {
-  //   console.log(model.get('content'));
-  //   console.log(model.get('content.firstObject').toJSON());
-  // },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('columns', this.get('columns'));
+  },
+  columns: computed(function() {
+    return [
+      {
+        label: 'Name',
+        valuePath: 'name',
+        sortable: false,
+      },
+      {
+        label: 'Icon',
+        valuePath: 'icon',
+        sortable: false,
+      },
+      {
+        sortable: false,
+        cellComponent: 'cell-actions'
+      }
+    ];
+  }),
   actions: {
-    openDialog: function (contentDeleted) {
-      this.get("controller").set('isModalDialogActive', true);
-      this.get("controller").set('contentDeleted', contentDeleted);
+    edit(entity) {
+      this.transitionTo('categories.edit', entity);
     },
-    closeDialog: function () {
-      this.get("controller").set('isModalDialogActive', false);
-    },
-    delete: function () {
-      this.get('controller.contentDeleted').destroyRecord();
+    delete: function (entity) {
+      entity.destroyRecord();
       this.get("controller").set('isModalDialogActive', false);
     }
   }

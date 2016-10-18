@@ -1,40 +1,7 @@
-{{#link-to "incomes.new" classNames="btn btn-info new-income"}}Add income{{/link-to}}
-<div class="row">
-  <div class="col-md-8">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Wallet</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |income|}}
-        <tr>
-          <td>{{income.id}}</td>
-          <td>{{income.name}}</td>
-          <td>{{income.amount}}</td>
-          <td>{{income.category.name}}</td>
-          <td>{{income.wallet.name}}</td>
-          <td>
-            {{#link-to "incomes.edit" income.id classNames="btn btn-primary" class="primary"}}Edit{{/link-to}}
-            <button class="btn btn-danger delete-item" {{action "openDialog" income}}>Delete</button>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
-</div>
-{{#if isModalDialogActive}}
-  {{modal-window
+{{table-light
+    modelName='income'
     model=model
-    delete="delete"
-    close="closeDialog"
-    title="Delete income"
-    isDeleteConfirm=true}}
-{{/if}}
+    editEntity=(action 'editEntity')
+    deleteEntity=(action 'deleteEntity')
+    columns=columns}}
 {{outlet}}

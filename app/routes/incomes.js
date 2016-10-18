@@ -1,19 +1,38 @@
 import Ember from 'ember';
+const { computed } = Ember;
 
 export default Ember.Route.extend({
   model() {
     return this.store.findAll("income");
   },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('columns', this.get('columns'));
+  },
+  columns: computed(function() {
+    return [
+      {
+        label: 'Name',
+        valuePath: 'name',
+        sortable: false,
+      },
+      {
+        label: 'Amount',
+        valuePath: 'amount',
+        sortable: false,
+      },
+      {
+        sortable: false,
+        cellComponent: 'cell-actions'
+      }
+    ];
+  }),
   actions: {
-    openDialog: function (income) {
-      this.get("controller").set('isModalDialogActive', true);
-      this.get("controller").set('income', income);
+    edit(entity) {
+      this.transitionTo('incomes.edit', entity);
     },
-    closeDialog: function () {
-      this.get("controller").set('isModalDialogActive', false);
-    },
-    delete: function () {
-      this.get('controller.income').destroyRecord();
+    delete: function (entity) {
+      entity.destroyRecord();
       this.get("controller").set('isModalDialogActive', false);
     }
   }

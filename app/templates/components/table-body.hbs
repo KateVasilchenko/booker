@@ -1,9 +1,0 @@
-<tbody>
-  {{#each content as |objectInstance|}}
-    {{table-body-row
-      content=objectInstance
-      deleteEntity="deleteEntity"
-      contentDeleted=contentDeleted}}
-  {{/each}}
-  <button class="load-more" {{action "loadMore"}}>Load more...</button>
-</tbody>
