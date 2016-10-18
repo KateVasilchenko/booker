@@ -22,17 +22,14 @@
 <br>
 <div class="container-fluid">
   <div class="row">
-    {{#if model.isAuthenticated}}
       <div class="col-md-2 sidebar">
         <div class="list-group">
-          {{#link-to "incomes" classNames="list-group-item"}}Incomes{{/link-to}}
-          {{#link-to "outcomes" classNames="list-group-item"}}Outcomes{{/link-to}}
+          {{#link-to "transactions" classNames="list-group-item"}}Transactions{{/link-to}}
           {{#link-to "wallets" classNames="list-group-item"}}Wallets{{/link-to}}
           {{#link-to "categories" classNames="list-group-item"}}Categories{{/link-to}}
           {{#link-to "currencies" classNames="list-group-item"}}Currencies{{/link-to}}
         </div>
       </div>
-    {{/if}}
     <div class="col-md-10">
       {{outlet}}
     </div>

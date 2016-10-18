@@ -1,0 +1,43 @@
+<form>
+  {{#input-wrapper for="description" model=model}}
+    {{input
+      type="text"
+      value=model.description
+      classNames="form-control"
+      placeholder="Transaction description"}}
+  {{/input-wrapper}}
+  {{#input-wrapper for="amount" model=model}}
+    {{input
+      type="text"
+      value=model.amount
+      classNames="form-control"
+      placeholder="Amount"}}
+  {{/input-wrapper}}
+  {{#radio-button
+    value="-"
+    changed="isNegativeChanged"
+    groupValue=isNegative}}
+      -
+  {{/radio-button}}
+  {{#radio-button
+    value="+"
+    changed="isNegativeChanged"
+    groupValue=isNegative}}
+      +
+  {{/radio-button}}
+
+  <div class="form-group">
+  {{#x-select value=category classNames="form-control"}}
+    {{#each categories as |category|}}
+      {{#x-option value=category.id}}{{category.name}}{{/x-option}}
+    {{/each}}
+  {{/x-select}}
+  </div>
+  <div class="form-group">
+    {{#x-select value=wallet classNames="form-control"}}
+      {{#each wallets as |wallet|}}
+          {{#x-option value=wallet.id}}{{wallet.name}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
+  </div>
+</form>

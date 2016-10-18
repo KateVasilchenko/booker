@@ -4,9 +4,12 @@ import EmberValidations from "ember-validations";
 export default DS.Model.extend(EmberValidations, {
   name: DS.attr(),
   balance: DS.attr(),
-  currency: DS.belongsTo('currency'),
-  outcomes: DS.hasMany('outcome'),
-  incomes: DS.hasMany('income'),
+  currency: DS.belongsTo('currency', {
+    async: true
+  }),
+  transactions: DS.hasMany('transaction', {
+    async: true
+  }),
   validations: {
     name: {
       presence: true

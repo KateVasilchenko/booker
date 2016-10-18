@@ -2,16 +2,22 @@ import DS from 'ember-data';
 import EmberValidations from "ember-validations";
 
 export default DS.Model.extend(EmberValidations, {
-  name: DS.attr(),
-  amount: DS.attr(),
+  description: DS.attr('string'),
+  amount: DS.attr('number', {
+    defaultValue: 0.99
+  }),
+  isNegative: DS.attr('boolean', {
+    defaultValue: false
+  }),
   wallet: DS.belongsTo('wallet', { async: true }),
   category: DS.belongsTo('category', { async: true }),
   validations: {
-    name: {
-      presence: true
-    },
     amount: {
-      presence: true
+      presence: true,
+      numericality: true
+    },
+    wallet: {
+      promisePresence: true
     }
   }
 });

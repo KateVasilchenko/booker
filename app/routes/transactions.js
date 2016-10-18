@@ -3,7 +3,7 @@ const { computed } = Ember;
 
 export default Ember.Route.extend({
   model() {
-    return this.store.findAll("income");
+    return this.store.findAll("transaction");
   },
   setupController(controller, model) {
     this._super(controller, model);
@@ -12,13 +12,18 @@ export default Ember.Route.extend({
   columns: computed(function() {
     return [
       {
-        label: 'Name',
-        valuePath: 'name',
+        label: 'Amount',
+        valuePath: 'amount',
         sortable: false,
       },
       {
-        label: 'Amount',
-        valuePath: 'amount',
+        label: 'Description',
+        valuePath: 'description',
+        sortable: false,
+      },
+      {
+        label: 'Is Negative',
+        valuePath: 'isNegative',
         sortable: false,
       },
       {
@@ -29,7 +34,7 @@ export default Ember.Route.extend({
   }),
   actions: {
     edit(entity) {
-      this.transitionTo('incomes.edit', entity);
+      this.transitionTo('transactions.edit', entity);
     },
     delete: function (entity) {
       entity.destroyRecord();
