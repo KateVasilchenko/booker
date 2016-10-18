@@ -32,8 +32,9 @@ export default Ember.Route.extend({
       this.transitionTo('categories.edit', entity);
     },
     delete: function (entity) {
-      entity.destroyRecord();
-      this.get("controller").set('isModalDialogActive', false);
+      if (confirm('Are you sure')) {
+        entity.destroyRecord();
+      }
     }
   }
 });

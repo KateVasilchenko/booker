@@ -32,8 +32,9 @@ export default Ember.Route.extend({
       this.transitionTo('wallets.edit', entity);
     },
     delete: function (entity) {
-      entity.destroyRecord();
-      this.get("controller").set('isModalDialogActive', false);
+      if (confirm('Are you sure')) {
+        entity.destroyRecord();
+      }
     }
   }
 });

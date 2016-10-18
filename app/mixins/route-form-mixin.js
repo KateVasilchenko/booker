@@ -7,11 +7,10 @@ export default Ember.Mixin.create({
   model: null,
   actions: {
     save: function () {
-      var self = this;
-      var model = this.get("controller.model");
-      model.validate().then(function () {
+      let model = this.get("controller.model");
+      model.validate().then(() => {
         if(model.get('isValid')) {
-          model.save().then(self.afterSave(model));
+          model.save().then(this.afterSave(model));
         }
       }).catch(function () {
         console.log("Something wrong with model!");
