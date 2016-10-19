@@ -12,46 +12,20 @@ module('Acceptance | wallets/new', {
   }
 });
 
+const WALLETS_MOCK = '{"wallets":[{"id":1,"name":"Main"},{"id":2,"name":"Another"}]}';
+
 test('visiting /wallets/new', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/wallets',
+    type: 'GET',
+    status: 200,
+    responseText: WALLETS_MOCK,
+    responseTime: 0
+  });
+
   visit('/wallets/new');
 
   andThen(function() {
     assert.equal(currentURL(), '/wallets/new');
-  });
-});
-
-test('Return back', function(assert) {
-  visit('/wallets/new');
-  click('.btn-default');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.index');
-  });
-});
-
-test('Create a new wallet', function(assert) {
-  visit('/wallets');
-  click('.new-wallet');
-  andThen(function() {
-    assert.equal(currentPath(), 'wallets.new');
-  });
-  fillIn('.wallet-name', 'New');
-  fillIn('.wallet-balance', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.index');
-  });
-});
-
-test('Create a new wallet but something wrong with model', function(assert) {
-  visit('/wallets');
-  click('.new-wallet');
-  andThen(function() {
-    assert.equal(currentPath(), 'wallets.new');
-  });
-  fillIn('.wallet-name', '');
-  fillIn('.wallet-balance', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.new');
   });
 });

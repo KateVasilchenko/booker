@@ -12,56 +12,20 @@ module('Acceptance | categories', {
   }
 });
 
+const CATEGORIES_MOCK = '{"categories":[{"id":1,"name":"Food"},{"id":2,"name":"Drink"},{"id":3,"name":"Entertainment"},{"id":4,"name":"Medicine"},{"id":5,"name":"Tourism"},{"id":6,"name":"Fuel"},{"id":7,"name":"House"},{"id":8,"name":"Children"},{"id":9,"name":"Gifts"},{"id":10,"name":"Games"},{"id":11,"name":"Clothes"}]}';
+
 test('visiting /categories', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/categories',
+    type: 'GET',
+    status: 200,
+    responseText: CATEGORIES_MOCK,
+    responseTime: 0
+  });
+
   visit('/categories');
 
   andThen(function() {
     assert.equal(currentURL(), '/categories');
-  });
-});
-
-test('clicked delete1 and confirm', function(assert) {
-  visit('/categories');
-  click('.delete-item');
-  andThen(function() {
-    assert.equal(find("h2:contains(Are you sure?)").text(), 'Are you sure?');
-    assert.equal(currentRouteName(), 'categories.index', 'Stays on new page');
-  });
-  click('.delete-confirm');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index', 'Stays on new page');
-  });
-});
-
-test('clicked delete1 and cancel', function(assert) {
-  visit('/categories');
-  click('.delete-item');
-  andThen(function() {
-    assert.equal(find("h2:contains(Are you sure?)").text(), 'Are you sure?');
-    assert.equal(currentRouteName(), 'categories.index', 'Stays on new page');
-  });
-  click('.cancel');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index', 'Stays on new page');
-  });
-});
-
-test('clicked edit and cancel', function(assert) {
-  visit('/categories');
-  click('.primary');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.edit');
-  });
-  click('.cancel');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index', 'Stays on new page');
-  });
-});
-
-test('load more', function(assert) {
-  visit('/categories');
-  click('.load-more');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index');
   });
 });

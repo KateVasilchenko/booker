@@ -12,48 +12,20 @@ module('Acceptance | wallets', {
   }
 });
 
+const WALLETS_MOCK = '{"wallets":[{"id":1,"name":"Main","balance":100},{"id":2,"name":"Another","balance":200}]}';
+
 test('visiting /wallets', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/wallets',
+    type: 'GET',
+    status: 200,
+    responseText: WALLETS_MOCK,
+    responseTime: 0
+  });
+
   visit('/wallets');
 
   andThen(function() {
     assert.equal(currentURL(), '/wallets');
-  });
-});
-
-test('clicked delete1 and confirm', function(assert) {
-  visit('/wallets');
-  click('.delete-item');
-  andThen(function() {
-    assert.equal(find("h2:contains(Are you sure?)").text(), 'Are you sure?');
-    assert.equal(currentRouteName(), 'wallets.index', 'Stays on new page');
-  });
-  click('.delete-confirm');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.index', 'Stays on new page');
-  });
-});
-
-test('clicked delete1 and cancel', function(assert) {
-  visit('/wallets');
-  click('.delete-item');
-  andThen(function() {
-    assert.equal(find("h2:contains(Are you sure?)").text(), 'Are you sure?');
-    assert.equal(currentRouteName(), 'wallets.index', 'Stays on new page');
-  });
-  click('.cancel');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.index', 'Stays on new page');
-  });
-});
-
-test('clicked edit and cancel', function(assert) {
-  visit('/wallets');
-  click('.primary');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.edit');
-  });
-  click('.cancel');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'wallets.index', 'Stays on new page');
   });
 });

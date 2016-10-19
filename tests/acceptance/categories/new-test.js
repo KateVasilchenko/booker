@@ -12,45 +12,20 @@ module('Acceptance | categories/new', {
   }
 });
 
+const CATEGORIES_MOCK = '{"categories":[{"id":1,"name":"Food"},{"id":2,"name":"Drink"},{"id":3,"name":"Entertainment"},{"id":4,"name":"Medicine"},{"id":5,"name":"Tourism"},{"id":6,"name":"Fuel"},{"id":7,"name":"House"},{"id":8,"name":"Children"},{"id":9,"name":"Gifts"},{"id":10,"name":"Games"},{"id":11,"name":"Clothes"}]}';
+
 test('visiting /categories/new', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/categories',
+    type: 'GET',
+    status: 200,
+    responseText: CATEGORIES_MOCK,
+    responseTime: 0
+  });
+
   visit('/categories/new');
+
   andThen(function() {
     assert.equal(currentURL(), '/categories/new');
-  });
-});
-
-test('Return back', function(assert) {
-  visit('/categories/new');
-  click('.btn-default');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index');
-  });
-});
-
-test('Create a new category', function(assert) {
-  visit('/categories');
-  click('.new-category');
-  andThen(function() {
-    assert.equal(currentPath(), 'categories.new');
-  });
-  fillIn('.category-name', 'New');
-  fillIn('.category-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index');
-  });
-});
-
-test('Create a new category but something wrong with model', function(assert) {
-  visit('/categories');
-  click('.new-category');
-  andThen(function() {
-    assert.equal(currentPath(), 'categories.new');
-  });
-  fillIn('.category-name', '');
-  fillIn('.category-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.new');
   });
 });

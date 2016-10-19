@@ -12,46 +12,20 @@ module('Acceptance | currencies/new', {
   }
 });
 
+const CURRENCIES_MOCK = '{"currencies":[{"id":1,"name":"Ukrainian Hryvnia","sign":"HR"},{"id":2,"name":"US Dollar","sign":"$"}]}';
+
 test('visiting /currencies/new', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/currencies',
+    type: 'GET',
+    status: 200,
+    responseText: CURRENCIES_MOCK,
+    responseTime: 0
+  });
+
   visit('/currencies/new');
 
   andThen(function() {
     assert.equal(currentURL(), '/currencies/new');
-  });
-});
-
-test('Return back', function(assert) {
-  visit('/currencies/new');
-  click('.btn-default');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'currencies.index');
-  });
-});
-
-test('Create a new currency', function(assert) {
-  visit('/currencies');
-  click('.new-currency');
-  andThen(function() {
-    assert.equal(currentPath(), 'currencies.new');
-  });
-  fillIn('.currency-name', 'New');
-  fillIn('.currency-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'currencies.index');
-  });
-});
-
-test('Create a new currency but something wrong with model', function(assert) {
-  visit('/currencies');
-  click('.new-currency');
-  andThen(function() {
-    assert.equal(currentPath(), 'currencies.new');
-  });
-  fillIn('.currency-name', '');
-  fillIn('.currency-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'currencies.new');
   });
 });

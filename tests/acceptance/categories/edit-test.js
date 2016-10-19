@@ -12,64 +12,29 @@ module('Acceptance | categories/edit', {
   }
 });
 
-test('visiting /categories/edit/id', function(assert) {
-  visit('/categories/edit/:id');
-  andThen(function() {
-    assert.equal(currentURL(), '/categories/edit/:id');
-  });
-});
+const CATEGORIES_MOCK = '{"categories":[{"id":1,"name":"Food"},{"id":2,"name":"Drink"},{"id":3,"name":"Entertainment"},{"id":4,"name":"Medicine"},{"id":5,"name":"Tourism"},{"id":6,"name":"Fuel"},{"id":7,"name":"House"},{"id":8,"name":"Children"},{"id":9,"name":"Gifts"},{"id":10,"name":"Games"},{"id":11,"name":"Clothes"}]}';
+const CATEGORY_MOCK = '{"categories":[{"id":1,"name":"Food"}]}';
 
-test('Editing current category', function(assert) {
-  visit('/categories');
-  click('.primary');
-  andThen(function() {
-    assert.equal(currentPath(), 'categories.edit');
+test('visiting /categories/edit/:id', function(assert) {
+  Ember.$.mockjax({
+    url: '/api/categories',
+    type: 'GET',
+    status: 200,
+    responseText: CATEGORIES_MOCK,
+    responseTime: 0
   });
-  fillIn('.category-name', 'Main');
-  fillIn('.category-icon', '3');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index');
-  });
-});
 
-test('Return back', function(assert) {
-  visit('/categories');
-  click('.primary');
-  andThen(function() {
-    assert.equal(currentPath(), 'categories.edit');
+  Ember.$.mockjax({
+    url: '/api/categories/1',
+    type: 'GET',
+    status: 200,
+    responseText: CATEGORY_MOCK,
+    responseTime: 0
   });
-  click('.btn-default');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.index');
-  });
-});
 
-test('Editing a category but something wrong with model', function(assert) {
-  visit('/categories');
-  click('.primary');
-  andThen(function() {
-    assert.equal(currentPath(), 'categories.edit');
-  });
-  fillIn('.category-name', '');
-  fillIn('.category-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(currentRouteName(), 'categories.edit');
-  });
-});
+  visit('/categories/edit/1');
 
-test('show error', function(assert) {
-  visit('/categories');
-  click('.primary');
   andThen(function() {
-    assert.equal(currentPath(), 'categories.edit');
-  });
-  fillIn('.category-name', '');
-  fillIn('.category-icon', '10');
-  click('.save');
-  andThen(function() {
-    assert.equal(find("span:visible").text().replace(/×can't/g, "can't"), "can't be blank");
-    assert.equal(currentRouteName(), 'categories.edit');
+    assert.equal(currentURL(), '/categories/edit/1');
   });
 });
