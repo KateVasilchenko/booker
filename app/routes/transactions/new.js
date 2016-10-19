@@ -8,7 +8,9 @@ export default Ember.Route.extend(RouteNewMixin, RouteFormMixin, {
     return this.transitionTo('transactions');
   },
   model() {
-    return this.store.createRecord("transaction");
+    return this.store.createRecord("transaction", {
+      createdAt: new Date()
+    });
   },
   setupController(controller, model) {
     this._super(controller, model);
@@ -20,9 +22,11 @@ export default Ember.Route.extend(RouteNewMixin, RouteFormMixin, {
       return this.transitionTo('transactions');
     },
     isNegativeChanged(value) {
-      console.log('aaaa');
-      return value === '+' ? this.get('controller.model').set('isNegative', false) :
-        this.get('controller.model').set('isNegative', true)
+      let model = this.get('controller.model');
+      return value === '+' ? model.set('isNegative', false) : model.set('isNegative', true);
+    },
+    createdAtChanged(value) {
+      this.get('controller.model').set('createdAt', value);
     }
   }
 });

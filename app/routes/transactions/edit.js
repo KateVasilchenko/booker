@@ -20,13 +20,10 @@ export default Ember.Route.extend(RouteFormMixin, {
     },
     isNegativeChanged(value) {
       let model = this.get('controller.model');
-      console.log(model);
-      if (value === '+') {
-        model.set('isNegative', false);
-      } else if (value === '-') {
-        model.set('isNegative', true);
-      }
-      console.log(model.get('isNegative'));
+      return value === '+' ? model.set('isNegative', false) : model.set('isNegative', true);
+    },
+    createdAtChanged(value) {
+      this.get('controller.model').set('createdAt', value);
     }
   }
 });

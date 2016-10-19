@@ -1,5 +1,6 @@
 <form>
   {{#input-wrapper for="description" model=model}}
+    <label>Description</label>
     {{input
       type="text"
       value=model.description
@@ -7,33 +8,42 @@
       placeholder="Transaction description"}}
   {{/input-wrapper}}
   {{#input-wrapper for="amount" model=model}}
+    <label>Amount</label>
     {{input
       type="text"
       value=model.amount
       classNames="form-control"
       placeholder="Amount"}}
   {{/input-wrapper}}
-  {{#radio-button
-    value="-"
-    changed="isNegativeChanged"
-    groupValue=isNegative}}
-      -
-  {{/radio-button}}
-  {{#radio-button
-    value="+"
-    changed="isNegativeChanged"
-    groupValue=isNegative}}
-      +
-  {{/radio-button}}
+  {{#input-wrapper for="isNegative" model=model}}
+    {{#radio-button
+      value="-"
+      changed="isNegativeChanged"
+      groupValue=isNegative}}
+        -
+    {{/radio-button}}
+    {{#radio-button
+      value="+"
+      changed="isNegativeChanged"
+      groupValue=isNegative}}
+        +
+    {{/radio-button}}
+  {{/input-wrapper}}
+  {{#input-wrapper for="createdAt" model=model}}
+    <label>Created At</label>
+    {{bs-datetimepicker date=model.createdAt forceDateOutput=true format='DD-MM-YYYY' updateDate=(action (mut model.createdAt))}}
+  {{/input-wrapper}}
 
   <div class="form-group">
-  {{#x-select value=category classNames="form-control"}}
-    {{#each categories as |category|}}
-      {{#x-option value=category.id}}{{category.name}}{{/x-option}}
-    {{/each}}
-  {{/x-select}}
+    <label>Category</label>
+    {{#x-select value=category classNames="form-control"}}
+      {{#each categories as |category|}}
+        {{#x-option value=category.id}}{{category.name}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
   </div>
   <div class="form-group">
+    <label>Wallet</label>
     {{#x-select value=wallet classNames="form-control"}}
       {{#each wallets as |wallet|}}
           {{#x-option value=wallet.id}}{{wallet.name}}{{/x-option}}
