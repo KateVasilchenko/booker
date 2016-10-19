@@ -1,18 +1,11 @@
 <form>
   {{#input-wrapper for="name" model=model}}
+    <label>Name</label>
     {{input
       type="text"
       value=model.name
       classNames="form-control
       wallet-name"
       placeholder="Wallet name"}}
-  {{/input-wrapper}}
-  {{#input-wrapper for="balance" model=model}}
-    {{input
-      type="text"
-      value=model.balance
-      classNames="form-control
-      wallet-balance"
-      placeholder="Balance"}}
   {{/input-wrapper}}
 </form>

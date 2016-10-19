@@ -6,10 +6,14 @@ export default Ember.Mixin.create({
   },
   model: null,
   actions: {
+    back: function () {
+      return this.transitionTo(this.get('fallbackRoute'));
+    },
     save: function () {
       let model = this.get("controller.model");
       model.validate().then(() => {
         if(model.get('isValid')) {
+          model.set('updatedAt', new Date());
           model.save().then(this.afterSave(model));
         }
       }).catch(function () {

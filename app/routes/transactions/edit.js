@@ -2,6 +2,7 @@ import Ember from 'ember';
 import RouteFormMixin from '../../mixins/route-form-mixin';
 
 export default Ember.Route.extend(RouteFormMixin, {
+  fallbackRoute: 'transactions',
   afterSave: function() {
     this._super();
     return this.transitionTo('transactions');
@@ -15,9 +16,6 @@ export default Ember.Route.extend(RouteFormMixin, {
     controller.set('categories', this.store.peekAll('category'));
   },
   actions: {
-    back: function () {
-      return this.transitionTo('transactions');
-    },
     isNegativeChanged(value) {
       let model = this.get('controller.model');
       return value === '+' ? model.set('isNegative', false) : model.set('isNegative', true);

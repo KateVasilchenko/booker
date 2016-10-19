@@ -1,4 +1,3 @@
-<!-- Modal -->
 <div class="modal fade in"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -9,19 +8,11 @@
         <h4 class="modal-title">{{title}}</h4>
       </div>
       <div class="modal-body">
-        {{#if isDeleteConfirm}}
-          <h2>Are you sure?</h2>
-        {{else}}
           {{yield}}
-        {{/if}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default cancel" {{action "close"}}>Cancel</button>
-        {{#if isDeleteConfirm}}
-          <button type="button" class="btn btn-primary delete-confirm" {{action "delete"}}>Delete</button>
-        {{else}}
-          <button type="button" class="btn btn-primary save" {{action "save" model}}>Save changes</button>
-        {{/if}}
+        <button type="button" class="btn btn-primary save" {{action "save" model}}>Save changes</button>
       </div>
     </div>
   </div>

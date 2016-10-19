@@ -7,9 +7,6 @@ export default Ember.Component.extend({
     close: function () {
       return this.sendAction('close');
     },
-    delete: function () {
-      this.sendAction("delete");
-    },
     save: function () {
       this.sendAction('save', this.get('model'));
     }

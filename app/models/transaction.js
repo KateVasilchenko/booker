@@ -21,6 +21,9 @@ export default DS.Model.extend(EmberValidations, {
     },
     category: {
       promisePresence: true
+    },
+    createdAt: {
+      presence: true
     }
   }
 });
