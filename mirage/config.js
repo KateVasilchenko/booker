@@ -23,16 +23,8 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
-  this.get('/wallets', (schema, request) => {
-    return schema.wallets.all();
-  });
-  this.get('/currencies', (schema, request) => {
-    return schema.currencies.all();
-  });
-  this.get('/categories', (schema, request) => {
-    return schema.categories.all();
-  });
-  this.get('/transactions', (schema, request) => {
-    return schema.transactions.all();
-  });
+  this.get('/wallets');
+  this.get('/currencies');
+  this.get('/categories');
+  this.get('/transactions');
 }
