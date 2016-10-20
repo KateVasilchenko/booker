@@ -12,16 +12,10 @@ module('Acceptance | wallets', {
   }
 });
 
-const WALLETS_MOCK = '{"wallets":[{"id":1,"name":"Main","balance":100},{"id":2,"name":"Another","balance":200}]}';
+// const WALLETS_MOCK = '{"wallets":[{"id":1,"name":"Main","balance":100},{"id":2,"name":"Another","balance":200}]}';
 
 test('visiting /wallets', function(assert) {
-  Ember.$.mockjax({
-    url: '/api/wallets',
-    type: 'GET',
-    status: 200,
-    responseText: WALLETS_MOCK,
-    responseTime: 0
-  });
+  server.createList('wallet', 10);
 
   visit('/wallets');
 

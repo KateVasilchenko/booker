@@ -12,16 +12,10 @@ module('Acceptance | currencies', {
   }
 });
 
-const CURRENCIES_MOCK = '{"currencies":[{"id":1,"name":"Ukrainian Hryvnia","sign":"HR"},{"id":2,"name":"US Dollar","sign":"$"}]}';
+// const CURRENCIES_MOCK = '{"currencies":[{"id":1,"name":"Ukrainian Hryvnia","sign":"HR"},{"id":2,"name":"US Dollar","sign":"$"}]}';
 
 test('visiting /currencies', function(assert) {
-  Ember.$.mockjax({
-    url: '/api/currencies',
-    type: 'GET',
-    status: 200,
-    responseText: CURRENCIES_MOCK,
-    responseTime: 0
-  });
+  server.createList('currency', 10);
 
   visit('/currencies');
 
