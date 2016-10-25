@@ -1,18 +1,28 @@
 import DS from 'ember-data';
-import EmberValidations from "ember-validations";
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default DS.Model.extend(EmberValidations, {
-  name: DS.attr('string'),
-  sign: DS.attr('string'),
-  createdAt: DS.attr('date'),
-  updatedAt: DS.attr('date'),
+const { attr } = DS;
 
-  validations: {
-    name: {
-      presence: true
-    },
-    sign: {
-      presence: true
-    }
-  }
+const Validations = buildValidations({
+  name: {
+    description: 'Name',
+    validators: [
+      validator('presence', true)
+    ]
+  },
+  sign: {
+    description: 'Sign',
+    validators: [
+      validator('presence', true)
+    ]
+  },
+}, {
+  debounce: 500
+});
+
+export default DS.Model.extend(Validations, {
+  name: attr('string'),
+  sign: attr('string'),
+  createdAt: attr('date'),
+  updatedAt: attr('date')
 });

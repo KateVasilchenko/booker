@@ -17,6 +17,8 @@ export default Ember.Mixin.create({
           model.save().then(this.afterSave(model));
         }
       }).catch(function () {
+        console.log(model.get('isValid'));
+        console.log(model.get('errors'));
         console.log("Something wrong with model!");
       });
     }

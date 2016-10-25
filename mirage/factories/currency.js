@@ -4,7 +4,7 @@ export default Factory.extend({
   name(i) {
     return `Currency ${i}`;
   },
-  sign(i) {
+  sign() {
     return faker.finance.currencySymbol();
   },
   createdAt() {

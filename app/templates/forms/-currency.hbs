@@ -1,5 +1,5 @@
 <form>
-  {{#input-wrapper for="name" model=model}}
+  {{#input-wrapper valuePath="name" model=model}}
     <label>Name</label>
     {{input
       type="text"
@@ -7,7 +7,7 @@
       classNames="form-control currency-name"
       placeholder="Currency name"}}
   {{/input-wrapper}}
-  {{#input-wrapper for="sign" model=model}}
+  {{#input-wrapper valuePath="sign" model=model}}
     <label>Sign</label>
     {{input
       type="text"

@@ -2,10 +2,10 @@ import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
   walletId(i) {
-    return i + 1;
+    return i;
   },
   categoryId(i) {
-    return i + 1;
+    return i;
   },
   name(i) {
     return `Category ${i}`;

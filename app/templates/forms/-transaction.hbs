@@ -1,5 +1,5 @@
 <form>
-  {{#input-wrapper for="description" model=model}}
+  {{#input-wrapper valuePath="description" model=model}}
     <label>Description</label>
     {{input
       type="text"
@@ -7,7 +7,7 @@
       classNames="form-control"
       placeholder="Transaction description"}}
   {{/input-wrapper}}
-  {{#input-wrapper for="amount" model=model}}
+  {{#input-wrapper valuePath="amount" model=model}}
     <label>Amount</label>
     {{input
       type="text"
@@ -15,7 +15,7 @@
       classNames="form-control"
       placeholder="Amount"}}
   {{/input-wrapper}}
-  {{#input-wrapper for="isNegative" model=model}}
+  {{#input-wrapper valuePath="isNegative" model=model}}
     {{#radio-button
       value="-"
       changed="isNegativeChanged"
@@ -29,25 +29,27 @@
         +
     {{/radio-button}}
   {{/input-wrapper}}
-  {{#input-wrapper for="createdAt" model=model}}
+  {{#input-wrapper valuePath="createdAt" model=model}}
     <label>Created At</label>
     {{bs-datetimepicker date=model.createdAt forceDateOutput=true format='DD-MM-YYYY' updateDate=(action (mut model.createdAt))}}
   {{/input-wrapper}}
 
-  <div class="form-group">
+  {{#input-wrapper model=model valuePath="category"}}
     <label>Category</label>
-    {{#x-select value=category classNames="form-control"}}
+    {{#x-select value=category action="selectCategory" required=true classNames="form-control"}}
+      {{#x-option}}Choose the category...{{/x-option}}
       {{#each categories as |category|}}
-        {{#x-option value=category.id}}{{category.name}}{{/x-option}}
+        {{#x-option value=category}}{{category.name}}{{/x-option}}
       {{/each}}
     {{/x-select}}
-  </div>
-  <div class="form-group">
+  {{/input-wrapper}}
+  {{#input-wrapper model=model valuePath="wallet"}}
     <label>Wallet</label>
-    {{#x-select value=wallet classNames="form-control"}}
+    {{#x-select value=wallet action="selectWallet" required=true classNames="form-control"}}
+      {{#x-option}}Choose the wallet...{{/x-option}}
       {{#each wallets as |wallet|}}
-          {{#x-option value=wallet.id}}{{wallet.name}}{{/x-option}}
+          {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
       {{/each}}
     {{/x-select}}
-  </div>
+  {{/input-wrapper}}
 </form>
