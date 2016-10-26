@@ -1,9 +1,6 @@
 import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  currencyId(i) {
-    return i;
-  },
   name(i) {
     return `Wallet ${i}`;
   },

@@ -6,5 +6,11 @@ export default Ember.Route.extend({
       wallet: this.store.findAll('wallet'),
       category: this.store.findAll('category'),
     });
+  },
+  actions: {
+    toggleSidebar() {
+      Ember.$("#wrapper").toggleClass("toggled");
+      Ember.$(".navbar-default").toggleClass('navbar-closed');
+    }
   }
 });

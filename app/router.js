@@ -25,6 +25,7 @@ Router.map(function() {
     this.route('new', {});
     this.route('edit', { path: '/edit/:id' });
   });
+  this.route('dashboard');
 });
 
 export default Router;

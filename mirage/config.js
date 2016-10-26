@@ -27,6 +27,26 @@ export default function() {
   this.get('/currencies');
   this.get('/categories');
   this.get('/transactions');
+  this.get('/transactions/:id', (schema, request) => {
+    var id = request.params.id;
+
+    return schema.transactions.find(id);
+  });
+  this.get('/categories/:id', (schema, request) => {
+    var id = request.params.id;
+
+    return schema.categories.find(id);
+  });
+  this.get('/currencies/:id', (schema, request) => {
+    var id = request.params.id;
+
+    return schema.currencies.find(id);
+  });
+  this.get('/wallets/:id', (schema, request) => {
+    var id = request.params.id;
+
+    return schema.wallets.find(id);
+  });
 }
 
 export function testConfig() {

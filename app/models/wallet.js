@@ -23,9 +23,15 @@ export default DS.Model.extend(Validations, {
   createdAt: attr('date'),
   updatedAt: attr('date'),
 
-  validations: {
-    name: {
-      presence: true
-    }
-  }
+  balance: Ember.computed('transactions.[]', 'transactions.@each.amount', function () {
+    let balance = 0;
+    this.get('transactions').forEach(function (transaction) {
+      if (transaction.get('isNegative')) {
+        balance -= transaction.get('amount');
+      } else {
+        balance += transaction.get('amount');
+      }
+    });
+    return balance.toFixed(2);
+  })
 });

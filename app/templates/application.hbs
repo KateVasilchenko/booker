@@ -1,36 +1,35 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      {{#link-to "index" classNames="navbar-brand"}}Booker{{/link-to}}
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      {{#link-to "dashboard" classNames="navbar-brand"}}Booker{{/link-to}}
       <ul class="nav navbar-nav">
-        <!-- <li class="active">{{!-- #link-to "index" --}}Home{{!-- /link-to --}}</li> -->
+          <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </li>
+          {{#link-to "transactions.new" tagName="li" id="transaction-quick-add"}}Add transaction{{/link-to}}
       </ul>
     </div>
   </div>
 </nav>
-<br>
-<br>
-<br>
-<div class="container-fluid">
-  <div class="row">
-      <div class="col-md-2 sidebar">
-        <div class="list-group">
-          {{#link-to "transactions" classNames="list-group-item"}}Transactions{{/link-to}}
-          {{#link-to "wallets" classNames="list-group-item"}}Wallets{{/link-to}}
-          {{#link-to "categories" classNames="list-group-item"}}Categories{{/link-to}}
-          {{#link-to "currencies" classNames="list-group-item"}}Currencies{{/link-to}}
-        </div>
-      </div>
-    <div class="col-md-10">
-      {{outlet}}
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>{{#link-to "dashboard"}}Dashboard{{/link-to}}</li>
+            <li>{{#link-to "transactions"}}Transactions{{/link-to}}</li>
+            <li>{{#link-to "wallets"}}Wallets{{/link-to}}</li>
+            <li>{{#link-to "categories"}}Categories{{/link-to}}</li>
+            <li>{{#link-to "currencies"}}Currencies{{/link-to}}</li>
+        </ul>
     </div>
-  </div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    {{outlet}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
