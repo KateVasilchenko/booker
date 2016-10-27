@@ -1,10 +1,11 @@
 .sidebar {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 0;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    width: 250px;
+    transform: translateX(0);
     overflow-y: auto;
     background: #1d6262;
     -webkit-transition: all 0.5s ease;

@@ -1,5 +1,8 @@
 .navbar {
   min-height: 80px;
+  .nav {
+    margin: 0;
+  }
   &-default {
       background-color: #ffffff;
       box-shadow: 250px 4px 5px 0 #dfdfdf;
@@ -18,17 +21,19 @@
     height: 80px;
   }
   &-brand {
-    width: 250px;
     height: 100%;
     line-height: 80px;
     padding: 0 15px;
     color: #2e7680 !important;
     text-transform: uppercase;
+    @media (min-width: 768px) {
+      min-width: 250px;
+    }
   }
   .burger-btn {
     display: block;
     margin: 0;
-    padding: 29px 25px;
+    padding: 28px 25px;
     cursor: pointer;
     border: none;
     &:hover,
@@ -44,12 +49,16 @@
     }
   }
   .transaction-btn {
+    height: auto;
     position: absolute;
-    right: 15px;
     top: 50%;
+    right: 90px;
     transform: translateY(-50%);
     text-decoration: none;
     color: #2e7680;
     cursor: pointer;
+    @media (min-width: 768px) {
+      right: 15px;
+    }
   }
 }
