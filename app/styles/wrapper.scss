@@ -20,8 +20,6 @@
       height: 100%;
       padding: 15px;
       background-color: #e8e9eb;
-      transform: translateX(250px);
-      // transform: translateX(0);
       -webkit-transition: transform 0.5s ease;
       -moz-transition: transform 0.5s ease;
       -o-transition: transform 0.5s ease;
@@ -35,19 +33,21 @@
       &.toggled {
         padding-left: 0;
       }
-      .content-wrapper {
-          transform: translateX(0);
-      }
     }
 }
-// @media(max-width:768px) {
+// @media(max-width:767px) {
 //     .wrapper {
 //       padding-left: 0;
 //       &.toggled {
-//         padding-left: 0;
+//         .sidebar {
+//           transform: translateX(0);
+//         }
+//         .content-wrapper {
+//             transform: translateX(250px);
+//         }
 //       }
-//       .content-wrapper {
-//           transform: translateX(250px);
+//       .sidebar {
+//         transform: translateX(-100%);
 //       }
 //     }
 // }
