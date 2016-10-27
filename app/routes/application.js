@@ -12,5 +12,22 @@ export default Ember.Route.extend({
       Ember.$("#wrapper").toggleClass("toggled");
       Ember.$(".navbar-default").toggleClass('navbar-closed');
     }
+  },
+  init() {
+    Ember.$(window).resize(function() {
+      let wrapper = Ember.$('#wrapper');
+      let navbar = Ember.$('.navbar-default');
+      if (window.innerWidth < 768 &&
+        !Ember.$(wrapper).hasClass('toggled') &&
+        !Ember.$(navbar).hasClass('navbar-closed')) {
+        Ember.$(wrapper).addClass('toggled');
+        Ember.$(navbar).addClass('navbar-closed')
+      } else if (window.innerWidth >= 768 &&
+        Ember.$(wrapper).hasClass('toggled') &&
+        Ember.$(navbar).hasClass('navbar-closed')) {
+        Ember.$(wrapper).removeClass("toggled");
+        Ember.$(navbar).removeClass('navbar-closed')
+      }
+    });
   }
 });
