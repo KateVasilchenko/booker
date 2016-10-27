@@ -16,13 +16,14 @@ export default Ember.Route.extend({
       category.set('transactions', [transaction]);
       wallet.set('transactions', [transaction]);
     });
-    let balance = 0;
+    let balance = null;
     let wallets = this.store.peekAll('wallet');
-    wallets.forEach(function (wallet) {
-      balance += wallet.get('balance');
-    });
+    for (let i=0; i<wallets.get('length'); i++) {
+      balance = balance === null ?
+        parseFloat(wallets.objectAt(i).get('balance')) : balance + parseFloat(wallets.objectAt(i).get('balance'));
+    }
     controller.set('wallets', wallets);
-    controller.set('balance', balance);
+    controller.set('balance', balance.toFixed(2));
     controller.set('transactions', model.transactions);
   },
 });
