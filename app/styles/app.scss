@@ -1,0 +1,21 @@
+@import "navbar";
+@import "sidebar";
+@import "wrapper";
+@import "panel-custom";
+@import "list";
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+    overflow-x: hidden;
+}
+.modal {
+    display: block;
+}
+
+div.input-error>div.error {
+    color: #a94442;
+}

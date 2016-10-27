@@ -1,0 +1,55 @@
+.navbar {
+  min-height: 80px;
+  &-default {
+      background-color: #ffffff;
+      box-shadow: 250px 4px 5px 0 #dfdfdf;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      &.navbar-closed {
+        box-shadow: 0 1px 2px 0 #dfdfdf;
+      }
+  }
+  &.navbar-fixed-top {
+    border-width: 0;
+  }
+  &-header {
+    height: 80px;
+  }
+  &-brand {
+    width: 250px;
+    height: 100%;
+    line-height: 80px;
+    padding: 0 15px;
+    color: #2e7680 !important;
+    text-transform: uppercase;
+  }
+  .burger-btn {
+    display: block;
+    margin: 0;
+    padding: 29px 25px;
+    cursor: pointer;
+    border: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #ffffff;
+    }
+    .icon-bar {
+      width: 30px;
+      height: 5px;
+      background-color: #2e7680;
+      border-radius: 2px;
+    }
+  }
+  .transaction-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #2e7680;
+    cursor: pointer;
+  }
+}

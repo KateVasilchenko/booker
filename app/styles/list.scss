@@ -1,0 +1,11 @@
+.list {
+  margin-top: 20px;
+  margin-bottom: 0;
+  &-item {
+    border-top: 1px solid #e2e2e2;
+    padding: 10px 0;
+    &:first-child {
+      border-color: transparent;
+    }
+  }
+}

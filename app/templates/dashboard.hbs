@@ -1,24 +1,23 @@
 <div class="row">
-    <div class="col-md-3">
-        <div class="panel panel-default panel-wallets">
+    <div class="col-xs-12 col-lg-4">
+        <div class="panel panel-default panel-custom panel-wallets">
             <div class="panel-heading">
                 <h3 class="panel-title">Wallets</h3>
             </div>
             <div class="panel-body">
-                <div class="row balance">
-                    <div class="col-md-6"><h2>Balance</h2></div>
-                    <div class="col-md-6"><h2>{{balance}}</h2></div>
+                <div class="balance">
+                    <h2>Balance <span class="pull-right"> {{balance}} UAH</span></h2>
                 </div>
-                <ul class="list-unstyled">
+                <ul class="list list-unstyled">
                     {{#each wallets as |wallet|}}
-                        <li>{{wallet.name}} - {{wallet.balance}}</li>
+                        <li class="list-item">{{wallet.name}} <span class="pull-right"> {{wallet.balance}}</span></li>
                     {{/each}}
                 </ul>
             </div>
         </div>
     </div>
-    <div class="col-md-9">
-        <div class="panel panel-default panel-charts">
+    <div class="col-xs-12 col-lg-8">
+        <div class="panel panel-default panel-custom panel-charts">
             <div class="panel-heading">
                 <h3 class="panel-title">Statistics</h3>
             </div>
@@ -29,7 +28,7 @@
     </div>
 </div>
 
-<div class="panel panel-default panel-charts">
+<div class="panel panel-default panel-custom panel-charts">
     <div class="panel-heading">
         <h3 class="panel-title">Recent transactions</h3>
     </div>
@@ -44,4 +43,3 @@
         {{#link-to 'transactions'}}All transactions{{/link-to}}
     </div>
 </div>
-
