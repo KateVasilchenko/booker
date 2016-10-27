@@ -36,7 +36,7 @@
         <ul class="transactions-list">
             {{#each (reverse transactions) as |transaction index|}}
                 {{#if (lt index 5)}}
-                    <li>{{transaction.amount}}</li>
+                    <li>{{transaction.category.color}} - {{transaction.category.name}} - {{transaction.amount}} - {{format-date transaction.createdAt}} - {{transaction.wallet.name}}</li>
                 {{/if}}
             {{/each}}
         </ul>

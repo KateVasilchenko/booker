@@ -18,6 +18,7 @@ export default DS.Model.extend(Validations, {
   transactions: DS.hasMany('transaction', { async: true }),
 
   name: attr('string'),
+  color: attr('string'),
   createdAt: attr('date'),
   updatedAt: attr('date'),
 });
