@@ -3,12 +3,12 @@
     <div class="navbar-header">
       {{#link-to "dashboard" classNames="navbar-brand"}}Booker{{/link-to}}
       <ul class="nav navbar-nav">
-          <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </li>
-          {{#link-to "transactions.new" tagName="li" id="transaction-quick-add"}}Add transaction{{/link-to}}
+        <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </li>
+        {{#link-to "transactions.new" tagName="li" id="transaction-quick-add"}}Add transaction{{/link-to}}
       </ul>
     </div>
   </div>
