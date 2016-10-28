@@ -5,7 +5,7 @@ export default Factory.extend({
     return `Category ${i}`;
   },
   color() {
-    return faker.commerce.color();
+    return faker.internet.color();
   },
   createdAt() {
     return faker.date.past();

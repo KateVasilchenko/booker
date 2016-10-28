@@ -11,7 +11,7 @@ export default Factory.extend({
     return faker.commerce.price();
   },
   isNegative() {
-    return false;
+    return faker.random.boolean();
   },
   createdAt() {
     return faker.date.past();
