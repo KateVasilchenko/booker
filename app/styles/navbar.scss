@@ -1,0 +1,67 @@
+.navbar {
+  min-height: 80px;
+  .nav {
+    margin: 0;
+    &-icon {
+      margin-right: 15px;
+    }
+  }
+  &-default {
+      background-color: #ffffff;
+      box-shadow: 250px 4px 5px 0 #dfdfdf;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      &.navbar-closed {
+        box-shadow: 0 1px 2px 0 #dfdfdf;
+      }
+  }
+  &.navbar-fixed-top {
+    border-width: 0;
+  }
+  &-header {
+    height: 80px;
+  }
+  &-brand {
+    height: 100%;
+    line-height: 80px;
+    padding: 0 15px;
+    color: #2e7680 !important;
+    text-transform: uppercase;
+    @media (min-width: 768px) {
+      min-width: 250px;
+    }
+  }
+  .burger-btn {
+    display: block;
+    margin: 0;
+    padding: 28px 25px;
+    cursor: pointer;
+    border: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #ffffff;
+    }
+    .icon-bar {
+      width: 30px;
+      height: 5px;
+      background-color: #2e7680;
+      border-radius: 2px;
+    }
+  }
+  .transaction-btn {
+    height: auto;
+    position: absolute;
+    top: 50%;
+    right: 90px;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #2e7680;
+    cursor: pointer;
+    @media (min-width: 768px) {
+      right: 15px;
+    }
+  }
+}

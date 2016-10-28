@@ -1,0 +1,18 @@
+
+.panel-custom {
+  border-radius: 3px;
+  color: #7b7777;
+  box-shadow: 0 4px 5px 0 #dfdfdf;
+  border: 0;
+  .panel-title {
+    color: #757474;
+    text-transform: uppercase;
+  }
+  .panel-heading {
+    background-color: #f2f4f5;
+    border-color: #f2f4f5;
+  }
+  .balance {
+      color: #63a8a8;
+  }
+}

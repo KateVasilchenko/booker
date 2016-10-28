@@ -1,0 +1,40 @@
+
+.transactions {
+  .color-indicator {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 2px;
+    border: 1px solid black;
+  }
+  .category {
+    vertical-align: middle;
+  }
+  &-cell {
+    vertical-align: middle;
+      border-top: 1px solid transparent;
+      &--negative {
+        color: #f16e6e;
+      }
+      &--positive {
+        color: #7fb0b0;
+      }
+  }
+  &-row {
+    background-color: #f8f8f8;
+    &:nth-of-type(odd) {
+      background-color: #fff;
+    }
+  }
+  .panel-footer {
+    .ember-view {
+      color: #7fb0b0;
+    }
+  }
+  .panel-footer,
+  .transactions-list {
+      border-top: 1px solid transparent;
+  }
+}

@@ -1,24 +1,23 @@
 <div class="row">
-    <div class="col-md-3">
-        <div class="panel panel-default panel-wallets">
+    <div class="col-xs-12 col-lg-5">
+        <div class="panel panel-default panel-custom panel-wallets">
             <div class="panel-heading">
                 <h3 class="panel-title">Wallets</h3>
             </div>
             <div class="panel-body">
-                <div class="row balance">
-                    <div class="col-md-6"><h2>Balance</h2></div>
-                    <div class="col-md-6"><h2>{{balance}}</h2></div>
+                <div class="balance clearfix">
+                    <h2>Balance <span class="pull-right"> {{balance}} UAH</span></h2>
                 </div>
-                <ul class="list-unstyled">
+                <ul class="list list-unstyled">
                     {{#each wallets as |wallet|}}
-                        <li>{{wallet.name}} - {{wallet.balance}}</li>
+                        <li class="list-item">{{wallet.name}} <span class="pull-right"> {{wallet.balance}}</span></li>
                     {{/each}}
                 </ul>
             </div>
         </div>
     </div>
-    <div class="col-md-9">
-        <div class="panel panel-default panel-charts">
+    <div class="col-xs-12 col-lg-7">
+        <div class="panel panel-default panel-custom panel-charts">
             <div class="panel-heading">
                 <h3 class="panel-title">Statistics</h3>
             </div>
@@ -29,19 +28,25 @@
     </div>
 </div>
 
-<div class="panel panel-default panel-charts">
+<div class="panel panel-default panel-custom panel-charts transactions">
     <div class="panel-heading">
         <h3 class="panel-title">Recent transactions</h3>
     </div>
-    <div class="panel-body">
-        <ul class="transactions-list">
-            {{#each (reverse transactions) as |transaction index|}}
-                {{#if (lt index 5)}}
-                    <li>{{transaction.category.color}} - {{transaction.category.name}} - {{transaction.amount}} - {{format-date transaction.createdAt}} - {{transaction.wallet.name}}</li>
-                {{/if}}
-            {{/each}}
-        </ul>
-        {{#link-to 'transactions'}}All transactions{{/link-to}}
+    <table class="table table-striped transactions-list text-capitalize">
+      <tbody>
+        {{#each (reverse transactions) as |transaction index|}}
+            <tr class="transactions-row">
+            {{#if (lt index 5)}}
+                    <td class="transactions-cell"><span class="color-indicator {{transaction.category.color}}"></span><span class="category">{{transaction.category.name}}</span></td>
+                    <td class="transactions-cell transactions-cell--negative">{{transaction.amount}} UAN</td>
+                    <td class="transactions-cell">{{format-date transaction.createdAt}}</td>
+                    <td class="transactions-cell">{{transaction.wallet.name}}</td>
+            {{/if}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="panel-footer">
+      {{#link-to 'transactions'}}Show all transactions{{/link-to}}
     </div>
 </div>
-
