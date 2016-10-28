@@ -2,6 +2,9 @@
   min-height: 80px;
   .nav {
     margin: 0;
+    &-icon {
+      margin-right: 15px;
+    }
   }
   &-default {
       background-color: #ffffff;
