@@ -1,0 +1,67 @@
+@import "navbar";
+@import "sidebar";
+@import "wrapper";
+@import "panel-custom";
+@import "transactions";
+@import "light-table";
+@import "spinner";
+@import "list";
+
+
+html,
+body {
+  height: 100%;
+}
+body {
+    overflow-x: hidden;
+}
+.modal {
+    display: block;
+}
+
+div.input-error>div.error {
+    color: #a94442;
+}
+
+.main {
+  height: 100%;
+}
+
+.icon {
+  &--circle {
+    border: 1px solid;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+.user-actions a {
+    color: #dd6a58;
+    padding-right: 10px;
+    font-size: 18px;
+    width: 30px;
+    text-decoration: none;
+    /*cursor: pointer;*/
+    padding-top: 10px
+}
+
+.user-actions a:active, .user-actions a:focus, .user-actions a:hover {
+    color: #d95743
+}
+.tip {
+  font-size: 13px;
+  color: #4E4E4E;
+  .icon-info {
+      color: #dd6a58;
+      margin-right: 3px;
+  }
+}
+.table-container {
+    overflow-y: auto;
+}
+.table-container.fixed-header {
+    overflow-y: hidden;
+    margin-bottom: 15px;
+}
