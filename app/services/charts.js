@@ -32,9 +32,9 @@ export default Ember.Service.extend({
     spanGaps: false
   },
   prepareData(entities) {
-    let incomeDataset = this.get('radarDefaultDataset');
+    let incomeDataset = Ember.copy(this.get('radarDefaultDataset'), true);
     incomeDataset.label = 'Income';
-    let outcomeDataset = this.get('radarDefaultDataset');
+    let outcomeDataset = Ember.copy(this.get('radarDefaultDataset'), true);
     outcomeDataset.label = 'Outcome';
     let lineDataset = this.get('lineDefaultDataset');
     lineDataset.label = 'Balance';
