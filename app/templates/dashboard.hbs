@@ -23,14 +23,14 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    {{ember-chart type="line" data=balanceChartData options=chartOptions width=500 height=250}}
+                    {{ember-chart type="line" data=charts.balanceData options=charts.options width=500 height=250}}
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        {{ember-chart type="radar" data=incomeChartData options=chartOptions width=250 height=250}}
+                        {{ember-chart type="radar" data=charts.incomeData options=charts.options width=250 height=250}}
                     </div>
                     <div class="col-md-6">
-                        {{ember-chart type="radar" data=outcomeChartData options=chartOptions width=250 height=250}}
+                        {{ember-chart type="radar" data=charts.outcomeData options=charts.options width=250 height=250}}
                     </div>
                 </div>
             </div>
@@ -47,10 +47,14 @@
         {{#each (reverse transactions) as |transaction index|}}
             <tr class="transactions-row">
             {{#if (lt index 5)}}
-                    <td class="transactions-cell"><span class="color-indicator {{transaction.category.color}}"></span><span class="category">{{transaction.category.name}}</span></td>
-                    <td class="transactions-cell transactions-cell--negative">{{transaction.amount}} UAN</td>
-                    <td class="transactions-cell">{{format-date transaction.createdAt}}</td>
-                    <td class="transactions-cell">{{transaction.wallet.name}}</td>
+                <td class="transactions-cell"><span class="color-indicator" style="background-color: {{transaction.category.color}}"></span><span class="category">{{transaction.category.name}}</span></td>
+                {{#if transaction.isNegative}}
+                    <td class="transactions-cell transactions-cell--negative">-{{transaction.amount}} UAN</td>
+                {{else}}
+                    <td class="transactions-cell transactions-cell--positive">+{{transaction.amount}} UAN</td>
+                {{/if}}
+                <td class="transactions-cell">{{format-date transaction.createdAt}}</td>
+                <td class="transactions-cell">{{transaction.wallet.name}}</td>
             {{/if}}
           </tr>
         {{/each}}
