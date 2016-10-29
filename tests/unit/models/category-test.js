@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 import Ember from 'ember';
 
 moduleForModel('category', 'Unit | Model | Category', {
-  needs: ['model:transaction']
+  needs: ['model:transaction', 'validator:presence']
 });
 
 test('Transactions relationship', function(assert) {

@@ -2,7 +2,12 @@ import { moduleForModel, test } from 'ember-qunit';
 import Ember from 'ember';
 
 moduleForModel('wallet', 'Unit | Model | Wallet', {
-  needs: ['model:currency', 'model:transaction']
+  needs: [
+    'model:currency',
+    'model:transaction',
+    'validator:presence',
+    'validator:belongs-to'
+  ]
 });
 
 test('Transactions relationship', function(assert) {
