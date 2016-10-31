@@ -1,8 +1,8 @@
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name(i) {
-    return `Category ${i}`;
+  name() {
+    return faker.commerce.department();
   },
   color() {
     return faker.internet.color();

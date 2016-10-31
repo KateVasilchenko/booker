@@ -1,9 +1,14 @@
 export default function(server) {
-  for (var i=0; i<10; i++) {
-    let transaction = server.create('transaction');
+  let i;
+  let wallets = [];
+  for (i=0; i<2; i++) {
     let currency = server.create('currency');
-    let wallet = server.create('wallet', { currency });
+    wallets.push(server.create('wallet', { currency }));
+  }
+  for (i=0; i<10; i++) {
+    let transaction = server.create('transaction');
     let category = server.create('category');
+    let wallet = i % 2 === 0 ? wallets[0] : wallets[1];
     transaction.category = category;
     transaction.wallet = wallet;
     category.transactions = [transaction];

@@ -2,12 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   radarDefaultDataset: {
-    backgroundColor: 'rgba(75,192,192,0.4)',
-    borderColor: 'rgba(75,192,192,1)',
-    pointBackgroundColor: 'rgba(179,181,198,1)',
-    pointBorderColor: 'rgba(75,192,192,1)',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgba(75,192,192,1)',
+    backgroundColor: [],
+    hoverBackgroundColor: [],
     data: []
   },
   lineDefaultDataset: {
@@ -67,7 +63,11 @@ export default Ember.Service.extend({
           }
         });
         incomeDataset.data.push(incomeBalance);
+        incomeDataset.backgroundColor.push(category.get('color'));
+        incomeDataset.hoverBackgroundColor.push(category.get('color'));
         outcomeDataset.data.push(outcomeBalance);
+        outcomeDataset.backgroundColor.push(category.get('color'));
+        outcomeDataset.hoverBackgroundColor.push(category.get('color'));
       }
     });
 

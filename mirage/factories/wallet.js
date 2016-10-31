@@ -2,7 +2,7 @@ import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name(i) {
-    return `Wallet ${i}`;
+    return faker.finance.accountName();
   },
   createdAt() {
     return faker.date.past();
