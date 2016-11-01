@@ -1,3 +1,4 @@
+@import "variables";
 @import "navbar";
 @import "sidebar";
 @import "wrapper";
@@ -14,6 +15,9 @@ body {
 }
 body {
     overflow-x: hidden;
+    &>.ember-view {
+      height: 100%;
+    }
 }
 .modal {
     display: block;
@@ -64,4 +68,15 @@ div.input-error>div.error {
 .table-container.fixed-header {
     overflow-y: hidden;
     margin-bottom: 15px;
+}
+.container-fluid > .navbar-header {
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.m-hidden {
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

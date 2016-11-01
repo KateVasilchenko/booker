@@ -1,41 +1,42 @@
 .sidebar {
-    z-index: 1000;
+    z-index: 1031;
     position: fixed;
+    display: flex;
+    flex-direction: column;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 135px;
     transform: translateX(0);
     overflow-y: auto;
-    background: #1d6262;
+    background: $aside-bg;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
   &-nav {
-      position: absolute;
-      top: 0;
-      width: 250px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
       a {
-        display: block;
-        padding: 0 15px;
-        line-height: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
         font-size: 16px;
         text-decoration: none;
-        color: #7fb0b0;
+        color: $nav-link-color;
         &:hover {
           text-decoration: none;
-          color: #b4f1f1;
-          background: #2e7680;
+          color: $nav-link-color--hover;
         }
         &:active,
         &:focus,
         &.active {
             text-decoration: none;
-            background-color: #2e7680;
-            color: #b4f1f1;
+            color: $nav-link-color--hover;
           }
       }
       .sidebar-brand {
@@ -51,8 +52,17 @@
           }
       }
     }
+    &-top-block {
+      flex: 0 0 80px;
+      background: $aside-bg--head;
+    }
+    &-bottom-block {
+      flex: 0 0 80px;
+      background: $aside-bg--foot;
+    }
     &-icon {
       text-indent: 0;
-      margin-right: 15px;
+      font-size: 30px;
+      padding: 10px 15px;
     }
 }

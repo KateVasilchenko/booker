@@ -1,0 +1,37 @@
+$sidebar-width: 135px;
+
+
+/*color palette*/
+
+$violet--light: #6b83bc;
+$violet--dark: #355193;
+$violet: #4e6cb3;
+$blue-violet: #6984c5;
+$light: #e8edf9;
+$light-blue: rgba(59, 103, 208, 0.07);
+$light-violet--transparent: rgba(188, 177, 225, 0.18);
+$light-violet: #adc0ed;
+$pink: #ae84c6;
+$red: #f16e6e;
+$grey: #8c8994;
+
+$main-bg: $light;
+$aside-bg: $violet;
+$aside-bg--head: $violet--light;
+$aside-bg--foot: $violet--dark;
+$balance-color: $violet;
+$success-color: $violet;
+$error-color: $red;
+$table-row--transaction: $light-blue;
+$table-row--wallets: $light-violet--transparent;
+$logo-color: $violet;
+$burger-color: $violet;
+$add-transaction-color: $violet;
+$show-transaction-color: $blue-violet;
+$show-wallets-color: $grey;
+$header-bg: #fff;
+$panel-header-bg: #fff;
+$panel-body-bg: #fff;
+$panel-title: $violet--dark;
+$nav-link-color: $light-violet;
+$nav-link-color--hover: #fff;
