@@ -4,7 +4,6 @@ export default Ember.Route.extend({
   renderTemplate: function(){
     this.render();
     var myjquery = function(){
-      console.log(Ember.$('nav'));
       Ember.$('nav').parent().addClass('main');
     };
     Ember.run.scheduleOnce('afterRender', myjquery);

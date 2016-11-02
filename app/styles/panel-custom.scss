@@ -5,14 +5,26 @@
   box-shadow: 0 4px 5px 0 #dfdfdf;
   border: 0;
   .panel-title {
-    color: #757474;
+    color: $panel-title;
     text-transform: uppercase;
   }
   .panel-heading {
-    background-color: #f2f4f5;
-    border-color: #f2f4f5;
+    background-color: $panel-header-bg;
+    border-bottom: solid 1px #e2e2e2;
   }
   .balance {
-      color: #63a8a8;
+    font-size: 28px;
+    font-weight: bold;
+    color: $balance-color;
+  }
+  .transactions-link {
+    a {
+      color: $show-transaction-color;
+    }
+  }
+  .wallets-link {
+    a {
+      color: $show-wallets-color;
+    }
   }
 }

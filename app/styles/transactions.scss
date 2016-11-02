@@ -1,39 +1,60 @@
-
-.transactions {
-  .color-indicator {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: middle;
-    border-radius: 2px;
+.list.list-flex {
+  margin-top: 0;
+  .list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    border-top: none;
   }
-  .category {
-    vertical-align: middle;
-  }
-  &-cell {
-    vertical-align: middle;
-      border-top: 1px solid transparent;
-      &--negative {
-        color: #f16e6e;
+  &.list-transactions {
+    .list-cell--description {
+      background-color: $table-row--transaction;
+      @media(max-width:767px) {
+        flex-direction: column;
+        align-items: flex-start;
       }
-      &--positive {
-        color: #7fb0b0;
-      }
-  }
-  &-row {
-    background-color: #f8f8f8;
-    &:nth-of-type(odd) {
-      background-color: #fff;
     }
   }
-  .panel-footer {
-    .ember-view {
-      color: #7fb0b0;
+  &.list-wallets {
+    .list-cell--description {
+      background-color: $table-row--wallets;
     }
   }
-  .panel-footer,
-  .transactions-list {
-      border-top: 1px solid transparent;
+  .list-cell {
+    &.color-indicator {
+      width: 25px;
+      height: 25px;
+      margin-right: 12px;
+      border-radius: 2px;
+      border: 1px solid black;
+    }
+    &.list-icon {
+      width: 26px;
+      height: 26px;
+      margin-right: 12px;
+      border: 1px solid black;
+    }
+    .arrow {
+      margin-right: 10px;
+      &--outer {
+        color: $error-color;
+      }
+      &--inner {
+        color: $success-color;
+      }
+    }
+    &--negative {
+      color: $success-color;
+    }
+    &--positive {
+      color: $error-color;
+    }
+    &--description {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+    }
   }
 }
