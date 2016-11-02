@@ -14,7 +14,8 @@
           </div>
           <div class="panel-body">
             <ul class="list list-unstyled list-flex list-wallets">
-                  {{#each wallets as |wallet|}}
+                  {{#each wallets as |wallet index|}}
+                    {{#if (lt index 2)}}
                       <li class="list-item">
                         <span class="list-cell list-icon"></span>
                         <div class="list-cell list-cell--description">
@@ -22,6 +23,7 @@
                           <div class="list-cell">{{wallet.balance}}</div>
                         </div>
                       </li>
+                    {{/if}}
                   {{/each}}
               </ul>
               <div class="text-right wallets-link">
@@ -55,7 +57,7 @@
                       <span class="list-cell color-indicator {{transaction.category.color}}"></span>
                       <div class="list-cell list-cell--description">
                         <div class="list-cell">{{transaction.category.name}}</div>
-                        <div class="list-cell"><span class="arrow arrow--right fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
+                        <div class="list-cell"><span class="arrow arrow--outer fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
                         <div class="list-cell">{{format-date transaction.createdAt}}</div>
                         <div class="list-cell">{{transaction.wallet.name}}</div>
                     </div>
@@ -72,7 +74,7 @@
                       <span class="list-cell color-indicator {{transaction.category.color}}"></span>
                       <div class="list-cell list-cell--description">
                         <div class="list-cell">{{transaction.category.name}}</div>
-                        <div class="list-cell"><span class="arrow arrow--left fa fa-arrow-left"></span>{{transaction.amount}} UAN</div>
+                        <div class="list-cell"><span class="arrow arrow--inner fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
                         <div class="list-cell">{{format-date transaction.createdAt}}</div>
                         <div class="list-cell">{{transaction.wallet.name}}</div>
                     </div>

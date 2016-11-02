@@ -36,10 +36,10 @@
     }
     .arrow {
       margin-right: 10px;
-      &--right {
+      &--outer {
         color: $error-color;
       }
-      &--left {
+      &--inner {
         color: $success-color;
       }
     }
