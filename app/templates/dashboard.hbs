@@ -64,7 +64,7 @@
           {{#each (reverse transactions) as |transaction index|}}
             {{#if (lt index 5)}}
                 <li class="list-item">
-                      <span class="list-cell color-indicator {{transaction.category.color}}"></span>
+                      <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
                       <div class="list-cell list-cell--description">
                         <div class="list-cell">{{transaction.category.name}}</div>
                         <div class="list-cell"><span class="arrow arrow--outer fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
@@ -81,7 +81,7 @@
           {{#each (reverse transactions) as |transaction index|}}
             {{#if (lt index 5)}}
                 <li class="list-item">
-                      <span class="list-cell color-indicator {{transaction.category.color}}"></span>
+                      <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
                       <div class="list-cell list-cell--description">
                         <div class="list-cell">{{transaction.category.name}}</div>
                         <div class="list-cell"><span class="arrow arrow--inner fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
