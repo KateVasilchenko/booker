@@ -13,7 +13,8 @@ $light-violet--transparent: rgba(188, 177, 225, 0.18);
 $light-violet: #adc0ed;
 $pink: #ae84c6;
 $red: #f16e6e;
-$grey: #8c8994;
+$dark-pink: #8f6b8d;
+
 
 $main-bg: $light;
 $aside-bg: $violet;
@@ -21,14 +22,14 @@ $aside-bg--head: $violet--light;
 $aside-bg--foot: $violet--dark;
 $balance-color: $violet;
 $success-color: $violet;
-$error-color: $red;
+$error-color: $pink;
 $table-row--transaction: $light-blue;
 $table-row--wallets: $light-violet--transparent;
 $logo-color: $violet;
 $burger-color: $violet;
 $add-transaction-color: $violet;
 $show-transaction-color: $blue-violet;
-$show-wallets-color: $grey;
+$show-wallets-color: $dark-pink;
 $header-bg: #fff;
 $panel-header-bg: #fff;
 $panel-body-bg: #fff;

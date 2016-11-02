@@ -20,7 +20,7 @@
                         <span class="list-cell list-icon"></span>
                         <div class="list-cell list-cell--description">
                           <div class="list-cell">{{wallet.name}}</div>
-                          <div class="list-cell">{{wallet.balance}}</div>
+                          <div class="list-cell">{{wallet.balance}} UAH</div>
                         </div>
                       </li>
                     {{/if}}
@@ -48,30 +48,13 @@
         </div>
     </div>
 </div>
-
-<div class="panel panel-default panel-custom panel-charts transactions">
-    <div class="panel-heading">
-        <h3 class="panel-title">Recent transactions</h3>
-    </div>
-    <div class="panel-body">
-      <div class="col-xs-12 col-lg-6">
-        <ul class="list list-unstyled list-flex list-transactions">
-          {{#each (reverse transactions) as |transaction index|}}
-            {{#if (lt index 5)}}
-                <li class="list-item">
-                      <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
-                      <div class="list-cell list-cell--description">
-                        <div class="list-cell">{{transaction.category.name}}</div>
-                        <div class="list-cell"><span class="arrow arrow--outer fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
-                        <div class="list-cell">{{format-date transaction.createdAt}}</div>
-                        <div class="list-cell">{{transaction.wallet.name}}</div>
-                    </div>
-              </li>
-            {{/if}}
-          {{/each}}
-        </ul>
+<div class="row">
+  <div class="col-xs-12 col-xlg-6">
+    <div class="panel panel-default panel-custom panel-charts transactions">
+      <div class="panel-heading">
+          <h3 class="panel-title">EXPENCES TRANSACTIONS</h3>
       </div>
-      <div class="col-xs-12 col-lg-6">
+      <div class="panel-body">
         <ul class="list list-unstyled list-flex list-transactions">
           {{#each (reverse transactions) as |transaction index|}}
             {{#if (lt index 5)}}
@@ -79,7 +62,7 @@
                       <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
                       <div class="list-cell list-cell--description">
                         <div class="list-cell">{{transaction.category.name}}</div>
-                        <div class="list-cell"><span class="arrow arrow--inner fa fa-arrow-right"></span>{{transaction.amount}} UAN</div>
+                        <div class="list-cell list-cell--operation"><span class="arrow arrow--outer fa fa-long-arrow-right"></span>{{transaction.amount}} UAN</div>
                         <div class="list-cell">{{format-date transaction.createdAt}}</div>
                         <div class="list-cell">{{transaction.wallet.name}}</div>
                     </div>
@@ -87,10 +70,37 @@
             {{/if}}
           {{/each}}
         </ul>
+        <div class="text-right transactions-link">
+          {{#link-to 'transactions'}}Show all transactions{{/link-to}}
+        </div>
+      </div>
     </div>
-    <div class="col-xs-12 text-center transactions-link">
-      {{#link-to 'transactions'}}Show all transactions{{/link-to}}
+  </div>
+  <div class="col-xs-12 col-xlg-6">
+    <div class="panel panel-default panel-custom panel-charts transactions">
+      <div class="panel-heading">
+          <h3 class="panel-title">INCOME TRANSACTIONS</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="list list-unstyled list-flex list-transactions">
+          {{#each (reverse transactions) as |transaction index|}}
+            {{#if (lt index 5)}}
+                <li class="list-item">
+                      <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
+                      <div class="list-cell list-cell--description">
+                        <div class="list-cell">{{transaction.category.name}}</div>
+                        <div class="list-cell list-cell--operation"><span class="arrow arrow--inner fa fa-long-arrow-right"></span>{{transaction.amount}} UAN</div>
+                        <div class="list-cell">{{format-date transaction.createdAt}}</div>
+                        <div class="list-cell">{{transaction.wallet.name}}</div>
+                    </div>
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+        <div class="text-right transactions-link">
+          {{#link-to 'transactions'}}Show all transactions{{/link-to}}
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

@@ -5,6 +5,7 @@
     align-items: center;
     margin-bottom: 12px;
     border-top: none;
+    padding: 0;
   }
   &.list-transactions {
     .list-cell--description {
@@ -12,6 +13,19 @@
       @media(max-width:767px) {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .list-cell {
+        flex: 0 0 25%;
+        padding-right: 20px;
+        &:first-child {
+          flex: 0 0 20%;
+        }
+        &--operation {
+          flex: 0 0 30%;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
       }
     }
   }
@@ -24,15 +38,16 @@
     &.color-indicator {
       width: 25px;
       height: 25px;
-      margin-right: 12px;
+      margin-right: 20px;
       border-radius: 2px;
-      border: 1px solid black;
     }
     &.list-icon {
       width: 26px;
       height: 26px;
-      margin-right: 12px;
-      border: 1px solid black;
+      margin-right: 20px;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAYhJREFUSA29lj0vREEUhnd9xNdKEERBREEiIQqJhigQGv/Cz/BPxF+QIKFRodBpFAqFSJYtfC0Jsb6f99q5GbvbGOfeN3kyd87mnLPnzMydm838aIxhCZrL8/8OTwTYgnMXKMtDN6zADezDI8geqg4cF+EL1uEFMg0wB/WwDa8wDXUQogecDqEd1KEuuIIo0TDjG6jcXtA8NFER3yMogRTHUUVSI8yCWrcGoa17x1ctc3E1j+QMmkzCCLh/I1uI9Cebyo7jjPdQ8hPpN/VWWGmKQJ2wEffQKnKNOFrz0TQSKfd8WolylWtUo/I/m3RAPyu9LBPpsO7BBXwklUjnZRP0FpgAbe9fyawqKhA4Dwugc9QDQxDLajPoFSbl4BKuNfFlVVEfQZXkAGagBc4gllWiViIuww7oFqiS+rlaZQ03POOqtmlzKLZT0aoiF1CVDbqJN95pM5x4hqQeT5VICxhdtwllUTuPdYUryS0MgLtHeDSR3ha7UPAXrA1DP1h9CamAPOgTIT19A0muQW4IAqzNAAAAAElFTkSuQmCC');
+      background-position: center;
+      background-repeat: no-repeat;
     }
     .arrow {
       margin-right: 10px;
@@ -54,7 +69,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px;
+      min-height: 60px;
+      padding: 0 20px;
     }
   }
 }
