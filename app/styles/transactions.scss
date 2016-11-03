@@ -51,6 +51,8 @@
     }
     .arrow {
       margin-right: 10px;
+      font-size: 25px;
+      vertical-align: middle;
       &--outer {
         color: $error-color;
       }

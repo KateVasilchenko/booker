@@ -4,6 +4,19 @@
   color: #7b7777;
   box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
   border: 0;
+  &.panel-charts .panel-body {
+    padding: 0 30px;
+    .col-md-6 {
+      padding: 15px;
+      &:first-child {
+        border-bottom: solid 1px #e2e2e2;
+        @media(min-width:992px) {
+          border-right: solid 1px #e2e2e2;
+          border-bottom: 0;
+        }
+      }
+    }
+  }
   .panel-title {
     color: $panel-title;
     text-transform: uppercase;

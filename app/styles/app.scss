@@ -32,6 +32,11 @@ div.input-error>div.error {
   height: 100%;
 }
 
+.chart {
+  -webkit-user-select: none;
+  margin: 0 auto;
+}
+
 .icon {
   &--circle {
     border: 1px solid;
@@ -85,5 +90,50 @@ div.input-error>div.error {
 .col-xlg-6 {
   @media (min-width:1440px) {
     width: 50%;
+  }
+}
+
+.lt-row {
+  &:hover {
+    cursor: pointer;
+    .btn--hidden {
+      visibility: visible;
+    }
+  }
+}
+.btn {
+  &--hidden {
+    visibility: hidden;
+  }
+  &-icon {
+    margin-right: 10px;
+  }
+  &--edit {
+    background-color: rgba(99, 168, 168, 0.07);
+    border: solid 1px #63a8a8;
+    color: #63a8a8;
+    &:hover,
+    &:focus,
+    &:active.focus,
+    &.active:focus,
+    &.active.focus {
+      background-color: #63a8a8;
+      color: #fff;
+      outline: none;
+    }
+  }
+  &--delete {
+    background-color: rgba(241, 110, 110, 0.06);
+    border: solid 1px #f16e6e;
+    color: #f16e6e;
+    &:hover,
+    &:focus,
+    &:active.focus,
+    &.active:focus,
+    &.active.focus {
+        background-color: #f16e6e;
+        color: #fff;
+        outline: none;
+    }
   }
 }

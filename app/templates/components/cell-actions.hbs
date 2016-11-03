@@ -1,5 +1,2 @@
-<div class="btn-group">
-    <button class="btn btn-primary" {{action tableActions.edit row.content}}>Edit</button>
-    <button class="btn btn-danger" {{action tableActions.delete row.content}}>Delete</button>
-</div>
-
+<button class="btn btn--hidden btn--edit" {{action tableActions.edit row.content}}><i class="btn-icon fa fa-pencil"></i>Edit</button>
+<button class="btn btn--hidden btn--delete" {{action tableActions.delete row.content}}><i class="btn-icon fa fa-close"></i>Delete</button>
