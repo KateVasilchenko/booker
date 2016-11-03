@@ -1,11 +1,11 @@
 import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
-  name(i) {
-    return `Currency ${i}`;
+  name() {
+    return `USD`;
   },
   sign() {
-    return faker.finance.currencySymbol();
+    return '$';
   },
   createdAt() {
     return faker.date.past();
