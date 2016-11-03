@@ -1,8 +1,8 @@
 export default function(server) {
   let i;
   let wallets = [];
+  let currency = server.create('currency');
   for (i=0; i<2; i++) {
-    let currency = server.create('currency');
     wallets.push(server.create('wallet', { currency }));
   }
   for (i=0; i<10; i++) {

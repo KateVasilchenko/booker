@@ -11,7 +11,8 @@ export default Ember.Route.extend({
   model() {
     return Ember.RSVP.hash({
       wallet: this.store.findAll('wallet'),
-      category: this.store.findAll('category'),
+      currency: this.store.findAll('currency'),
+      category: this.store.findAll('category')
     });
   },
   actions: {
