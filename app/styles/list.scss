@@ -8,4 +8,88 @@
       border-color: transparent;
     }
   }
+  &.list-flex {
+    margin-top: 0;
+    .list-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      border-top: none;
+      padding: 0;
+    }
+    &.list-transactions {
+      .list-cell--description {
+        background-color: $table-row--transaction;
+        @media(max-width:767px) {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 15px 20px;
+        }
+        .list-cell {
+          flex: 0 0 24%;
+          padding-right: 10px;
+          @media(min-width:960px) {
+            padding-right: 20px;
+            flex: 0 0 25%;
+          }
+          &:first-child {
+            flex: 0 0 24%;
+            @media(min-width:960px) {
+              flex: 0 0 22%;
+            }
+          }
+          &--operation {
+              flex: 0 0 28%;
+              @media(min-width:960px) {
+                flex: 0 0 30%;
+              }
+          }
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+    &.list-wallets {
+      .list-cell--description {
+        background-color: $table-row--wallets;
+      }
+    }
+    .list-cell {
+      &.color-indicator {
+        width: 25px;
+        height: 25px;
+        margin-right: 20px;
+        border-radius: 2px;
+      }
+      &.list-icon {
+        width: 26px;
+        height: 26px;
+        margin-right: 20px;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAYhJREFUSA29lj0vREEUhnd9xNdKEERBREEiIQqJhigQGv/Cz/BPxF+QIKFRodBpFAqFSJYtfC0Jsb6f99q5GbvbGOfeN3kyd87mnLPnzMydm838aIxhCZrL8/8OTwTYgnMXKMtDN6zADezDI8geqg4cF+EL1uEFMg0wB/WwDa8wDXUQogecDqEd1KEuuIIo0TDjG6jcXtA8NFER3yMogRTHUUVSI8yCWrcGoa17x1ctc3E1j+QMmkzCCLh/I1uI9Cebyo7jjPdQ8hPpN/VWWGmKQJ2wEffQKnKNOFrz0TQSKfd8WolylWtUo/I/m3RAPyu9LBPpsO7BBXwklUjnZRP0FpgAbe9fyawqKhA4Dwugc9QDQxDLajPoFSbl4BKuNfFlVVEfQZXkAGagBc4gllWiViIuww7oFqiS+rlaZQ03POOqtmlzKLZT0aoiF1CVDbqJN95pM5x4hqQeT5VICxhdtwllUTuPdYUryS0MgLtHeDSR3ha7UPAXrA1DP1h9CamAPOgTIT19A0muQW4IAqzNAAAAAElFTkSuQmCC');
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .arrow {
+        margin-right: 10px;
+        @media(min-width:768px) and (max-width:960px) {
+          display: none;
+        }
+      }
+      &--negative {
+        color: $success-color;
+      }
+      &--positive {
+        color: $error-color;
+      }
+      &--description {
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 60px;
+        padding: 0 20px;
+      }
+    }
+  }
 }

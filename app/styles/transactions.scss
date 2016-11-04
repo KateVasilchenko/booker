@@ -1,78 +1,38 @@
-.list.list-flex {
-  margin-top: 0;
-  .list-item {
+.add-transaction {
+    position: fixed;
+    top: 80px;
+    left: 0;
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    border-top: none;
-    padding: 0;
-  }
-  &.list-transactions {
-    .list-cell--description {
-      background-color: $table-row--transaction;
-      @media(max-width:767px) {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .list-cell {
-        flex: 0 0 25%;
-        padding-right: 20px;
-        &:first-child {
-          flex: 0 0 20%;
-        }
-        &--operation {
-          flex: 0 0 30%;
-        }
-        &:last-child {
-          padding-right: 0;
-        }
-      }
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: all .5s ease;
+    z-index: 2;
+    width: 100%;
+    padding: 15px 45px;
+    background-color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
+    @media(min-width:767px) {
+      padding-left: $sidebar-width + 45px;
     }
-  }
-  &.list-wallets {
-    .list-cell--description {
-      background-color: $table-row--wallets;
+    &.open {
+      transform: translateY(0);
     }
-  }
-  .list-cell {
-    &.color-indicator {
-      width: 25px;
-      height: 25px;
-      margin-right: 20px;
-      border-radius: 2px;
+    .transaction-btn {
+      display: block;
+      width: 100%;
+      color: #fff;
+      cursor: pointer;
+      background: $add-transaction-color;
+      border-color: $add-transaction-color;
+      text-transform: uppercase;
     }
-    &.list-icon {
-      width: 26px;
-      height: 26px;
-      margin-right: 20px;
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAAAXNSR0IArs4c6QAAAYhJREFUSA29lj0vREEUhnd9xNdKEERBREEiIQqJhigQGv/Cz/BPxF+QIKFRodBpFAqFSJYtfC0Jsb6f99q5GbvbGOfeN3kyd87mnLPnzMydm838aIxhCZrL8/8OTwTYgnMXKMtDN6zADezDI8geqg4cF+EL1uEFMg0wB/WwDa8wDXUQogecDqEd1KEuuIIo0TDjG6jcXtA8NFER3yMogRTHUUVSI8yCWrcGoa17x1ctc3E1j+QMmkzCCLh/I1uI9Cebyo7jjPdQ8hPpN/VWWGmKQJ2wEffQKnKNOFrz0TQSKfd8WolylWtUo/I/m3RAPyu9LBPpsO7BBXwklUjnZRP0FpgAbe9fyawqKhA4Dwugc9QDQxDLajPoFSbl4BKuNfFlVVEfQZXkAGagBc4gllWiViIuww7oFqiS+rlaZQ03POOqtmlzKLZT0aoiF1CVDbqJN95pM5x4hqQeT5VICxhdtwllUTuPdYUryS0MgLtHeDSR3ha7UPAXrA1DP1h9CamAPOgTIT19A0muQW4IAqzNAAAAAElFTkSuQmCC');
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .arrow {
-      margin-right: 10px;
-      font-size: 25px;
-      vertical-align: middle;
-      &--outer {
-        color: $error-color;
-      }
-      &--inner {
-        color: $success-color;
-      }
-    }
-    &--negative {
-      color: $success-color;
-    }
-    &--positive {
-      color: $error-color;
-    }
-    &--description {
-      flex: 1 1 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 60px;
-      padding: 0 20px;
-    }
-  }
+}
+.transaction-btn {
+  text-decoration: none;
+  color: $add-transaction-color;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
 }
