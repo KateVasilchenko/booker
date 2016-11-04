@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-3">
+        {{#x-select action="didMakeSelection" classNames="form-control" as |xs|}}
+            {{#xs.option}}Choose the category...{{/xs.option}}
+            {{#each categories as |category|}}
+                {{#xs.option value=category.id}}{{category.name}}{{/xs.option}}
+            {{/each}}
+        {{/x-select}}
+    </div>
+    <div class="col-md-9">
+        <div class="btn btn-group">
+            <div class="btn btn-primary" {{action 'filterByIsNegative' 0}}>All</div>
+            <div class="btn btn-primary" {{action 'filterByIsNegative' -1}}>Expenses</div>
+            <div class="btn btn-primary" {{action 'filterByIsNegative' 1}}>Income</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <ul class="list list-unstyled list-flex list-transactions">
+        {{#each transactions as |transaction|}}
+            <li class="list-item">
+                <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
+                <div class="list-cell list-cell--description">
+                    <div class="list-cell">{{transaction.category.name}}</div>
+                    <div class="list-cell list-cell--operation">
+                        {{#if transaction.isNegative}}
+                            <span class="arrow arrow--outer fa fa-long-arrow-right"></span>
+                        {{else}}
+                            <span class="arrow arrow--inner fa fa-long-arrow-right"></span>
+                        {{/if}}
+                        {{transaction.amount}} {{transaction.wallet.currency.name}}
+                    </div>
+                    <div class="list-cell">{{format-date transaction.createdAt}}</div>
+                    <div class="list-cell">{{transaction.wallet.name}}</div>
+                    <div class="list-cell">
+                        <button class="btn btn--hidden btn--edit" {{action "edit" transaction}}><i class="btn-icon fa fa-pencil"></i>Edit</button>
+                        <button class="btn btn--hidden btn--delete" {{action "delete" transaction}}><i class="btn-icon fa fa-close"></i>Delete</button>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</div>

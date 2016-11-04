@@ -9,27 +9,15 @@ export default Ember.Route.extend({
   },
   setupController(controller, model) {
     this._super(controller, model);
-    let wallets = this.store.peekAll('wallet');
-    wallets.forEach(wallet => {
-      wallet.set('currency', this.store.peekAll('currency').get('firstObject'));
-    });
-    model.transactions.forEach((transaction, index) => {
-      let wallet = index % 2 === 0 ? wallets.get('firstObject') : wallets.get('lastObject');
-      let category = this.store.peekRecord('category', index + 1);
-      transaction.set('wallet', wallet);
-      transaction.set('category', category);
-      category.set('transactions', [transaction]);
-      wallet.get('transactions').pushObject(transaction);
-    });
+
     controller.setProperties({
-      wallets: wallets,
-      balance: this._getTotalBalance(wallets),
+      wallets: this.store.peekAll('wallet'),
+      balance: this._getTotalBalance(this.store.peekAll('wallet')),
       transactions: model.transactions,
       charts: this.get('charts').prepareData({
         transactions: model.transactions,
         categories: this.store.peekAll('category')
       })
-
     });
   },
   _getTotalBalance(wallets) {

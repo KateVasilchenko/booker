@@ -56,7 +56,7 @@
     "ember-radio-button": "1.0.7",
     "ember-resolver": "^2.0.3",
     "ember-truth-helpers": "1.2.0",
-    "emberx-select": "2.2.2",
+    "emberx-select": "2.2.1",
     "eonasdan-bootstrap-datetimepicker": "4.15.35",
     "express": "^4.13.3",
     "glob": "^7.1.1",

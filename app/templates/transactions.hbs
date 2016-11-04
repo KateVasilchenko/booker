@@ -1,8 +1,1 @@
-{{#link-to 'transactions.new' classNames='btn btn-default'}}Add transaction{{/link-to}}
-{{table-light
-    modelName='transaction'
-    model=model
-    editEntity=(action 'editEntity')
-    deleteEntity=(action 'deleteEntity')
-    columns=columns}}
-{{outlet}}
+{{list-transaction transactionsRaw=transactions categories=categories didMakeSelection='filterByCategory'}}
