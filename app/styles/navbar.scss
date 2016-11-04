@@ -84,9 +84,6 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    text-decoration: none;
-    color: $add-transaction-color;
-    cursor: pointer;
     line-height: 24px;
     @media (min-width: 768px) {
       right: 15px;

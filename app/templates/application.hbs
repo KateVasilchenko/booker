@@ -1,35 +1,95 @@
 <div id="wrapper" class="wrapper">
   <div id="sidebar-wrapper" class="sidebar">
-      <div class="sidebar-top-block"></div>
-      <ul class="sidebar-nav">
-          <li>{{#link-to "dashboard"}} <i class="sidebar-icon fa fa-th-large"></i><span>Dashboard</span>{{/link-to}}</li>
-          <li>{{#link-to "transactions"}}<i class="sidebar-icon fa fa-exchange"></i><span>Transactions</span>{{/link-to}}</li>
-          <li>{{#link-to "wallets"}}<i class="sidebar-icon sidebar-icon--wallets"></i><span>Wallets</span>{{/link-to}}</li>
-          <!-- <li>{{#link-to "categories"}}<i class="sidebar-icon fa fa-dollar"></i><span>Categories</span>{{/link-to}}</li> -->
-          <!--<li>{{#link-to "currencies"}}<i class="sidebar-icon fa fa-dollar"></i><span>Currencies</span>{{/link-to}}</li>-->
-      </ul>
-      <div class="sidebar-bottom-block"></div>
+    <div class="sidebar-top-block"></div>
+    <ul class="sidebar-nav">
+      <li>
+        {{#link-to "dashboard"}} <i class="sidebar-icon fa fa-th-large"></i><span>Dashboard</span>{{/link-to}}
+      </li>
+      <li>
+        {{#link-to "transactions"}}<i class="sidebar-icon fa fa-exchange"></i><span>Transactions</span>{{/link-to}}
+      </li>
+      <li>
+        {{#link-to "wallets"}}<i class="sidebar-icon sidebar-icon--wallets"></i><span>Wallets</span>{{/link-to}}
+      </li>
+      <!-- <li>{{#link-to "categories"}}<i class="sidebar-icon fa fa-dollar"></i><span>Categories</span>{{/link-to}}</li> -->
+      <!--<li>{{#link-to "currencies"}}<i class="sidebar-icon fa fa-dollar"></i><span>Currencies</span>{{/link-to}}</li>-->
+    </ul>
+    <div class="sidebar-bottom-block"></div>
   </div>
   <div class="content">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          {{#link-to "dashboard" classNames="navbar-brand"}}Booker{{/link-to}}
+          {{#link-to "dashboard" classNames="navbar-brand" }}Booker{{/link-to}}
           <ul class="nav navbar-nav">
-              <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </li>
-              {{#link-to "transactions.new" tagName="li" classNames="transaction-btn" id="transaction-quick-add"}}<i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span>{{/link-to}}
+            <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </li>
+            {{#link-to "transactions.new" tagName="li" classNames="transaction-btn" id="transaction-quick-add" }}<i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span>{{/link-to}}
           </ul>
         </div>
       </div>
     </nav>
-      <div id="page-content-wrapper" class="content-wrapper">
-          <div class="container-fluid">
-              {{outlet}}
+    <div class="add-transaction open">
+      <!-- {{#input-wrapper model=model valuePath="category"}}
+          {{#x-select value=category action="selectCategory" required=true classNames="form-control"}}
+            {{#x-option}}Select category...{{/x-option}}
+            {{#each categories as |category|}}
+              {{#x-option value=category}}{{category.name}}{{/x-option}}
+            {{/each}}
+          {{/x-select}}
+        {{/input-wrapper}}
+        {{#input-wrapper model=model valuePath="wallet"}}
+          {{#x-select value=wallet action="selectWallet" required=true classNames="form-control"}}
+            {{#x-option}}Select wallet...{{/x-option}}
+            {{#each wallets as |wallet|}}
+                {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
+            {{/each}}
+          {{/x-select}}
+        {{/input-wrapper}}
+      <div class="input-wrap">
+        {{input
+          type="text"
+          value=model.amount
+          classNames="form-control"
+          placeholder="Transaction Amount"}}
+          </div> -->
+        <label class="switch-wrap">
+          <input type="checkbox" class="checkbox--hidden">
+          <div class="switch">
+            <span class="switch-label">Income</span>
+            <span class="switch-label switch-label--center"><span class="btn--arrow"><span class="arrow arrow--outer fa fa-long-arrow-right"></span></span>
+            </span>
+            <span class="switch-label">Expences</span>
           </div>
+      </label>
+      <div class="input-wrapper">
+        <select class="form-control">
+            <option>Select category</option>
+            <option>category1</option>
+            <option>category2</option>
+          </select>
       </div>
+      <div class="input-wrapper">
+        <select class="form-control">
+            <option>Select wallet</option>
+            <option>Wallet1</option>
+            <option>Wallet2</option>
+          </select>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" class="form-control" placeholder="Transaction Amount" />
+      </div>
+      <div class="input-wrapper">
+        <button class="form-control transaction-btn" id="transaction-quick-add">Add transaction</button>
+      </div>
+    </div>
+    <div id="page-content-wrapper" class="content-wrapper">
+      <div class="container-fluid">
+        {{outlet}}
+      </div>
+    </div>
   </div>
 </div>
