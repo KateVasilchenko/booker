@@ -4,6 +4,8 @@
 @import "wrapper";
 @import "panel-custom";
 @import "transactions";
+@import "components/switch";
+@import "add-transaction";
 @import "light-table";
 @import "spinner";
 @import "list";
@@ -81,6 +83,20 @@ div.input-error>div.error {
   margin-right: 0;
 }
 
+.row {
+  &--flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.form-control {
+  &--skimpy {
+    width: auto;
+  }
+}
+
 .m-hidden {
   @media (max-width: 768px) {
     display: none;
@@ -93,20 +109,38 @@ div.input-error>div.error {
   }
 }
 
-.lt-row {
-  &:hover {
-    cursor: pointer;
-    .btn--hidden {
-      visibility: visible;
-    }
-  }
-}
 .btn {
+  &:hover,
+  &:focus,
+  &:active,
+  &:active.focus,
+  &.active:focus,
+  &.active.focus,
+  &:active:focus {
+      outline: none;
+      box-shadow: none;
+  }
   &--hidden {
     visibility: hidden;
   }
   &-icon {
     margin-right: 10px;
+  }
+  &-category {
+    background-color: transparent;
+    border: solid 1px $add-transaction-color;
+    color: $add-transaction-color;
+    z-index: 0;
+    &:hover,
+    &:focus,
+    &:active,
+    &:active.focus,
+    &.active:focus,
+    &.active.focus,
+    &:active:focus {
+    background-color: rgba(174, 197, 255, 0.19);
+        color: $add-transaction-color;
+    }
   }
   &--edit {
     background-color: rgba(99, 168, 168, 0.07);
@@ -114,12 +148,13 @@ div.input-error>div.error {
     color: #63a8a8;
     &:hover,
     &:focus,
+    &:active,
     &:active.focus,
     &.active:focus,
-    &.active.focus {
+    &.active.focus,
+    &:active:focus {
       background-color: rgba(99, 168, 168, 0.24);
       color: #63a8a8;
-      outline: none;
     }
   }
   &--delete {
@@ -128,12 +163,13 @@ div.input-error>div.error {
     color: #f16e6e;
     &:hover,
     &:focus,
+    &:active,
     &:active.focus,
     &.active:focus,
-    &.active.focus {
+    &.active.focus,
+    &:active:focus {
         background-color: rgba(241, 110, 110, 0.16);
         color: #f16e6e;
-        outline: none;
     }
   }
   &--arrow {
@@ -155,49 +191,5 @@ div.input-error>div.error {
   }
   &--inner {
     color: $success-color;
-  }
-}
-
-.switch {
-  &-wrap {
-    width: 140px;
-    height: 40px;
-    margin-bottom: 0;
-    overflow: hidden;
-    background-color: #bd81c6;
-    border-radius: 4px;
-    color: #fff;
-  }
-  display: flex;
-  justify-content: space-between;
-  transform: translateX(0);
-  transform: translateX(-87px);
-  transition: all .3s ease;
-  white-space: nowrap;
-  width: 239px;
-  padding: 3px 0;
-  span {
-    display: block;
-    height: 100%;
-    line-height: 34px;
-    &.switch-label {
-      flex: 1 1 auto;
-      padding: 0 15px;
-      user-select: none;
-      &--center {
-        padding: 0 3px;
-        flex: 0 0 53px;
-      }
-    }
-  }
-}
-.checkbox--hidden {
-  display: none;
-  &:checked + .switch {
-      transform: translateX(0);
-      background-color: #63a8a8;
-      .arrow {
-        color: #63a8a8;
-      }
   }
 }

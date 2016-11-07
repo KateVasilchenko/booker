@@ -1,0 +1,30 @@
+.add-transaction {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: all .5s ease;
+    z-index: 3;
+    width: 100%;
+    padding: 15px 55px;
+    background-color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
+    @media(min-width:767px) {
+      padding-left: $sidebar-width + 55px;
+    }
+    &.open {
+      transform: translateY(0);
+    }
+    .transaction-btn {
+      display: block;
+      width: 100%;
+      color: #fff;
+      cursor: pointer;
+      background: $add-transaction-color;
+      border-color: $add-transaction-color;
+      text-transform: uppercase;
+    }
+}
