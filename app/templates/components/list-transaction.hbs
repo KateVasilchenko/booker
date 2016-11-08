@@ -6,7 +6,7 @@
     <div class="panel-body">
       <div class="row row--flex form-group transactions-filter">
         <div class="transactions-filter--item">
-          {{#x-select action="didMakeSelection" classNames="form-control form-control--skimpy" as |xs|}}
+          {{#x-select action="filterByCategory" classNames="form-control form-control--skimpy" as |xs|}}
             {{#xs.option}}All categories{{/xs.option}}
             {{#each categories as |category|}}
               {{#xs.option value=category.id}}{{category.name}}{{/xs.option}}
@@ -15,21 +15,23 @@
         </div>
         <div class="transactions-filter--item transactions-type">
           <div class="btn btn-group">
-            <div class="btn btn-category" {{action 'filterByIsNegative' 0}}>All transactions</div>
-            <div class="btn btn-category" {{action 'filterByIsNegative' -1}}>Expenses</div>
-            <div class="btn btn-category" {{action 'filterByIsNegative' 1}}>Income</div>
+            <div class="btn btn-category" {{action 'filterByIsNegative' 'all'}} id="all">All transactions</div>
+            <div class="btn btn-category" {{action 'filterByIsNegative' 'expenses'}} id="expenses">Expenses</div>
+            <div class="btn btn-category" {{action 'filterByIsNegative' 'income'}} id="income">Income</div>
           </div>
         </div>
         <div class="transactions-filter--item transactions-date">
-        <div class="select-date">
-          <span class="fa fa-angle-left"></span>
-          <span class="">October 2016</span>
-          <span class="fa fa-angle-right"></span>
-        </div>
+          {{#if periodName}}
+            <div class="select-date">
+              <span class="fa fa-angle-left" {{action 'changePeriod' 'left'}}></span>
+              <span class="">{{periodName}}</span>
+              <span class="fa fa-angle-right" {{action 'changePeriod' 'right'}}></span>
+            </div>
+          {{/if}}
           <div class="btn btn-group">
-            <div class="btn btn-category">Week</div>
-            <div class="btn btn-category">Month</div>
-            <div class="btn btn-category">Year</div>
+            <div class="btn btn-category" {{action 'filterByTime' 'week'}} id="week">Week</div>
+            <div class="btn btn-category" {{action 'filterByTime' 'month'}} id="month">Month</div>
+            <div class="btn btn-category" {{action 'filterByTime' 'year'}} id="year">Year</div>
           </div>
         </div>
       </div>
