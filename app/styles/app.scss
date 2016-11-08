@@ -10,24 +10,26 @@
 @import "spinner";
 @import "list";
 
-
-html,
-body {
+body,
+html {
   height: 100%;
 }
+
 body {
-    overflow-x: hidden;
-    font-family: 'Open Sans', sans-serif;
-    &>.ember-view {
-      height: 100%;
-    }
-}
-.modal {
-    display: block;
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
+
+  & > .ember-view {
+    height: 100%;
+  }
 }
 
-div.input-error>div.error {
-    color: #a94442;
+.modal {
+  display: block;
+}
+
+div.input-error > div.error {
+  color: #a94442;
 }
 
 .main {
@@ -39,7 +41,6 @@ div.input-error>div.error {
   margin: 0 auto;
 }
 
-
 .icon {
   &--circle {
     border: 1px solid;
@@ -50,33 +51,41 @@ div.input-error>div.error {
     text-align: center;
   }
 }
+
 .user-actions a {
-    color: #dd6a58;
-    padding-right: 10px;
-    font-size: 18px;
-    width: 30px;
-    text-decoration: none;
-    padding-top: 10px
+  color: #dd6a58;
+  padding-right: 10px;
+  font-size: 18px;
+  width: 30px;
+  text-decoration: none;
+  padding-top: 10px;
 }
 
-.user-actions a:active, .user-actions a:focus, .user-actions a:hover {
-    color: #d95743
+.user-actions a:active,
+.user-actions a:focus,
+.user-actions a:hover {
+  color: #d95743;
 }
+
 .tip {
   font-size: 13px;
   color: #4E4E4E;
+
   .icon-info {
-      color: #dd6a58;
-      margin-right: 3px;
+    color: #dd6a58;
+    margin-right: 3px;
   }
 }
+
 .table-container {
-    overflow-y: auto;
+  overflow-y: auto;
 }
+
 .table-container.fixed-header {
-    overflow-y: hidden;
-    margin-bottom: 15px;
+  overflow-y: hidden;
+  margin-bottom: 15px;
 }
+
 .container-fluid > .navbar-header {
   position: relative;
   margin-left: 0;
@@ -86,8 +95,11 @@ div.input-error>div.error {
 .row {
   &--flex {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+
+    &.row--centered {
+      align-items: center;
+    }
   }
 }
 
@@ -110,68 +122,104 @@ div.input-error>div.error {
 }
 
 .btn {
-  &:hover,
-  &:focus,
+  &.active.focus,
+  &.active:focus,
   &:active,
   &:active.focus,
-  &.active:focus,
-  &.active.focus,
-  &:active:focus {
-      outline: none;
-      box-shadow: none;
+  &:active:focus,
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: none;
   }
+
   &--hidden {
     visibility: hidden;
   }
+
   &-icon {
     margin-right: 10px;
   }
+
   &-category {
     background-color: transparent;
     border: solid 1px $add-transaction-color;
     color: $add-transaction-color;
     z-index: 0;
-    &:hover,
-    &:focus,
+
+    &.active,
+    &.active.focus,
+    &.active:focus,
     &:active,
     &:active.focus,
-    &.active:focus,
-    &.active.focus,
-    &:active:focus {
-    background-color: rgba(174, 197, 255, 0.19);
-        color: $add-transaction-color;
+    &:active:focus,
+    &:focus,
+    &:hover {
+      background-color: rgba(174, 197, 255, 0.19);
+      color: $add-transaction-color;
     }
   }
+
   &--edit {
+    position: relative;
     background-color: rgba(99, 168, 168, 0.07);
     border: solid 1px #63a8a8;
     color: #63a8a8;
-    &:hover,
-    &:focus,
+    width: 25px;
+    height: 25px;
+    padding: 4px 3px;
+
+    &.active,
+    &.active.focus,
+    &.active:focus,
     &:active,
     &:active.focus,
-    &.active:focus,
-    &.active.focus,
-    &:active:focus {
+    &:active:focus,
+    &:focus,
+    &:hover {
       background-color: rgba(99, 168, 168, 0.24);
       color: #63a8a8;
     }
+
+    .icon-edit {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAedJREFUOBGVkjtoFFEUhu85c2e3UbARwdrGMouNoLEQK4uEXSfOTEhhVFL6ahYExSpCYFmsRNwJbjFDYmGzoCCCj0KwURAFLewtN6RJdvYe/7sww2bivi7s3JnhnG++8+8lNeNajeN1Yr6qRGqtIPhq23kGBl2L46YiWhaRb6LUGwDPzgKh1SRpMvMto9RyFARVmERE9Op6kszRFCaEwieoWxSiP2jY3el2w5dra12AO3h/ehIkA3h7aXrOdZyLsHmKcV4rYxqK+QWJPB+XSQ7oG3O+zHwGgW4YY27i68fIcd4in6QVhg9HmQwA0L+SKnXBEZnD/Jv4+krK/N0VeQeb7SgM79k4HHsprBxg+v15JqpkAIT6Aw0fYbCFcO9mfcVxDgCgXwEksgYWgPsPMEgi37+TAew+PM4hwLBBBtgMw9vDgBzieZ5ztFptQHOpmEGP+ScyeG8N/gewEG0vR2q1OpRuSK9XcbTOQxwAlLIjxKMAGYQAWMAxLiut6xjhss0gBxgzFmAhvNJuHwfkBI7xIzx7+HUoTX+51mAKgIVo7bqnoKvT/f1Il0qME/hAXHcJ+zOcg/xvtMWjlob+PExOAvAFRT2E+xl7p+X7j0c1Fd9rjHEJedzHOfi0J/I7CYK/xaJJz/8AALrr8jzqFz8AAAAASUVORK5CYII=');
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+    }
   }
+
   &--delete {
+    position: relative;
     background-color: rgba(241, 110, 110, 0.06);
     border: solid 1px #f16e6e;
     color: #f16e6e;
-    &:hover,
-    &:focus,
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+
+    &.active,
+    &.active.focus,
+    &.active:focus,
     &:active,
     &:active.focus,
-    &.active:focus,
-    &.active.focus,
-    &:active:focus {
-        background-color: rgba(241, 110, 110, 0.16);
-        color: #f16e6e;
+    &:active:focus,
+    &:focus,
+    &:hover {
+      background-color: rgba(241, 110, 110, 0.16);
+      color: #f16e6e;
+    }
+
+    .icon-delete {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAARCAYAAAACCvahAAAAAXNSR0IArs4c6QAAAehJREFUOBHdU79P21AQvnt27CgNCe2EWJgYKqiExMBfgDoXpHZsOsQbdEVt2dqBqQJvQUigjgz8AVAx0KVSFXWpOnTK0mRCRqHBTux3/c5tIiVI/AGclNzP73t3756ZJiTa2HjDzB8mwiRE76b39sbi7mQR/EUS+WSZT4c5I7IK+8nQH2pWA6fVYTwDO0MvC3Mb4V8gYUQQpnnEZ0XkG7QgcDIdhvv8OwhKD4rF7wg0yNoW9AAAg9ZHXQGUAmIBLJAxc9DBnzhecgtp6iBpwP4CiR4StwRE/3rSjEgJBxjFuefdbm+1XK6zyBFbu5URtUBmjTGeJUrA6ltr+yAwDtEcRtoBwUvFmefHx5nEcROc0U2anqGo5zjOwm4YXri4qNNO5wuIHjsg0DxGiuT6uqk4bZdinUWpIWBdwm/9da1WwSn1p5VKFUVrYsyy5tEhx1NTBcXlYDVGYkyKCRPxPFw13ajGjAnuIx3V/Ddugycr7vDvDVgE6yRPR8VF+dzXFbOHDWh8TPKZ2ffzh+UnST+z9ic+irNHjcYVgicfDw4iK/LZZtkP3HuiaB4M8vr87zIIqk6x+BUnHeF1tfHGBavRk3Q9LvwMPj4RmUEXr2y3u/Lw8DDKwcoWbW6+hfNe7TtFZLsahnndX9ya1Ijy33ZOAAAAAElFTkSuQmCC');
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 15px;
+      height: 17px;
     }
   }
+
   &--arrow {
     width: 100%;
     height: 100%;
@@ -182,14 +230,41 @@ div.input-error>div.error {
   }
 }
 
-
 .arrow {
   font-size: 25px;
   vertical-align: middle;
+
   &--outer {
     color: $error-color;
   }
+
   &--inner {
     color: $success-color;
+  }
+}
+
+.balance {
+  color: $balance-color;
+  text-transform: uppercase;
+  @media(max-width:1280px) {
+    display: none;
+  }
+
+  &-title {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  &-amount {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+select,
+option {
+  &:hover {
+    cursor: pointer;
   }
 }

@@ -35,7 +35,7 @@
           &:first-child {
             flex: 0 0 24%;
             @media(min-width:960px) {
-              flex: 0 0 22%;
+              flex: 0 0 20%;
             }
           }
           &--operation {
@@ -85,6 +85,7 @@
       &--description {
         flex: 1 1 auto;
         display: flex;
+        position: relative;
         justify-content: space-between;
         align-items: center;
         min-height: 60px;
