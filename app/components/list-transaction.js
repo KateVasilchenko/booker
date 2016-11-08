@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   filterCategoryId: null,
   filterIsNegative: null,
   filterIsTime: null,
-  periodName: 'year',
+  periodName: null,
   filterObserver: Ember.observer('filter', 'transactions.[]', function () {
     switch(this.get('filter')) {
       case 'expenses':
