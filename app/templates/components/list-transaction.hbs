@@ -1,10 +1,10 @@
 <div class="transactions-wrapper">
-  <div class="panel panel-default panel-custom transactions">
+  <div class="panel panel-default panel-custom transactions transactions-all">
     <div class="panel-heading">
       <h3 class="panel-title">TRANSACTIONS</h3>
     </div>
     <div class="panel-body">
-      <div class="row row--flex form-group transactions-filter">
+      <div class="row--flex form-group transactions-filter">
         <div class="transactions-filter--item">
           {{#x-select action="didMakeSelection" classNames="form-control form-control--skimpy" as |xs|}}
             {{#xs.option}}All categories{{/xs.option}}
@@ -51,8 +51,8 @@
                 <div class="list-cell">{{format-date transaction.createdAt}}</div>
                 <div class="list-cell">{{transaction.wallet.name}}</div>
                 <div class="list-cell text-right">
-                  <button class="btn btn--hidden btn--edit" {{action "edit" transaction}}><i class="btn-icon fa fa-pencil"></i>Edit</button>
-                  <button class="btn btn--hidden btn--delete" {{action "delete" transaction}}><i class="btn-icon fa fa-close"></i>Delete</button>
+                  <button class="btn btn--hidden btn--edit" {{action "edit" transaction}}><i class="icon-edit"></i></button>
+                  <button class="btn btn--hidden btn--delete" {{action "delete" transaction}}><i class="icon-delete"></i></button>
                 </div>
               </div>
             </li>

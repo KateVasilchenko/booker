@@ -1,49 +1,61 @@
-
 .panel-custom {
   border-radius: 3px;
   color: #7b7777;
   box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
   border: 0;
-  &.panel-charts .panel-body {
-    padding: 0 30px;
-    .col-md-6 {
-      padding: 15px;
-      &:first-child {
-        border-bottom: solid 1px #e2e2e2;
-        @media(min-width:992px) {
-          border-right: solid 1px #e2e2e2;
-          border-bottom: 0;
+
+  &.panel-charts {
+    .panel-body {
+      padding: 0 30px;
+
+      .col-md-6 {
+        padding: 15px;
+
+        &:first-child {
+          border-bottom: solid 1px #e2e2e2;
+          @media(min-width:992px) {
+            border-right: solid 1px #e2e2e2;
+            border-bottom: 0;
+          }
         }
       }
     }
+    .panel-heading {
+      padding: 6px 30px;
+    }
   }
+
   .panel-title {
     color: $panel-title;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 18px;
   }
+
   .panel-heading {
     background-color: $panel-header-bg;
     border-bottom: solid 1px #e2e2e2;
     padding: 15px 30px;
   }
+
   .panel-body {
     font-size: 16px;
     padding: 15px 30px;
   }
+
   .balance {
     font-size: 28px;
     font-weight: bold;
-    color: $balance-color;
     margin-top: 0;
     margin-bottom: 0;
   }
+
   .transactions-link {
     a {
       color: $show-transaction-color;
     }
   }
+
   .wallets-link {
     a {
       color: $show-wallets-color;

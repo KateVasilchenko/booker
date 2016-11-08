@@ -3,20 +3,58 @@
     top: 80px;
     left: 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     transform: translateY(-100%);
     transition: all .5s ease;
     z-index: 3;
     width: 100%;
-    padding: 15px 55px;
+    padding: 0 55px;
     background-color: #fff;
     box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
     @media(min-width:767px) {
       padding-left: $sidebar-width + 55px;
     }
+    @media(min-width:960px) {
+      flex-direction: row;
+      align-items: center;
+    }
     &.open {
       transform: translateY(0);
+    }
+    &-controls {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      padding: 15px 0;
+      @media(min-width:960px) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    &-operation {
+      font-size: 14px;
+      margin-right: 30px;
+      &--outer {
+        color: $error-color;
+      }
+      &--inner {
+        color: $success-color;
+      }
+      @media(max-width:1280px) {
+        display: none;
+      }
+    }
+    .input-wrapper,
+    .switch-wrapper {
+      margin-bottom: 15px;
+      @media(min-width:960px) {
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
+    }
+    .switch-wrapper {
+      min-width: 140px;
     }
     .transaction-btn {
       display: block;
@@ -26,5 +64,6 @@
       background: $add-transaction-color;
       border-color: $add-transaction-color;
       text-transform: uppercase;
+      min-width: 170px;
     }
 }

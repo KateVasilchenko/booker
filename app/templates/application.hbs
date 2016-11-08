@@ -28,30 +28,8 @@
       </div>
     </nav>
     <div class="add-transaction open">
-      <!-- {{#input-wrapper model=model valuePath="category"}}
-          {{#x-select value=category action="selectCategory" required=true classNames="form-control"}}
-            {{#x-option}}Select category...{{/x-option}}
-            {{#each categories as |category|}}
-              {{#x-option value=category}}{{category.name}}{{/x-option}}
-            {{/each}}
-          {{/x-select}}
-        {{/input-wrapper}}
-        {{#input-wrapper model=model valuePath="wallet"}}
-          {{#x-select value=wallet action="selectWallet" required=true classNames="form-control"}}
-            {{#x-option}}Select wallet...{{/x-option}}
-            {{#each wallets as |wallet|}}
-                {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
-            {{/each}}
-          {{/x-select}}
-        {{/input-wrapper}}
-      <div class="input-wrap">
-        {{input
-          type="text"
-          value=model.amount
-          classNames="form-control"
-          placeholder="Transaction Amount"}}
-          </div> -->
-        <label class="switch-wrap">
+      <div class="add-transaction-controls">
+        <label class="switch-wrapper">
           <input type="checkbox" class="checkbox--hidden">
           <div class="switch">
             <span class="switch-label">Income</span>
@@ -60,27 +38,45 @@
             <span class="switch-label">Expences</span>
           </div>
       </label>
-      <div class="input-wrapper">
-        <select class="form-control">
+        <div class="input-wrapper">
+          <select class="form-control">
             <option>Select category</option>
             <option>category1</option>
             <option>category2</option>
           </select>
-      </div>
-      <div class="input-wrapper">
-        <select class="form-control">
+        </div>
+        <div class="input-wrapper">
+          <select class="form-control">
             <option>Select wallet</option>
             <option>Wallet1</option>
             <option>Wallet2</option>
           </select>
+        </div>
+        <div class="input-wrapper">
+          <input type="text" class="form-control" placeholder="Transaction Amount" />
+        </div>
+        <div class="input-wrapper">
+          <button class="form-control transaction-btn" id="transaction-quick-add">Add transaction</button>
+        </div>
       </div>
-      <div class="input-wrapper">
-        <input type="text" class="form-control" placeholder="Transaction Amount" />
-      </div>
-      <div class="input-wrapper">
-        <button class="form-control transaction-btn" id="transaction-quick-add">Add transaction</button>
+      {{#if transaction.isNegative}}
+        <sub class="add-transaction-operation add-transaction-operation--outer">
+          <span class="arrow arrow fa fa-long-arrow-right"></span>
+          <!-- {{transaction.amount}} {{transaction.wallet.currency.name}} -->
+          240.00 UAH
+        </sub>
+      {{else}}
+        <sub class="add-transaction-operation add-transaction-operation--inner">
+          <span class="arrow arrow fa fa-long-arrow-right"></span>
+          <!-- {{transaction.amount}} {{transaction.wallet.currency.name}} -->
+          240.00 UAH
+        </sub>
+      {{/if}}
+      <div class="add-transaction-balance balance">
+        <h2 class="balance-amount">24,455.00 USD</h2>
       </div>
     </div>
+
     <div id="page-content-wrapper" class="content-wrapper">
       <div class="container-fluid">
         {{outlet}}

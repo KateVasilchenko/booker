@@ -1,5 +1,5 @@
 .switch {
-  &-wrap {
+  &-wrapper {
     width: 140px;
     height: 34px;
     margin-bottom: 0;
@@ -32,6 +32,9 @@
         flex: 0 0 53px;
       }
     }
+  }
+  &:hover {
+    cursor: pointer;
   }
 }
 .checkbox--hidden {
