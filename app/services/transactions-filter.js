@@ -21,23 +21,27 @@ export default Ember.Service.extend({
     }
     return transactions;
   },
-  filterByTime(transactions, value) {
+  filterByTime(transactions, value, periodChosen) {
     let filter;
-    const today = new Date();
+    const now = new Date();
+
     switch (value) {
       case 'week':
+        periodChosen = periodChosen === null ? moment(now).week() : periodChosen;
         filter = function (transaction) {
-          return moment(transaction.get('createdAt')).week() === moment(today).week();
+          return moment(transaction.get('createdAt')).week() === periodChosen;
         };
         break;
       case 'month':
+        periodChosen = periodChosen === null ? moment(now).month() : periodChosen;
         filter = function (transaction) {
-          return moment(transaction.get('createdAt')).month() === moment(today).month();
+          return moment(transaction.get('createdAt')).month() === periodChosen;
         };
         break;
       case 'year':
+        periodChosen = periodChosen === null ? moment(now).year() : periodChosen;
         filter = function (transaction) {
-          return moment(transaction.get('createdAt')).year() === moment(today).year();
+          return moment(transaction.get('createdAt')).year() === periodChosen;
         };
         break;
       default:
@@ -63,7 +67,8 @@ export default Ember.Service.extend({
     if (filterOptions['filterIsTime'] !== null) {
       transactions = this.filterByTime(
         transactions,
-        filterOptions['filterIsTime']
+        filterOptions['filterIsTime'],
+        filterOptions['periodChosen']
       );
     }
 
