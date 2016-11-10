@@ -36,51 +36,68 @@ export default Ember.Component.extend({
 
       this.send('filterTransactions');
     },
-    filterByTime(value) {
-      let periodChosen;
-
+    filterByTime(value, periodChosen) {
       if (value !== this.get('filterIsTime')) {
         this.set('filterIsTime', null);
       }
 
-      if (this.get('filterIsTime') === null) {
+      if (this.get('filterIsTime') === null || value === this.get('filterIsTime')) {
         let periodName;
         const now = new Date();
 
         switch (value) {
           case 'week':
+            let from, to;
+
+            if (!periodChosen) {
+              if (!this.get('weekChosen')) {
+                periodChosen = moment(now).week() - 1;
+                this.set('weekChosen', periodChosen);
+              } else {
+                periodChosen = this.get('weekChosen');
+              }
+            }
+
+            from = moment(now);
+            from.week(periodChosen);
+            to = moment(now);
+            to.week(periodChosen + 1);
+
             this.set(
               'periodName',
-              moment(now - 7).format('DD.MM.YY') + ' - ' + moment(now).format('DD.MM.YY')
+              from.format('DD.MM.YY') + ' - ' + to.format('DD.MM.YY')
             );
-            if (this.get('weekChosen') === null) {
-              periodChosen = moment(now - 7).week();
-              this.set('weekChosen', periodChosen);
-            } else {
-              periodChosen = this.get('weekChosen');
-            }
             break;
           case 'month':
             this.set('periodName', moment(now).format('MMMM'));
-            if (this.get('monthChosen') === null) {
-              periodChosen = moment(now).month();
-              this.set('monthChosen', periodChosen);
-            } else {
-              periodChosen = this.get('monthChosen');
+            if (periodChosen === undefined) {
+              if (this.get('monthChosen') === null) {
+                periodChosen = moment(now).month();
+                this.set('monthChosen', periodChosen);
+              } else {
+                periodChosen = this.get('monthChosen');
+              }
             }
             break;
           case 'year':
             this.set('periodName', moment(now).format('YYYY'));
-            if (this.get('yearChosen') === null) {
-              periodChosen = moment(now).year();
-              this.set('yearChosen', periodChosen);
-            } else {
-              periodChosen = this.get('yearChosen');
+            if (periodChosen === undefined) {
+              if (this.get('yearChosen') === null) {
+                periodChosen = moment(now).year();
+                this.set('yearChosen', periodChosen);
+              } else {
+                periodChosen = this.get('yearChosen');
+              }
             }
             break;
           default: break;
         }
-        this.set('filterIsTime', value);
+        if (value === this.get('filterIsTime')) {
+          this.set('filterIsTime', null);
+          this.set('periodName', null);
+        } else {
+          this.set('filterIsTime', value);
+        }
       } else {
         this.set('filterIsTime', null);
         this.set('periodName', null);
@@ -106,24 +123,49 @@ export default Ember.Component.extend({
       this.send('filterTransactions');
     },
     changePeriod(direction) {
-      let periodChosen;
+      let periodChosen, date;
+
       if (this.get('yearChosen') !== null) {
-        periodChosen = this.get('yearChosen');
+        periodChosen = 'yearChosen';
       } else if (this.get('monthChosen') !== null) {
-        periodChosen = this.get('monthChosen');
-
+        periodChosen = 'monthChosen';
       } else if (this.get('weekChosen') !== null) {
-        periodChosen = this.get('weekChosen');
-
+        periodChosen = 'weekChosen';
       }
 
       if (direction === 'left') {
-        periodChosen--;
+        this.set(periodChosen, this.get(periodChosen) - 1);
       } else if (direction === 'right') {
-        periodChosen++;
+        this.set(periodChosen, this.get(periodChosen) + 1);
       }
 
-      this.send('filterTransactions', periodChosen);
+      const now = new Date();
+      switch (periodChosen.replace('Chosen', '')) {
+        case 'week':
+          let from, to;
+          from = moment(now);
+          from.week(this.get(periodChosen));
+          to = moment(now);
+          to.week(this.get(periodChosen) + 1);
+          this.set(
+            'periodName',
+            from.format('DD.MM.YY') + ' - ' + to.format('DD.MM.YY')
+          );
+          break;
+        case 'month':
+          date = moment(now);
+          date.month(this.get(periodChosen));
+          this.set('periodName', date.format('MMMM'));
+          break;
+        case 'year':
+          date = moment(now);
+          date.year(this.get(periodChosen));
+          this.set('periodName', date.format('YYYY'));
+          break;
+        default: break;
+      }
+
+      this.send('filterTransactions', this.get(periodChosen) ? this.get(periodChosen) : null);
     },
     filterTransactions(periodChosen) {
       this.set('transactions', this.get('transactionsFilter').filterTransactions(
