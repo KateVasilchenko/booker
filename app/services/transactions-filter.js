@@ -27,19 +27,20 @@ export default Ember.Service.extend({
 
     switch (value) {
       case 'week':
-        periodChosen = periodChosen === null ? moment(now).week() : periodChosen;
+        periodChosen = !periodChosen ? moment(now).week() : periodChosen;
         filter = function (transaction) {
           return moment(transaction.get('createdAt')).week() === periodChosen;
         };
         break;
       case 'month':
-        periodChosen = periodChosen === null ? moment(now).month() : periodChosen;
+        periodChosen = !periodChosen ? moment(now).month() : periodChosen;
         filter = function (transaction) {
           return moment(transaction.get('createdAt')).month() === periodChosen;
         };
         break;
       case 'year':
-        periodChosen = periodChosen === null ? moment(now).year() : periodChosen;
+        periodChosen = !periodChosen ? moment(now).year() : periodChosen;
+        console.log(periodChosen);
         filter = function (transaction) {
           return moment(transaction.get('createdAt')).year() === periodChosen;
         };
@@ -49,6 +50,7 @@ export default Ember.Service.extend({
           return true;
         };
     }
+    console.log(transactions.filter(filter));
     return transactions.filter(filter);
   },
   filterTransactions(transactions, filterOptions) {
