@@ -11,8 +11,6 @@ export default function(server) {
     let wallet = i % 2 === 0 ? wallets[0] : wallets[1];
     transaction.category = category;
     transaction.wallet = wallet;
-    category.transactions = [transaction];
-    wallet.transactions = [transaction];
     transaction.save();
     category.save();
     wallet.save();

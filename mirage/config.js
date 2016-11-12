@@ -26,6 +26,18 @@ export default function() {
 
     return schema.wallets.find(id);
   });
+
+  this.post('/transactions', (schema, request) => {
+    const attrs = JSON.parse(request.requestBody).transaction;
+
+    attrs.walletId = attrs.wallet;
+    attrs.categoryId = attrs.category;
+
+    delete attrs.wallet;
+    delete attrs.category;
+
+    return schema.transactions.create(attrs);
+  });
 }
 
 export function testConfig() {

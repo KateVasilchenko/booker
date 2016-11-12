@@ -17,6 +17,7 @@ export default Ember.Route.extend({
     });
   },
   setupController(controller, model) {
+    controller.set('hidden', true);
     this._super(controller, model);
     let wallets = this.store.peekAll('wallet');
     wallets.forEach(wallet => {
@@ -34,8 +35,22 @@ export default Ember.Route.extend({
   },
   actions: {
     toggleSidebar() {
-      Ember.$("#wrapper").toggleClass("toggled");
-      Ember.$(".navbar-default").toggleClass('navbar-closed');
+      Ember.$('#wrapper').toggleClass('toggled');
+      Ember.$('.navbar-default').toggleClass('navbar-closed');
+    },
+    addTransaction() {
+      let controller = this.get('controller');
+      if (controller.get('hidden') === false) {
+        controller.set('hidden', true);
+        controller.get('transaction').destroyRecord();
+      } else {
+        this.get('controller').setProperties({
+          'hidden': false,
+          'transaction': this.store.createRecord('transaction'),
+          'categories': this.store.peekAll('category'),
+          'wallets': this.store.peekAll('wallet')
+        });
+      }
     }
   },
   init() {
