@@ -27,6 +27,7 @@ export default Ember.Component.extend({
       to = moment(now);
       to.week(periodChosen + 1);
 
+      this.set('weekChosen', periodChosen);
       this.set(
         'periodName',
         from.format('DD.MM.YY') + ' - ' + to.format('DD.MM.YY')
@@ -41,6 +42,7 @@ export default Ember.Component.extend({
       let period = moment(new Date());
       period.month(periodChosen);
 
+      this.set('monthChosen', periodChosen);
       this.set('periodName', period.format('MMMM'));
     }
   })),
@@ -52,6 +54,7 @@ export default Ember.Component.extend({
       let period = moment(new Date());
       period.year(periodChosen);
 
+      this.set('yearChosen', periodChosen);
       this.set('periodName', period.format('YYYY'));
     }
   })),
@@ -73,7 +76,7 @@ export default Ember.Component.extend({
       }
     }
 
-    return this.get('yearChosen') || this.get('monthChosen') || this.get('weekChosen');
+    return this.get(this.get('filterIsTime') + 'Chosen');
   }),
 
   filterActive: Ember.observer('filterIsTime', function () {
@@ -103,28 +106,21 @@ export default Ember.Component.extend({
           this.set('yearChosen', null);
         }
       }
+      this.notifyPropertyChange('periodChosen');
+
       this.sendAction(this.get('filterActionName'), {
         filterIsTime: this.get('filterIsTime'),
         periodChosen: this.get('periodChosen')
       });
     },
     changePeriod(direction) {
-      let periodChosen;
-
-      if (this.get('yearChosen') !== null) {
-        periodChosen = 'yearChosen';
-      } else if (this.get('monthChosen') !== null) {
-        periodChosen = 'monthChosen';
-      } else if (this.get('weekChosen') !== null) {
-        periodChosen = 'weekChosen';
-      }
+      let periodChosen = this.get('filterIsTime') + 'Chosen';
 
       if (direction === 'left') {
         this.set(periodChosen, this.get(periodChosen) - 1);
       } else if (direction === 'right') {
         this.set(periodChosen, this.get(periodChosen) + 1);
       }
-      console.log('notify property change: ' + periodChosen);
       this.notifyPropertyChange(periodChosen);
 
       this.sendAction(this.get('filterActionName'), {

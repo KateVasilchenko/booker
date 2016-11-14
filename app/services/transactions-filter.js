@@ -40,7 +40,6 @@ export default Ember.Service.extend({
         break;
       case 'year':
         periodChosen = !periodChosen ? moment(now).year() : periodChosen;
-        console.log(periodChosen);
         filter = function (transaction) {
           return moment(transaction.get('createdAt')).year() === periodChosen;
         };
@@ -50,7 +49,7 @@ export default Ember.Service.extend({
           return true;
         };
     }
-    console.log(transactions.filter(filter));
+
     return transactions.filter(filter);
   },
   filterTransactions(transactions, filterOptions) {

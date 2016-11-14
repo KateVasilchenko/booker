@@ -38,8 +38,6 @@ export default Ember.Component.extend({
       });
     },
     filterTransactions(data) {
-      console.log('AAAAAAAAA');
-      console.log(data);
       data['filterCategoryId'] = this.get('filterCategoryId');
       data['filterIsNegative'] = this.get('filterIsNegative');
 
