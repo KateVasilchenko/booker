@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  flashMessages: Ember.inject.service(),
 
   classNameBindings: [':add-transaction', 'isHidden::open'],
 
@@ -12,6 +13,7 @@ export default Ember.Component.extend({
   afterSave() {
     console.log('Saved');
     this.set('isHidden', true);
+    Ember.get(this, 'flashMessages').success('Transaction has been successfully added!');
   },
 
   actions: {
@@ -25,13 +27,15 @@ export default Ember.Component.extend({
       let model = this.get("model");
       console.log(model);
       model.validate().then(() => {
+        console.log(model.get('errors'));
+        console.log(model.get('isValid'));
         if(model.get('isValid')) {
           model.save().then(this.afterSave(model));
         }
       }).catch(function () {
         console.log(model.get('isValid'));
         console.log(model.get('errors'));
-        console.log("Something wrong with model!");
+        Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
       });
     }
   }

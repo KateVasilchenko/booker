@@ -6,7 +6,7 @@
     <div class="panel-body">
       <div class="row--flex form-group transactions-filter">
         <div class="transactions-filter--item">
-          {{#x-select action="didMakeSelection" classNames="form-control form-control--skimpy" as |xs|}}
+          {{#x-select action="filterByCategory" classNames="form-control form-control--skimpy" as |xs|}}
             {{#xs.option}}All categories{{/xs.option}}
             {{#each categories as |category|}}
               {{#xs.option value=category.id}}{{category.name}}{{/xs.option}}
