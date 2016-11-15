@@ -8,26 +8,12 @@ const Validations = buildValidations({
     description: 'Amount',
     validators: [
       validator('presence', true),
-      validator('format', {
-        regex: /^[0-9]*\.?[0-9]*$/,
-        message: '{description} must be a number'
+      validator('number', {
+        allowString: true,
+        gt: 0
       })
     ]
-  },
-  wallet: {
-    description: 'Wallet',
-    validators: [
-      validator('presence', true)
-    ]
-  },
-  category: {
-    description: 'Category',
-    validators: [
-      validator('presence', true)
-    ]
   }
-}, {
-  debounce: 500
 });
 
 export default DS.Model.extend(Validations, {
@@ -35,7 +21,7 @@ export default DS.Model.extend(Validations, {
   category: DS.belongsTo('category', { async: false }),
 
   description: attr('string'),
-  amount: attr('number', { defaultValue: 0.99 }),
+  amount: attr('number', { defaultValue: 0.00 }),
   isNegative: attr('boolean', { defaultValue: false }),
   createdAt: attr('date'),
   updatedAt: attr('date')
