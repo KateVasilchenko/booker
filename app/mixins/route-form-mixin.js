@@ -12,14 +12,10 @@ export default Ember.Mixin.create({
     save: function () {
       let model = this.get("controller.model");
       model.validate().then(() => {
-        if(model.get('isValid')) {
+        if(model.get('validations.isValid')) {
           model.set('updatedAt', new Date());
           model.save().then(this.afterSave(model));
         }
-      }).catch(function () {
-        console.log(model.get('isValid'));
-        console.log(model.get('errors'));
-        console.log("Something wrong with model!");
       });
     }
   }

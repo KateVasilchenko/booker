@@ -1,4 +1,3 @@
-
 <div class="add-transaction-controls">
     <label class="switch-wrapper">
         <input type="checkbox" class="checkbox--hidden">
@@ -23,9 +22,9 @@
             {{/each}}
         {{/x-select}}
     </div>
-    <div class="input-wrapper">
+    {{#input-wrapper model=model valuePath="amount"}}
         {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
-    </div>
+    {{/input-wrapper}}
     <div class="input-wrapper">
         <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>Add transaction</button>
     </div>

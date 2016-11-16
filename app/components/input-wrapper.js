@@ -6,7 +6,7 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['validated-input'],
+  classNames: ['validated-input', 'input-wrapper'],
   classNameBindings: ['showErrorClass:has-error', 'isValid:has-success'],
   model: null,
   value: null,
@@ -37,6 +37,6 @@ export default Ember.Component.extend({
 
   focusOut() {
     this._super(...arguments);
-    this.set('showValidations', true);
+    // this.set('showValidations', true);
   }
 });

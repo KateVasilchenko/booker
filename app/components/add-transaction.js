@@ -25,17 +25,12 @@ export default Ember.Component.extend({
     },
     save: function () {
       let model = this.get("model");
-      console.log(model);
       model.validate().then(() => {
-        console.log(model.get('errors'));
-        console.log(model.get('isValid'));
-        if(model.get('isValid')) {
+        if(model.get('validations.isValid')) {
           model.save().then(this.afterSave(model));
+        } else {
+          Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
         }
-      }).catch(function () {
-        console.log(model.get('isValid'));
-        console.log(model.get('errors'));
-        Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
       });
     }
   }
