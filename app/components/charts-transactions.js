@@ -9,9 +9,9 @@ export default Ember.Component.extend({
   transactionsObserver: Ember.on('didInsertElement', Ember.observer('transactions.[]', function () {
     console.log('RERENDER');
     console.log(this._state);
-    console.log(this._currentState);
-    // Ember.run.scheduleOnce('afterRender', this.rerender);
-    // this.rerender();
+    if ('inDom' === this._state) {
+      this.rerender();
+    }
   })),
 
   transactions: Ember.computed('transactionsRaw.[]',
