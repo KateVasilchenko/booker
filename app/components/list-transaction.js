@@ -25,8 +25,11 @@ export default Ember.Component.extend({
   isHidden: true,
 
   actions: {
+    close() {
+      this.set('isHidden', true);
+    },
     edit(transaction) {
-      let controller = this.get('container').lookup('controller:application');
+      let controller = this.get('own').lookup('controller:application');
       if (controller.get('hidden') === false) {
         controller.set('hidden', true);
         controller.get('transaction').destroyRecord();
