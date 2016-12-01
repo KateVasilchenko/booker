@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   classNames: ['transactions-filter--item', 'transactions-date'],
 
   periodName: null,
-  filterIsTime: 'month', //pass
+  filterIsTime: 'month',
   monthChosen: null,
   yearChosen: null,
   weekChosen: null,
@@ -144,7 +144,7 @@ export default Ember.Component.extend({
   },
   init() {
     this._super(...arguments);
-    this.sendAction('filterTransactions', {
+    this.sendAction(this.get('filterActionName'), {
       filterIsTime: this.get('filterIsTime'),
       periodChosen: this.get('periodChosen')
     });

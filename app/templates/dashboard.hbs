@@ -34,27 +34,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-12 col-lg-7">
-    <div class="panel panel-default panel-custom panel-charts">
-      <div class="panel-heading">
-        <div class="row--flex row--centered">
-          <h3 class="panel-title">Statistics</h3>
-          {{date-filter
-            filterByTime="filterByTime"
-            changePeriod="changePeriod"
-            periodName=periodName}}
-        </div>
-      </div>
-      <div class="panel-body row">
-        <div class="col-md-6">
-          {{ember-chart type="radar" class="chart" data=charts.outcomeData options=charts.options width=300 height=295}}
-        </div>
-        <div class="col-md-6">
-          {{ember-chart type="radar" class="chart" data=charts.incomeData options=charts.options width=300 height=295}}
-        </div>
-      </div>
-    </div>
-  </div>
+  {{charts-transactions charts=charts transactionsRaw=transactions}}
 </div>
 <div class="row">
   <div class="col-xs-12 col-xlg-6">

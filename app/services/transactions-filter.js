@@ -24,7 +24,6 @@ export default Ember.Service.extend({
   filterByTime(transactions, value, periodChosen) {
     let filter;
     const now = new Date();
-
     switch (value) {
       case 'week':
         periodChosen = !periodChosen ? moment(now).week() : periodChosen;
@@ -53,13 +52,13 @@ export default Ember.Service.extend({
     return transactions.filter(filter);
   },
   filterTransactions(transactions, filterOptions) {
-    if (filterOptions['filterCategoryId'] !== null) {
+    if (filterOptions['filterCategoryId']) {
       transactions = this.filterByCategoryId(
         transactions,
         filterOptions['filterCategoryId']
       );
     }
-    if (filterOptions['filterIsNegative'] !== null) {
+    if (filterOptions['filterIsNegative']) {
       transactions = this.filterByIsNegative(
         transactions,
         filterOptions['filterIsNegative']
