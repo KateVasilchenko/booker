@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   transactionsFilter: Ember.inject.service(),
+  store: Ember.inject.service(),
 
   transactionsRaw: null, //pass
 
@@ -20,7 +21,28 @@ export default Ember.Component.extend({
     return this.get('transactionsRaw');
   }),
 
+  selectedModel: null,
+  isHidden: true,
+
   actions: {
+    edit(transaction) {
+      let controller = this.get('container').lookup('controller:application');
+      if (controller.get('hidden') === false) {
+        controller.set('hidden', true);
+        controller.get('transaction').destroyRecord();
+      } else {
+        controller.setProperties({
+          'hidden': false,
+          'transaction': transaction,
+          'categories': this.get('store').peekAll('category'),
+          'wallets': this.get('store').peekAll('wallet')
+        });
+      }
+    },
+    delete(transaction) {
+      this.set('selectedModel', transaction);
+      this.set('isHidden', false);
+    },
     filterByCategory(value) {
       this.get('filterCategoryId') === null ?
         this.set('filterCategoryId', value) : this.set('filterCategoryId', null);

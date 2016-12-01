@@ -7,6 +7,7 @@ export default Ember.Route.extend({
   },
   setupController(controller, model) {
     this._super(controller, model);
+    controller.set('container', Ember.getOwner(this));
     controller.set('transactions', model);
     controller.set('categories', this.store.peekAll('category'));
   },
