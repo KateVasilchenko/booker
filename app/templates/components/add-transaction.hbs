@@ -1,5 +1,8 @@
+<div class="add-transaction-label">
+  <span class="">Add transaction</span>
+</div>
 <div class="add-transaction-controls">
-    <label class="switch-wrapper">
+  <label class="switch-wrapper">
         <input type="checkbox" class="checkbox--hidden">
         <div class="switch">
             <span class="switch-label">Income</span>
@@ -8,40 +11,45 @@
             <span class="switch-label">Expences</span>
         </div>
     </label>
+  <div class="input-wrapper">
+    {{#x-select value=model.category action="selectCategory" required=true classNames="form-control" }}
+      {{#each categories as |category|}}
+        {{#x-option value=category}}{{category.name}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
+  </div>
+  <div class="input-wrapper">
+    {{#x-select value=model.wallet action="selectWallet" required=true classNames="form-control" }}
+      {{#each wallets as |wallet|}}
+        {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
+      {{/each}}
+    {{/x-select}}
+  </div>
+  {{#input-wrapper model=model valuePath="amount" }}
+    {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
+  {{/input-wrapper}}
+  <div class="input-wrapper-group">
     <div class="input-wrapper">
-        {{#x-select value=model.category action="selectCategory" required=true classNames="form-control"}}
-            {{#each categories as |category|}}
-                {{#x-option value=category}}{{category.name}}{{/x-option}}
-            {{/each}}
-        {{/x-select}}
+      <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>Add transaction</button>
     </div>
     <div class="input-wrapper">
-        {{#x-select value=model.wallet action="selectWallet" required=true classNames="form-control"}}
-            {{#each wallets as |wallet|}}
-                {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
-            {{/each}}
-        {{/x-select}}
+      <button class="form-control btn btn--cancel" id="transaction-cancel-add" {{action 'close'}}>Cancel</button>
     </div>
-    {{#input-wrapper model=model valuePath="amount"}}
-        {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
-    {{/input-wrapper}}
-    <div class="input-wrapper">
-        <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>Add transaction</button>
-    </div>
+  </div>
 </div>
-{{#if transaction.isNegative}}
+<!-- {{#if transaction.isNegative}}
     <sub class="add-transaction-operation add-transaction-operation--outer">
         <span class="arrow arrow fa fa-long-arrow-right"></span>
-        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}} -->
+        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}}
         240.00 UAH
     </sub>
 {{else}}
     <sub class="add-transaction-operation add-transaction-operation--inner">
         <span class="arrow arrow fa fa-long-arrow-right"></span>
-        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}} -->
+        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}}
         240.00 UAH
     </sub>
 {{/if}}
 <div class="add-transaction-balance balance">
     <h2 class="balance-amount">24,455.00 USD</h2>
-</div>
+</div> -->

@@ -16,17 +16,20 @@
       <div class="container-fluid">
         <div class="navbar-header">
           {{#link-to "dashboard" classNames="navbar-brand" }}Booker{{/link-to}}
-          <ul class="nav navbar-nav">
-            <li id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
+          <div class="nav navbar-nav">
+            <span id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </li>
+            </span>
             {{#each flashMessages.queue as |flash|}}
               {{flash-message flash=flash}}
             {{/each}}
-            <li {{action "addTransaction"}} class="transaction-btn" id="transaction-quick-add"><i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span></li>
-          </ul>
+            <div class='add-btns'>
+              <span {{action "addTransaction"}} class="transaction-btn" id="transaction-quick-add"><i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span></span>
+              <span {{action "addWallet"}} class="wallet-btn" id="wallet-quick-add"><i class="nav-icon nav-icon--green icon--circle"></i><span class="m-hidden">Add wallet</span></span>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
