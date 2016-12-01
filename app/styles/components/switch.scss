@@ -1,19 +1,7 @@
 .switch {
-  &-wrapper {
-    width: 140px;
-    height: 34px;
-    margin-bottom: 0;
-    overflow: hidden;
-    background-color: #bd81c6;
-    border-radius: 4px;
-    color: #fff;
-    position: relative;
-  }
   position: absolute;
   display: flex;
   justify-content: space-between;
-  // transform: translateX(-87px);
-  // -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
   left: -87px;
   transition: all .3s ease;
   white-space: nowrap;
@@ -36,6 +24,16 @@
   &:hover {
     cursor: pointer;
   }
+}
+.switch-wrapper {
+  width: 140px;
+  height: 34px;
+  margin-bottom: 0;
+  overflow: hidden;
+  background-color: #bd81c6;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
 }
 .checkbox--hidden {
   display: none;
