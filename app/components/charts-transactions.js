@@ -6,16 +6,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   charts: null, // pass
   transactionsRaw: null, // pass
-
-  transactionsObserver: Ember.on('didInsertElement', Ember.observer('transactions.[]', function () {
-    console.log(this.get('transactions.length'));
-    console.log('RERENDER');
-    console.log(this._state);
-    if ('inDom' === this._state) {
-      this.rerender();
-    }
-  })),
-
+  
   transactions: Ember.computed('transactionsRaw.[]', function () {
       return this.get('transactionsRaw');
   }),
@@ -26,8 +17,6 @@ export default Ember.Component.extend({
         this.get('transactionsRaw'),
         data
       ));
-
-      //TODO: rerender charts
 
       this.set('charts', this.get('chartsService').prepareData({
         transactions: this.get('transactions'),
