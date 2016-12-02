@@ -1,18 +1,16 @@
-{{#unless hidden}}
 <div class="modal fade in "  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">{{title}}</h4>
+        <h4 class="modal-title">Delete {{modelType}}</h4>
       </div>
       <div class="modal-body">
-          {{yield}}
+          <p>Are you sure you want to delete this {{modelType}}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn--save" {{action "save"}}>Delete</button>
-        <button type="button" class="btn btn-primary btn--cancel" {{action "close" model}}>Cancel</button>
+        <button type="button" class="btn btn-default btn--save" {{action "delete"}}>Delete</button>
+        <button type="button" class="btn btn-primary btn--cancel" {{action "close"}}>Cancel</button>
       </div>
     </div>
   </div>
 </div>
-{{/unless}}

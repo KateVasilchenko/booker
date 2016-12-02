@@ -38,6 +38,11 @@ export default function() {
 
     return schema.transactions.create(attrs);
   });
+
+  this.del('/transactions/:id', (schema, request) => {
+    let transaction = schema.transactions.find(request.params.id);
+    transaction.destroy();
+  });
 }
 
 export function testConfig() {

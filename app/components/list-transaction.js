@@ -18,15 +18,23 @@ export default Ember.Component.extend({
   }),
 
   transactions: Ember.computed('transactionsRaw.[]', function () {
-    return this.get('transactionsRaw');
+    console.log('AAAAAAAAAAA');
+    return this.get('transactionsRaw').rejectBy('isDeleted');
   }),
 
-  selectedModel: null,
+  modelToDelete: null,
   isHidden: true,
 
   actions: {
-    close() {
+    cancelDelete() {
       this.set('isHidden', true);
+    },
+    deleteRecord(model) {
+      console.log(model);
+      console.log('bbb');
+      this.set('isHidden', true);
+      model.destroyRecord();
+      this.set('modelToDelete', null);
     },
     edit(transaction) {
       let controller = this.get('own').lookup('controller:application');
@@ -43,7 +51,7 @@ export default Ember.Component.extend({
       }
     },
     delete(transaction) {
-      this.set('selectedModel', transaction);
+      this.set('modelToDelete', transaction);
       this.set('isHidden', false);
     },
     filterByCategory(value) {

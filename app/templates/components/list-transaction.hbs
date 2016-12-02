@@ -3,9 +3,9 @@
     <div class="panel-heading">
       <h3 class="panel-title">TRANSACTIONS</h3>
     </div>
-    {{#modal-window model=selectedModel hidden=isHidden close="close"}}
-        <p>Are you sure you want to delete this?</p>
-    {{/modal-window}}
+    {{#unless isHidden}}
+      {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+    {{/unless}}
     <div class="panel-body">
       <div class="row--flex form-group transactions-filter">
         <div class="transactions-filter--item">
