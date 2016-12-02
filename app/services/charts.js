@@ -19,12 +19,15 @@ export default Ember.Service.extend({
     let outcomeDataset = Ember.copy(this.get('radarDefaultDataset'), true);
     outcomeDataset.label = 'Outcome';
     let categoriesNames = [];
+
     entities.categories.forEach(function (category) {
       if (category.get('transactions.length')) {
         categoriesNames.push(category.get('name'));
         let incomeBalance = 0;
         let outcomeBalance = 0;
-        category.get('transactions').forEach(function (transaction) {
+        entities.transactions.filter((trans) => {
+          return trans.get('category.id') === category.get('id');
+        }).forEach(function (transaction) {
           if (transaction.get('isNegative')) {
             outcomeBalance += parseFloat(transaction.get('amount'));
           } else {
