@@ -10,15 +10,14 @@ export default Ember.Component.extend({
   filterIsNegative: 'all',
 
   filterActive: Ember.observer('filterIsNegative', function () {
-      this._setActive(this.get('filterIsNegative'), {
-        all: Ember.$('#all'),
-        income: Ember.$('#income'),
-        expenses: Ember.$('#expenses')
-      });
+    this._setActive(this.get('filterIsNegative'), {
+      all: Ember.$('#all'),
+      income: Ember.$('#income'),
+      expenses: Ember.$('#expenses')
+    });
   }),
 
   transactions: Ember.computed('transactionsRaw.[]', function () {
-    console.log('AAAAAAAAAAA');
     return this.get('transactionsRaw').rejectBy('isDeleted');
   }),
 
@@ -30,9 +29,8 @@ export default Ember.Component.extend({
       this.set('isHidden', true);
     },
     deleteRecord(model) {
-      console.log(model);
-      console.log('bbb');
       this.set('isHidden', true);
+      this.get('transactions').removeObject(model);
       model.destroyRecord();
       this.set('modelToDelete', null);
     },

@@ -12,8 +12,6 @@ export default Ember.Component.extend({
       return this.sendAction('close');
     },
     delete: function () {
-      console.log('aaa');
-      // this.get('model').destroyRecord();
       return this.sendAction('delete', this.get('model'));
     }
   }
