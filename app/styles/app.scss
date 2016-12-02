@@ -247,9 +247,9 @@ div.input-error > div.error {
 .balance {
   color: $balance-color;
   text-transform: uppercase;
-  @media(max-width:1280px) {
-    display: none;
-  }
+  //@media(max-width:1280px) {
+  //  display: none;
+  //}
 
   &-title {
     font-size: 14px;

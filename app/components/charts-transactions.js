@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   charts: null, // pass
   transactionsRaw: null, // pass
-  
+
   transactions: Ember.computed('transactionsRaw.[]', function () {
       return this.get('transactionsRaw');
   }),
