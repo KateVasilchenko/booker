@@ -6,28 +6,13 @@
     height: 44px;
     border-radius: 4px;
     color: #fff;
+    font-size: 16px;
     box-shadow: none;
     border: none;
     &:hover,
     &:focus,
     &.active {
       color: #fff;
-    }
-    &--save {
-      background-color: #f07f78;
-      &:hover,
-      &:focus,
-      &.active {
-          background-color: #f07f78;
-      }
-    }
-    &--cancel {
-      background-color: #b4b4b4;
-      &:hover,
-      &:focus,
-      &.active {
-        background-color: #b4b4b4;
-      }
     }
     &:focus {
       outline: none;

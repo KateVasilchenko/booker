@@ -16,6 +16,7 @@
     color: $add-transaction-color;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   &-type {

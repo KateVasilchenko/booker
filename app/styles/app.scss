@@ -6,10 +6,12 @@
 @import "transactions";
 @import "components/switch";
 @import "add-transaction";
+@import "add-wallet";
 @import "light-table";
 @import "spinner";
 @import "list";
 @import "components/modal-window";
+@import "components/add-btns";
 
 body,
 html {
@@ -40,6 +42,10 @@ div.input-error > div.error {
 .chart {
   -webkit-user-select: none;
   margin: 0 auto;
+  @media (max-width: 480px) {
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
 .icon {
@@ -96,6 +102,7 @@ div.input-error > div.error {
 .row {
   &--flex {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     &.row--centered {
@@ -123,9 +130,15 @@ div.input-error > div.error {
 }
 
 .btn {
+  padding: 4px 15px;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    padding: 4px 30px;
+  }
   &.active.focus,
   &.active:focus,
   &:active,
+  &.active,
   &:active.focus,
   &:active:focus,
   &:focus,
@@ -158,6 +171,36 @@ div.input-error > div.error {
     &:hover {
       background-color: rgba(174, 197, 255, 0.19);
       color: $add-transaction-color;
+    }
+  }
+  &--save {
+    color: #fff;
+    background-color: #f07f78;
+    &.active,
+    &.active.focus,
+    &.active:focus,
+    &:active,
+    &:active.focus,
+    &:active:focus,
+    &:focus,
+    &:hover {
+        background-color: #f07f78;
+        color: #fff;
+    }
+  }
+  &--cancel {
+    color: #fff;
+    background-color: #b4b4b4;
+    &.active,
+    &.active.focus,
+    &.active:focus,
+    &:active,
+    &:active.focus,
+    &:active:focus,
+    &:focus,
+    &:hover {
+      background-color: #b4b4b4;
+      color: #fff;
     }
   }
 
@@ -199,6 +242,7 @@ div.input-error > div.error {
     width: 25px;
     height: 25px;
     padding: 4px;
+    margin-left: 12px;
 
     &.active,
     &.active.focus,
