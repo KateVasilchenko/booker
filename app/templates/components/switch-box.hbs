@@ -1,0 +1,9 @@
+<label class="switch-wrapper">
+    {{input type="checkbox" class="checkbox--hidden" checked=(mut (get model checkedProperty))}}
+    <div class="switch">
+        <span class="switch-label">{{secondValueText}}</span>
+        <span class="switch-label switch-label--center"><span class="btn--arrow"><span class="arrow arrow--outer fa fa-long-arrow-right"></span></span>
+        </span>
+        <span class="switch-label">{{firstValueText}}</span>
+    </div>
+</label>

@@ -7,7 +7,7 @@ export default Factory.extend({
   amount() {
     return faker.commerce.price();
   },
-  isNegative() {
+  isIncome() {
     return faker.random.boolean();
   },
   createdAt() {

@@ -28,10 +28,10 @@ export default Ember.Service.extend({
         entities.transactions.filter((trans) => {
           return trans.get('category.id') === category.get('id');
         }).forEach(function (transaction) {
-          if (transaction.get('isNegative')) {
-            outcomeBalance += parseFloat(transaction.get('amount'));
-          } else {
+          if (transaction.get('isIncome')) {
             incomeBalance += parseFloat(transaction.get('amount'));
+          } else {
+            outcomeBalance += parseFloat(transaction.get('amount'));
           }
         });
         incomeDataset.data.push(incomeBalance);

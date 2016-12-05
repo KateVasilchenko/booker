@@ -22,7 +22,7 @@ export default DS.Model.extend(Validations, {
 
   description: attr('string'),
   amount: attr('number', { defaultValue: 0.00 }),
-  isNegative: attr('boolean', { defaultValue: false }),
+  isIncome: attr('boolean', { defaultValue: false }),
   createdAt: attr('date'),
   updatedAt: attr('date')
 });

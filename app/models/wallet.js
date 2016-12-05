@@ -26,10 +26,10 @@ export default DS.Model.extend(Validations, {
   balance: Ember.computed('transactions.[]', 'transactions.@each.amount', function () {
     let balance = 0;
     this.get('transactions').forEach(function (transaction) {
-      if (transaction.get('isNegative')) {
-        balance -= transaction.get('amount');
-      } else {
+      if (transaction.get('isIncome')) {
         balance += transaction.get('amount');
+      } else {
+        balance -= transaction.get('amount');
       }
     });
     return balance.toFixed(2);

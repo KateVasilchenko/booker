@@ -6,14 +6,15 @@ export default Ember.Service.extend({
       return transaction.get('category.id') === categoryId;
     });
   },
-  filterByIsNegative(transactionsList, value) {
+  filterByIsIncome(transactionsList, value) {
     let transactions;
+
     switch (value) {
       case 'expenses':
-        transactions = transactionsList.filterBy('isNegative', true);
+        transactions = transactionsList.filterBy('isIncome', false);
         break;
       case 'income':
-        transactions = transactionsList.filterBy('isNegative', false);
+        transactions = transactionsList.filterBy('isIncome', true);
         break;
       case 'all':
       default:
@@ -58,10 +59,10 @@ export default Ember.Service.extend({
         filterOptions['filterCategoryId']
       );
     }
-    if (filterOptions['filterIsNegative']) {
-      transactions = this.filterByIsNegative(
+    if (filterOptions['filterIsIncome']) {
+      transactions = this.filterByIsIncome(
         transactions,
-        filterOptions['filterIsNegative']
+        filterOptions['filterIsIncome']
       );
     }
     if (filterOptions['filterIsTime'] !== null) {

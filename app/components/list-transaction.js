@@ -7,10 +7,10 @@ export default Ember.Component.extend({
   transactionsRaw: null, //pass
 
   filterCategoryId: null,
-  filterIsNegative: 'all',
+  filterIsIncome: 'all',
 
-  filterActive: Ember.observer('filterIsNegative', function () {
-    this._setActive(this.get('filterIsNegative'), {
+  filterActive: Ember.observer('filterIsIncome', function () {
+    this._setActive(this.get('filterIsIncome'), {
       all: Ember.$('#all'),
       income: Ember.$('#income'),
       expenses: Ember.$('#expenses')
@@ -58,19 +58,19 @@ export default Ember.Component.extend({
 
       this.send('filterTransactions', {
         filterCategoryId: this.get('filterCategoryId'),
-        filterIsNegative: 'all'
+        filterIsIncome: 'all'
       });
     },
-    filterByIsNegative(value) {
-      this.set('filterIsNegative', value);
+    filterByIsIncome(value) {
+      this.set('filterIsIncome', value);
       this.send('filterTransactions', {
         filterCategoryId: this.get('filterCategoryId'),
-        filterIsNegative: 'all'
+        filterIsIncome: 'all'
       });
     },
     filterTransactions(data) {
       data['filterCategoryId'] = this.get('filterCategoryId');
-      data['filterIsNegative'] = this.get('filterIsNegative');
+      data['filterIsIncome'] = this.get('filterIsIncome');
 
       this.set('transactions', this.get('transactionsFilter').filterTransactions(
         this.get('transactionsRaw'),
@@ -88,7 +88,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.send('filterTransactions', {
       filterCategoryId: null,
-      filterIsNegative: 'all'
+      filterIsIncome: 'all'
     });
   },
   _setActive(activeElementKey, allElements) {

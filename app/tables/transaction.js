@@ -12,8 +12,8 @@ export default { columns: [
     cellComponent: 'my-cell'
   },
   {
-    label: 'Is Negative',
-    valuePath: 'isNegative',
+    label: 'Is Income',
+    valuePath: 'isIncome',
     sortable: false,
     cellComponent: 'my-cell'
   },

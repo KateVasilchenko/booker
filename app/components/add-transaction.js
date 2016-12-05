@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   flashMessages: Ember.inject.service(),
 
   classNameBindings: [':add-transaction', 'isHidden::open'],
-
+  isHidden: null, //pass
   wallets: null, //pass
   categories: null, //pass
   model: null, //pass
@@ -23,7 +23,7 @@ export default Ember.Component.extend({
     selectWallet(wallet) {
       this.get('model').set('wallet', wallet);
     },
-    save: function () {
+    save() {
       let model = this.get("model");
       model.validate().then(() => {
         if(model.get('validations.isValid')) {
@@ -32,6 +32,9 @@ export default Ember.Component.extend({
           Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
         }
       });
+    },
+    close() {
+      this.set('isHidden', true);
     }
   }
 });

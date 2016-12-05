@@ -2,15 +2,7 @@
   <span class="">Add transaction</span>
 </div>
 <div class="add-transaction-controls">
-  <label class="switch-wrapper">
-        <input type="checkbox" class="checkbox--hidden">
-        <div class="switch">
-            <span class="switch-label">Income</span>
-            <span class="switch-label switch-label--center"><span class="btn--arrow"><span class="arrow arrow--outer fa fa-long-arrow-right"></span></span>
-        </span>
-            <span class="switch-label">Expences</span>
-        </div>
-    </label>
+  {{switch-box model=model checkedProperty="isIncome" firstValueText="Expenses" secondValueText="Income"}}
   <div class="input-wrapper">
     {{#x-select value=model.category action="selectCategory" required=true classNames="form-control" }}
       {{#each categories as |category|}}
@@ -37,19 +29,4 @@
     </div>
   </div>
 </div>
-<!-- {{#if transaction.isNegative}}
-    <sub class="add-transaction-operation add-transaction-operation--outer">
-        <span class="arrow arrow fa fa-long-arrow-right"></span>
-        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}}
-        240.00 UAH
-    </sub>
-{{else}}
-    <sub class="add-transaction-operation add-transaction-operation--inner">
-        <span class="arrow arrow fa fa-long-arrow-right"></span>
-        <!-- {{transaction.amount}} {{transaction.wallet.currency.name}}
-        240.00 UAH
-    </sub>
-{{/if}}
-<div class="add-transaction-balance balance">
-    <h2 class="balance-amount">24,455.00 USD</h2>
-</div> -->
+{{transaction.amount}} {{transaction.wallet.currency.name}}
