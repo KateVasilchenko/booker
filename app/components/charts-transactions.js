@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   transactionsRaw: null, // pass
 
   transactions: Ember.computed('transactionsRaw.[]', function () {
+      console.log('Transactions RAW changed');
       return this.get('transactionsRaw');
   }),
 

@@ -2,20 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   charts: Ember.inject.service(),
-  model() {
-    return Ember.RSVP.hash({
-      transactions: this.store.findAll('transaction')
-    });
-  },
+
   setupController(controller, model) {
     this._super(controller, model);
 
     controller.setProperties({
       wallets: this.store.peekAll('wallet'),
       balance: this._getTotalBalance(this.store.peekAll('wallet')),
-      transactions: model.transactions,
+      transactions: this.store.peekAll('transaction'),
       charts: this.get('charts').prepareData({
-        transactions: model.transactions,
+        transactions: this.store.peekAll('transaction'),
         categories: this.store.peekAll('category')
       })
     });

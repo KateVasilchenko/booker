@@ -33,7 +33,12 @@
         </div>
       </div>
     </nav>
-    {{add-transaction model=transaction isHidden=hidden categories=categories wallets=wallets}}
+    {{dropdown-dialog
+        transaction=transaction
+        wallet=wallet
+        isHidden=hidden
+        categories=categories
+        wallets=wallets}}
     <div id="page-content-wrapper" class="content-wrapper">
       <div class="container-fluid">
         {{outlet}}
