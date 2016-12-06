@@ -10,6 +10,16 @@ const Validations = buildValidations({
       validator('presence', true)
     ]
   },
+  amount: {
+    description: 'Amount',
+    validators: [
+      validator('presence', true),
+      validator('number', {
+        allowString: true,
+        gt: 0
+      })
+    ]
+  },
   currency: validator('belongs-to')
 }, {
   debounce: 500
@@ -20,11 +30,12 @@ export default DS.Model.extend(Validations, {
   transactions: DS.hasMany('transaction', { async: true }),
 
   name: attr('string'),
+  amount: attr('number'),
   createdAt: attr('date'),
   updatedAt: attr('date'),
 
-  balance: Ember.computed('transactions.[]', 'transactions.@each.amount', function () {
-    let balance = 0;
+  balance: Ember.computed('transactions.[]', 'transactions.@each.amount', 'amount', function () {
+    let balance = parseFloat(this.get('amount')) ? parseFloat(this.get('amount')) : 0;
     this.get('transactions').forEach(function (transaction) {
       if (transaction.get('isIncome')) {
         balance += transaction.get('amount');

@@ -39,9 +39,19 @@ export default function() {
     return schema.transactions.create(attrs);
   });
 
+  this.post('/wallets', (schema, request) => {
+    const attrs = JSON.parse(request.requestBody).wallet;
+    return schema.wallets.create(attrs);
+  });
+
   this.del('/transactions/:id', (schema, request) => {
     let transaction = schema.transactions.find(request.params.id);
     transaction.destroy();
+  });
+
+  this.del('/wallets/:id', (schema, request) => {
+    let wallet = schema.wallets.find(request.params.id);
+    wallet.destroy();
   });
 }
 
