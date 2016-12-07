@@ -10,15 +10,5 @@ export default Ember.Route.extend({
     controller.set('own', Ember.getOwner(this));
     controller.set('transactions', model);
     controller.set('categories', this.store.peekAll('category'));
-  },
-  actions: {
-    edit(entity) {
-      this.transitionTo('transactions.edit', entity);
-    },
-    delete: function (entity) {
-      if (confirm('Are you sure')) {
-        entity.destroyRecord();
-      }
-    }
   }
 });

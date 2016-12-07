@@ -36,16 +36,15 @@ export default Ember.Component.extend({
     },
     edit(transaction) {
       let controller = this.get('own').lookup('controller:application');
-      if (controller.get('hidden') === false) {
-        controller.set('hidden', true);
-        controller.get('transaction').destroyRecord();
-      } else {
+
+      if (!controller.get('disabledButtons')) {
+        controller.set('disabledButtons', true);
         controller.setProperties({
-          'hidden': false,
           'transaction': transaction,
           'categories': this.get('store').peekAll('category'),
           'wallets': this.get('store').peekAll('wallet')
         });
+        controller.set('hidden', false);
       }
     },
     delete(transaction) {

@@ -19,6 +19,7 @@ export default Ember.Component.extend(WalletDDMixin, TransactionDDMixin, {
     console.log('Saved');
     this.set(this.get('model.constructor.modelName'), null);
     this.set('isHidden', true);
+    this.set('disabledButtons', false);
     Ember.get(this, 'flashMessages')
       .success(this.get('model.constructor.modelName').capitalize() + ' has been successfully added!');
     const owner = Ember.getOwner(this);
@@ -38,18 +39,23 @@ export default Ember.Component.extend(WalletDDMixin, TransactionDDMixin, {
         } else {
           Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
         }
+        this.sendAction('resetDropdownModel', this.get('modelName'));
       });
     },
     close() {
       this.set('isHidden', true);
-      this.get('model').destroyRecord();
+      this.set('disabledButtons', false);
+      if (this.get('model') && this.get('model.isNew')) {
+        this.get('model').destroyRecord();
+      }
+      this.sendAction('resetDropdownModel', this.get('modelName'));
     }
   },
 
   modelObserver: Ember.on('init', Ember.observer(
     'transaction.isNew', 'transaction.isDeleted',
     'wallet.isNew', 'wallet.isDeleted', function () {
-    if (this.get('transaction.isNew') && (!this.get('wallet') || this.get('wallet.isDeleted'))) {
+    if (this.get('transaction') && (!this.get('wallet') || this.get('wallet.isDeleted'))) {
       this.set('model', this.get('transaction'));
     } else if (this.get('wallet.isNew') && (!this.get('transaction') || this.get('transaction.isDeleted'))) {
       this.set('model', this.get('wallet'));

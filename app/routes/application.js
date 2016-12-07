@@ -34,6 +34,9 @@ export default Ember.Route.extend({
     });
   },
   actions: {
+    resetDropdownModel(modelName) {
+      this.get('controller').set(modelName, null);
+    },
     transitionToDashboard() {
       console.log('AAAA');
       this.transitionTo('dashboard');
@@ -44,38 +47,23 @@ export default Ember.Route.extend({
     },
     addTransaction() {
       let controller = this.get('controller');
-      if (controller.get('hidden') === true && (!controller.get('wallet') || controller.get('wallet.isDeleted')) && (!controller.get('transaction') || controller.get('transaction.isDeleted'))) {
-        this.get('controller').setProperties({
+
+      if (!controller.get('disabledButtons')) {
+        controller.set('disabledButtons', true);
+        controller.setProperties({
           'transaction': this.store.createRecord('transaction'),
           'categories': this.store.peekAll('category'),
           'wallets': this.store.peekAll('wallet')
         });
-        this.get('controller').set('hidden', false);
-      } else if (controller.get('hidden') === false && (controller.get('transaction.isNew')) && (!controller.get('wallet') || controller.get('wallet.isDeleted'))) {
-        this.get('controller.transaction').destroyRecord();
-        this.get('controller').set('hidden', true);
-      } else if (controller.get('hidden') === false && (!controller.get('transaction') || controller.get('transaction.isDeleted')) && controller.get('wallet.isNew')) {
-        this.get('controller').set('hidden', true);
-        this.get('controller.wallet').destroyRecord();
-        this.get('controller').setProperties({
-          'transaction': this.store.createRecord('transaction'),
-          'categories': this.store.peekAll('category'),
-          'wallets': this.store.peekAll('wallet')
-        });
-        this.get('controller').set('hidden', false);
+        controller.set('hidden', false);
       }
     },
     addWallet() {
       let controller = this.get('controller');
-      if (controller.get('hidden') === true && (!controller.get('transaction') || controller.get('transaction.isDeleted')) && (!controller.get('wallet') || controller.get('wallet.isDeleted'))) {
-        this.get('controller').set('wallet', this.store.createRecord('wallet'));
-        this.get('controller').set('hidden', false);
-      } else if (controller.get('hidden') === false && (controller.get('wallet.isNew')) && (!controller.get('transaction') || controller.get('transaction.isDeleted'))) {
-        this.get('controller.wallet').destroyRecord();
-        this.get('controller').set('hidden', true);
-      } else if (controller.get('hidden') === false && (!controller.get('wallet') || controller.get('wallet.isDeleted')) && controller.get('transaction.isNew')) {
-        this.get('controller').set('hidden', true);
-        this.get('controller.transaction').destroyRecord();
+
+      if (!this.controller.get('disabledButtons')) {
+        this.controller.set('disabledButtons', true);
+        console.log(!!this.get('controller.transaction'));
         this.get('controller').set('wallet', this.store.createRecord('wallet'));
         this.get('controller').set('hidden', false);
       }
