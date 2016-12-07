@@ -61,11 +61,10 @@ export default Ember.Route.extend({
     addWallet() {
       let controller = this.get('controller');
 
-      if (!this.controller.get('disabledButtons')) {
-        this.controller.set('disabledButtons', true);
-        console.log(!!this.get('controller.transaction'));
-        this.get('controller').set('wallet', this.store.createRecord('wallet'));
-        this.get('controller').set('hidden', false);
+      if (!controller.get('disabledButtons')) {
+        controller.set('disabledButtons', true);
+        controller.set('wallet', this.store.createRecord('wallet'));
+        controller.set('hidden', false);
       }
     }
   },
