@@ -1,4 +1,5 @@
 export default function() {
+  this.passthrough('/write-coverage'); //delete this?
   this.namespace = 'api';
   this.timing = 500;
 
