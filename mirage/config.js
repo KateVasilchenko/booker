@@ -28,20 +28,45 @@ export default function() {
   });
 
   this.post('/transactions', (schema, request) => {
-    const attrs = JSON.parse(request.requestBody).transaction;
-
+    let attrs = JSON.parse(request.requestBody).transaction;
     attrs.walletId = attrs.wallet;
     attrs.categoryId = attrs.category;
-
+    attrs.createdAt = new Date();
+    attrs.updatedAt = new Date();
     delete attrs.wallet;
     delete attrs.category;
 
     return schema.transactions.create(attrs);
   });
 
+  this.put('/transactions/:id', (schema, request) => {
+    let transaction = schema.transactions.find(request.params.id);
+    const attrs = JSON.parse(request.requestBody).transaction;
+    transaction.walletId = attrs.wallet;
+    transaction.amount = attrs.amount;
+    transaction.descriptioin = attrs.description;
+    transaction.categoryId = attrs.category;
+    transaction.updatedAt = new Date();
+
+    return transaction;
+  });
+
   this.post('/wallets', (schema, request) => {
     const attrs = JSON.parse(request.requestBody).wallet;
+    attrs.createdAt = new Date();
+    attrs.updatedAt = new Date();
+
     return schema.wallets.create(attrs);
+  });
+
+  this.put('/wallets/:id', (schema, request) => {
+    let wallet = schema.wallets.find(request.params.id);
+    const attrs = JSON.parse(request.requestBody).wallet;
+    wallet.name = attrs.name;
+    wallet.amount = attrs.amount;
+    wallet.updatedAt = new Date();
+
+    return wallet;
   });
 
   this.del('/transactions/:id', (schema, request) => {

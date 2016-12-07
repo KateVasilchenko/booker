@@ -6,7 +6,7 @@ moduleForModel('transaction', 'Unit | Model | Transaction', {
     'model:wallet',
     'model:category',
     'validator:presence',
-    'validator:format'
+    'validator:number'
   ]
 });
 

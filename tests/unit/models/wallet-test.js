@@ -6,6 +6,7 @@ moduleForModel('wallet', 'Unit | Model | Wallet', {
     'model:currency',
     'model:transaction',
     'validator:presence',
+    'validator:number',
     'validator:belongs-to'
   ]
 });

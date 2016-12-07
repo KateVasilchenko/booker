@@ -30,7 +30,7 @@ export default DS.Model.extend(Validations, {
   transactions: DS.hasMany('transaction', { async: true }),
 
   name: attr('string'),
-  amount: attr('number'),
+  amount: attr('number', { defaultValue: 0 }),
   createdAt: attr('date'),
   updatedAt: attr('date'),
 
