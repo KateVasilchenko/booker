@@ -1,7 +1,7 @@
 <div class="{{if isHidden "" "open"}} add-{{modelName}}">
     {{#if (eq modelName "transaction")}}
         <div class="add-transaction-label">
-            <span class="">{{if model.isNew "Add" "Edit"}} transaction</span>
+            <span class="">{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} transaction</span>
         </div>
         <div class="add-transaction-controls">
             {{switch-box model=model checkedProperty="isIncome" firstValueText="Expenses" secondValueText="Income"}}
@@ -24,7 +24,7 @@
             {{/input-wrapper}}
             <div class="input-wrapper-group">
                 <div class="input-wrapper">
-                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{if model.isNew "Add" "Edit"}} transaction</button>
+                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} transaction</button>
                 </div>
                 <div class="input-wrapper">
                     <button class="form-control btn btn--cancel" id="transaction-cancel-add" {{action 'close'}}>Cancel</button>
@@ -34,7 +34,7 @@
     {{/if}}
     {{#if (eq modelName "wallet")}}
         <div class="add-wallet-label">
-            <span class="">{{if model.isNew "Add" "Edit"}} wallet</span>
+            <span class="">{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</span>
         </div>
         <div class="add-wallet-controls">
             {{#input-wrapper model=model valuePath="name"}}
@@ -44,7 +44,7 @@
                 {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
             {{/input-wrapper}}
             <div class="input-wrapper">
-                <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{if model.isNew "Add" "Edit"}} wallet</button>
+                <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
             </div>
             <div class="input-wrapper">
                 <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>
