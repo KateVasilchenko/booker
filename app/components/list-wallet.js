@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   walletsRaw: null, //pass
 
   wallets: Ember.computed('walletsRaw.[]', function () {
-    return this.get('walletsRaw').rejectBy('isDeleted');
+    return this.get('walletsRaw').rejectBy('isDeleted').rejectBy('isNew');
   }),
 
   modelToDelete: null,

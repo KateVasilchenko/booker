@@ -18,7 +18,7 @@ export default Ember.Component.extend({
   }),
 
   transactions: Ember.computed('transactionsRaw.[]', function () {
-    return this.get('transactionsRaw').rejectBy('isDeleted');
+    return this.get('transactionsRaw').rejectBy('isDeleted').rejectBy('isNew');
   }),
 
   modelToDelete: null,
