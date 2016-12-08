@@ -2,10 +2,10 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  left: -87px;
+  left: -86px;
   transition: all .3s ease;
   white-space: nowrap;
-  width: 240px;
+  width: 224px;
   padding: 3px 0;
   span {
     display: block;
@@ -17,7 +17,7 @@
       user-select: none;
       &--center {
         padding: 0 3px;
-        flex: 0 0 53px;
+        flex: 0 0 39px;
       }
     }
   }
@@ -26,7 +26,8 @@
   }
 }
 .switch-wrapper {
-  width: 140px;
+  width: 125px;
+  min-width: 125px;
   height: 34px;
   margin-bottom: 0;
   overflow: hidden;
@@ -34,6 +35,8 @@
   border-radius: 4px;
   color: #fff;
   position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 .checkbox--hidden {
   display: none;

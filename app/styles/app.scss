@@ -4,6 +4,7 @@
 @import "wrapper";
 @import "panel-custom";
 @import "transactions";
+@import "wallets";
 @import "components/switch";
 @import "add-transaction";
 @import "add-wallet";
@@ -134,6 +135,9 @@ div.input-error > div.error {
   text-transform: uppercase;
   @media (min-width: 768px) {
     padding: 4px 30px;
+  }
+  .btn-group & {
+    text-transform: none;
   }
   &.active.focus,
   &.active:focus,

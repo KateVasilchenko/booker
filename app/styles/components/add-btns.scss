@@ -6,7 +6,7 @@
   transform: translateY(-50%);
   line-height: 24px;
   @media (min-width: 768px) {
-    right: 15px;
+    right: 35px;
   }
 
   .transaction-btn,
@@ -23,7 +23,7 @@
     color: $add-wallet-color;
     margin-left: 10px;
     @media (min-width: 768px) {
-      margin-left: 64px;
+      margin-left: 45px;
     }
   }
 }
