@@ -27,7 +27,7 @@ export default Ember.Component.extend({
 
       if (!controller.get('disabledButtons')) {
         controller.set('disabledButtons', true);
-        controller.setProperties('wallet', wallet);
+        controller.set('wallet', wallet);
         controller.set('hidden', false);
       }
     },

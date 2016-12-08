@@ -57,7 +57,7 @@ export default Ember.Component.extend(WalletDDMixin, TransactionDDMixin, {
     'wallet.isNew', 'wallet.isDeleted', function () {
     if (this.get('transaction') && (!this.get('wallet') || this.get('wallet.isDeleted'))) {
       this.set('model', this.get('transaction'));
-    } else if (this.get('wallet.isNew') && (!this.get('transaction') || this.get('transaction.isDeleted'))) {
+    } else if (this.get('wallet') && (!this.get('transaction') || this.get('transaction.isDeleted'))) {
       this.set('model', this.get('wallet'));
     }
     if (this.get('model')) {

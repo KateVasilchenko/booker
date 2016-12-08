@@ -1,28 +1,22 @@
 <div class="wallets-wrapper">
-    <div class="panel panel-default panel-custom wallets wallets-all">
-        <div class="panel-heading">
-            <h3 class="panel-title">WALLETS</h3>
-        </div>
-        {{#unless isHidden}}
-            {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
-        {{/unless}}
-        <div class="panel-body">
-            <div class="row row--flex">
-                <ul class="col-xs-12 list list-unstyled list-flex list-wallets">
-                    {{#each wallets as |wallet|}}
-                        <li class="list-item">
-                            <div class="list-cell list-cell--description">
-                                <div class="list-cell">{{wallet.name}}</div>
-                                <div class="list-cell">{{wallet.balance}}</div>
-                                <div class="list-cell text-right">
-                                    <button class="btn btn--hidden btn--edit" {{action "edit" wallet}}><i class="icon-edit"></i></button>
-                                    <button class="btn btn--hidden btn--delete" {{action "delete" wallet}}><i class="icon-delete"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
+    {{#unless isHidden}}
+        {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+    {{/unless}}
+
+    {{#each wallets as |wallet|}}
+        <div class="panel panel-default panel-custom wallets wallets-all">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    {{wallet.name}}
+                    <div class="text-right">
+                        <button class="btn btn--edit" {{action "edit" wallet}}><i class="icon-edit"></i></button>
+                        <button class="btn btn--delete" {{action "delete" wallet}}><i class="icon-delete"></i></button>
+                    </div>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <h2 class="balance">{{wallet.balance}} USD</h2>
             </div>
         </div>
-    </div>
+    {{/each}}
 </div>
