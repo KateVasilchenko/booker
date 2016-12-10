@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   chartOptions: {
     chart: {
       // width: 550,
-      // height: 200,
+      height: 200,
       type: 'column'
     },
     title: {
