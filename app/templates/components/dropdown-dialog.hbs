@@ -19,9 +19,9 @@
                     {{/each}}
                 {{/x-select}}
             </div>
-            {{#input-wrapper model=model valuePath="amount" }}
+            <div class="input-wrapper">
                 {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
-            {{/input-wrapper}}
+            </div>
             <div class="input-wrapper-group">
                 <div class="input-wrapper">
                     <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} transaction</button>
@@ -37,12 +37,12 @@
             <span class="">{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</span>
         </div>
         <div class="add-wallet-controls">
-            {{#input-wrapper model=model valuePath="name"}}
+            <div class="input-wrapper">
                 {{input class="form-control" placeholder="Wallet Name" value=model.name}}
-            {{/input-wrapper}}
-            {{#input-wrapper model=model valuePath="amount"}}
+            </div>
+            <div class="input-wrapper">
                 {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
-            {{/input-wrapper}}
+            </div>
             <div class="input-wrapper">
                 <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
             </div>

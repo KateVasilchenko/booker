@@ -14,8 +14,18 @@
                     </div>
                 </h3>
             </div>
-            <div class="panel-body">
-                <h2 class="balance">{{wallet.balance}} USD</h2>
+            <div class="panel-body row">
+                <div class="col-md-2">
+                    <h5 class="balance-title">Total balance</h5>
+                    <h2 class="balance">{{wallet.balance}} USD</h2>
+                    <h5 class="light-date">{{wallet.currentMonthAndYear}}</h5>
+                </div>
+                {{charts-wallets
+                    chartMonthIncomeData=wallet.monthIncomeData
+                    chartMonthOutcomeData=wallet.monthOutcomeData
+                    chartCategories=wallet.categories
+                    chartIncomeData=wallet.incomeData
+                    chartOutcomeData=wallet.outcomeData}}
             </div>
         </div>
     {{/each}}
