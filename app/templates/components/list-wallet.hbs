@@ -8,17 +8,19 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {{wallet.name}}
-                    <div class="text-right">
-                        <button class="btn btn--edit" {{action "edit" wallet}}><i class="icon-edit"></i></button>
-                        <button class="btn btn--delete" {{action "delete" wallet}}><i class="icon-delete"></i></button>
-                    </div>
                 </h3>
+                <div class="text-right">
+                    <button class="btn btn--edit" {{action "edit" wallet}}><i class="icon-edit"></i></button>
+                    <button class="btn btn--delete" {{action "delete" wallet}}><i class="icon-delete"></i></button>
+                </div>
             </div>
-            <div class="panel-body row">
-                <div class="col-md-2">
+            <div class="panel-body row row--flex">
+                <div class="wallets-info">
+                  <div class="wallets-balance">
                     <h5 class="balance-title">Total balance</h5>
                     <h2 class="balance">{{wallet.balance}} USD</h2>
-                    <h5 class="light-date">{{wallet.currentMonthAndYear}}</h5>
+                  </div>
+                  <h5 class="light-date">{{wallet.currentMonthAndYear}}</h5>
                 </div>
                 {{charts-wallets
                     chartMonthIncomeData=wallet.monthIncomeData
