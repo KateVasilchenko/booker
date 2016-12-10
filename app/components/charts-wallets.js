@@ -9,8 +9,8 @@ export default Ember.Component.extend({
 
   chartOptions: {
     chart: {
-      width: 400,
-      height: 200,
+      // width: 550,
+      // height: 200,
       type: 'column'
     },
     title: {
@@ -70,8 +70,8 @@ export default Ember.Component.extend({
         borderWidth: 0
       },
       series: {
-        borderRadius: 3,
-        pointWidth: 5,
+        borderRadius: 5,
+        pointWidth: 8,
         color: '', // pass
       }
     }
