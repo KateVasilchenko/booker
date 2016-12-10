@@ -59,17 +59,19 @@ export default Ember.Service.extend({
         filterOptions['filterCategoryId']
       );
     }
-    if (filterOptions['filterIsIncome']) {
-      transactions = this.filterByIsIncome(
-        transactions,
-        filterOptions['filterIsIncome']
-      );
-    }
+
     if (filterOptions['filterIsTime'] !== null) {
       transactions = this.filterByTime(
         transactions,
         filterOptions['filterIsTime'],
         filterOptions['periodChosen']
+      );
+    }
+
+    if (filterOptions['filterIsIncome']) {
+      transactions = this.filterByIsIncome(
+        transactions,
+        filterOptions['filterIsIncome']
       );
     }
 

@@ -8,6 +8,8 @@ export default Ember.Component.extend({
 
   filterCategoryId: null,
   filterIsIncome: 'all',
+  filterIsTime: 'month',
+  periodChosen: null,
 
   filterActive: Ember.observer('filterIsIncome', function () {
     this._setActive(this.get('filterIsIncome'), {
@@ -72,29 +74,37 @@ export default Ember.Component.extend({
       this.set('isHidden', false);
     },
     filterByCategory(value) {
-      this.get('filterCategoryId') === null ?
-        this.set('filterCategoryId', value) : this.set('filterCategoryId', null);
+      this.set('filterCategoryId', value);
 
       this.send('filterTransactions', {
         filterCategoryId: this.get('filterCategoryId'),
-        filterIsIncome: 'all'
+        filterIsIncome: this.get('filterIsIncome'),
+        filterIsTime: this.get('filterIsTime'),
+        periodChosen: this.get('periodChosen')
       });
     },
     filterByIsIncome(value) {
       this.set('filterIsIncome', value);
       this.send('filterTransactions', {
         filterCategoryId: this.get('filterCategoryId'),
-        filterIsIncome: 'all'
+        filterIsIncome: value,
+        filterIsTime: this.get('filterIsTime'),
+        periodChosen: this.get('periodChosen')
       });
     },
     filterTransactions(data) {
       data['filterCategoryId'] = this.get('filterCategoryId');
       data['filterIsIncome'] = this.get('filterIsIncome');
 
+      this.set('filterIsTime', data['filterIsTime']);
+      this.set('periodChosen', data['periodChosen']);
+
       this.set('transactions', this.get('transactionsFilter').filterTransactions(
         this.get('transactionsRaw'),
         data
       ));
+
+
 
       this.notifyPropertyChange('transactions');
     }
