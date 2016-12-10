@@ -19,6 +19,14 @@ export default Ember.Component.extend({
       },
       text: '', // pass
     },
+    tooltip: {
+      backgroundColor: '', // pass
+      style: {
+        color: 'white'
+      },
+      headerFormat: '',
+      pointFormat: '{point.y}'
+    },
     xAxis: {
       categories: [], // pass
       tickLength: 0,
@@ -32,12 +40,18 @@ export default Ember.Component.extend({
       lineWidth: 1,
       title: {
         text: ''
+      },
+      labels: {
+        enabled: false
       }
     }, {
       endOnTick: false,
       gridLineWidth: 0,
       title: {
         text: 'USD'
+      },
+      labels: {
+        enabled: false
       }
     }],
   },
@@ -90,6 +104,7 @@ export default Ember.Component.extend({
     });
     incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toString() + ' USD';
     incomeChart.chartOptions.title.style.color = '#63A9A9';
+    incomeChart.chartOptions.tooltip.backgroundColor = '#63A9A9';
     incomeChart.chartTheme.plotOptions.series.color = '#63A9A9';
     incomeChart.chartOptions.xAxis.categories = this.get('chartCategories');
     incomeChart.chartData[1].data = this.get('chartIncomeData');
@@ -105,6 +120,7 @@ export default Ember.Component.extend({
     });
     outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toString() + ' USD';
     outcomeChart.chartOptions.title.style.color = '#ae84c6';
+    outcomeChart.chartOptions.tooltip.backgroundColor = '#ae84c6';
     outcomeChart.chartTheme.plotOptions.series.color = '#ae84c6';
     outcomeChart.chartOptions.xAxis.categories = this.get('chartCategories');
     outcomeChart.chartData[1].data = this.get('chartOutcomeData');
