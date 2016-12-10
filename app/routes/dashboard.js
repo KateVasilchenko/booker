@@ -7,11 +7,11 @@ export default Ember.Route.extend({
     this._super(controller, model);
 
     controller.setProperties({
-      wallets: this.store.peekAll('wallet'),
-      balance: this._getTotalBalance(this.store.peekAll('wallet')),
-      transactions: this.store.peekAll('transaction'),
+      wallets: this.store.peekAll('wallet').rejectBy('isDeleted').rejectBy('isNew'),
+      balance: this._getTotalBalance(this.store.peekAll('wallet').rejectBy('isDeleted').rejectBy('isNew')),
+      transactions: this.store.peekAll('transaction').rejectBy('isDeleted').rejectBy('isNew'),
       charts: this.get('charts').prepareData({
-        transactions: this.store.peekAll('transaction'),
+        transactions: this.store.peekAll('transaction').rejectBy('isDeleted').rejectBy('isNew'),
         categories: this.store.peekAll('category')
       })
     });

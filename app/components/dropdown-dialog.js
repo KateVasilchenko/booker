@@ -37,7 +37,7 @@ export default Ember.Component.extend(WalletDDMixin, TransactionDDMixin, {
         if(model.get('validations.isValid')) {
           model.save().then(this.afterSave(model));
         } else {
-          Ember.get(this, 'flashMessages').danger('Fill out the required fields!');
+          Ember.get(this, 'flashMessages').danger('Fill out all the fields!');
         }
         this.sendAction('resetDropdownModel', this.get('modelName'));
       });

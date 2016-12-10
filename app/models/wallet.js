@@ -34,6 +34,86 @@ export default DS.Model.extend(Validations, {
   createdAt: attr('date'),
   updatedAt: attr('date'),
 
+  incomeData: null,
+  outcomeData: null,
+  categories: null,
+  monthData: null,
+  currentMonthAndYear: null,
+
+  incomeOutcomeObserver: Ember.on('init', Ember.observer(
+    'transactions.[]',
+    'transactions.@each.amount',
+    'amount',
+    'balance', function () {
+    let outcome = [];
+    let income = [];
+    let categories = [];
+
+    let now = new Date();
+    this.set('currentMonthAndYear', moment(now).format('MMMM YYYY'));
+
+    let monthIncomeData = [];
+    let monthOutcomeData = [];
+
+    var daysInMonth = function (month,year) {
+      return new Date(year, month, 0).getDate();
+    };
+
+    // TODO: find maximum amount and push it to the monthData and make monthData dark grey
+    let maxIncomeAmount = 0;
+    let maxOutcomeAmount = 0;
+
+    this.get('transactions').filter(function (transaction) {
+      return transaction.get('createdAt').getYear() === now.getYear() &&
+        transaction.get('createdAt').getMonth() === now.getMonth();
+    }).forEach(function (transaction) {
+      if (transaction.get('isIncome')) {
+        if (transaction.get('amount') > maxIncomeAmount) {
+          maxIncomeAmount = transaction.get('amount');
+        }
+      } else {
+        if (transaction.get('amount') > maxOutcomeAmount) {
+          maxOutcomeAmount = transaction.get('amount');
+        }
+      }
+    });
+
+    if (maxIncomeAmount === 0) {
+      maxIncomeAmount = 1;
+    }
+
+    if (maxOutcomeAmount === 0) {
+      maxOutcomeAmount = 1;
+    }
+
+    for (let i=0; i<daysInMonth(now.getYear(), now.getMonth()); i++) {
+      categories.push(i);
+
+      let transaction = this.get('transactions').find(function (transaction) {
+        return transaction.get('createdAt').getYear() === now.getYear() &&
+          transaction.get('createdAt').getMonth() === now.getMonth() &&
+          transaction.get('createdAt').getDay() === i;
+      });
+
+      if (transaction) {
+        if (transaction.get('isIncome')) {
+          income.push(transaction.get('amount'));
+        } else {
+          outcome.push(transaction.get('amount'));
+        }
+      }
+
+      monthIncomeData.push(maxIncomeAmount);
+      monthOutcomeData.push(maxOutcomeAmount);
+    }
+
+    this.set('incomeData', income);
+    this.set('outcomeData', outcome);
+    this.set('monthIncomeData', monthIncomeData);
+    this.set('monthOutcomeData', monthOutcomeData);
+    this.set('categories', categories);
+  })),
+
   balance: Ember.computed('transactions.[]', 'transactions.@each.amount', 'amount', function () {
     let balance = parseFloat(this.get('amount')) ? parseFloat(this.get('amount')) : 0;
     this.get('transactions').forEach(function (transaction) {

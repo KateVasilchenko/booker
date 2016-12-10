@@ -10,8 +10,12 @@ export default Factory.extend({
   isIncome() {
     return faker.random.boolean();
   },
-  createdAt() {
-    return faker.date.past();
+  createdAt(i) {
+    // if (i % 2 === 0) {
+      return faker.date.recent();
+    // } else {
+    //   return faker.date.past();
+    // }
   },
   updatedAt() {
     return faker.date.recent();
