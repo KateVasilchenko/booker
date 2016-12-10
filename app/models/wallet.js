@@ -16,7 +16,7 @@ const Validations = buildValidations({
       validator('presence', true),
       validator('number', {
         allowString: true,
-        gt: 0
+        gte: 0
       })
     ]
   },
@@ -63,7 +63,9 @@ export default DS.Model.extend(Validations, {
     let maxIncomeAmount = 0;
     let maxOutcomeAmount = 0;
 
-    this.get('transactions').filter(function (transaction) {
+    this.get('transactions')
+      .rejectBy('isNew').rejectBy('isDeleted')
+      .filter(function (transaction) {
       return transaction.get('createdAt').getYear() === now.getYear() &&
         transaction.get('createdAt').getMonth() === now.getMonth();
     }).forEach(function (transaction) {
@@ -89,7 +91,9 @@ export default DS.Model.extend(Validations, {
     for (let i=0; i<daysInMonth(now.getYear(), now.getMonth()); i++) {
       categories.push(i);
 
-      let transaction = this.get('transactions').find(function (transaction) {
+      let transaction = this.get('transactions')
+        .rejectBy('isDeleted').rejectBy('isNew')
+        .find(function (transaction) {
         return transaction.get('createdAt').getYear() === now.getYear() &&
           transaction.get('createdAt').getMonth() === now.getMonth() &&
           transaction.get('createdAt').getDay() === i;
@@ -116,7 +120,7 @@ export default DS.Model.extend(Validations, {
 
   balance: Ember.computed('transactions.[]', 'transactions.@each.amount', 'amount', function () {
     let balance = parseFloat(this.get('amount')) ? parseFloat(this.get('amount')) : 0;
-    this.get('transactions').forEach(function (transaction) {
+    this.get('transactions').rejectBy('isNew').rejectBy('isDeleted').forEach(function (transaction) {
       if (transaction.get('isIncome')) {
         balance += transaction.get('amount');
       } else {

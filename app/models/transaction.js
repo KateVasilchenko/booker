@@ -10,7 +10,7 @@ const Validations = buildValidations({
       validator('presence', true),
       validator('number', {
         allowString: true,
-        gt: 0
+        gte: 0
       })
     ]
   }
