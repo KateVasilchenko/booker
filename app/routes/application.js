@@ -10,11 +10,15 @@ export default Ember.Route.extend({
   },
   model() {
     return Ember.RSVP.hash({
-      wallet: this.store.findAll('wallet'),
+      wallets: this.store.findAll('wallet'),
       currency: this.store.findAll('currency'),
-      category: this.store.findAll('category'),
+      categories: this.store.findAll('category'),
       transaction: this.store.findAll('transaction')
     });
+  },
+  setupController(controller, model) {
+    controller.set('hidden', true);
+    this._super(...arguments);
   },
   actions: {
     resetDropdownModel(modelName) {
