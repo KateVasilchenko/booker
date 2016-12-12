@@ -37,7 +37,10 @@ export default Ember.Route.extend({
       if (!controller.get('disabledButtons')) {
         controller.set('disabledButtons', true);
         controller.setProperties({
-          'transaction': this.store.createRecord('transaction'),
+          'transaction': this.store.createRecord('transaction', {
+            category: this.store.peekAll('category').rejectBy('isNew').rejectBy('isDeleted').get('firstObject'),
+            wallet: this.store.peekAll('wallet').rejectBy('isNew').rejectBy('isDeleted').get('firstObject')
+          }),
           'categories': this.store.peekAll('category'),
           'wallets': this.store.peekAll('wallet')
         });
