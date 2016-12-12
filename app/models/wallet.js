@@ -59,12 +59,11 @@ export default DS.Model.extend(Validations, {
       return new Date(year, month, 0).getDate();
     };
 
-    // TODO: find maximum amount and push it to the monthData and make monthData dark grey
     let maxIncomeAmount = 0;
     let maxOutcomeAmount = 0;
 
     this.get('transactions')
-      .rejectBy('isNew').rejectBy('isDeleted')
+      .rejectBy('isNew').rejectBy('isDeleted').filterBy('isLoaded')
       .filter(function (transaction) {
       return transaction.get('createdAt').getYear() === now.getYear() &&
         transaction.get('createdAt').getMonth() === now.getMonth();
@@ -80,19 +79,19 @@ export default DS.Model.extend(Validations, {
       }
     });
 
-    if (maxIncomeAmount === 0) {
-      maxIncomeAmount = 1;
-    }
-
-    if (maxOutcomeAmount === 0) {
-      maxOutcomeAmount = 1;
-    }
+    // if (maxIncomeAmount === 0) {
+    //   maxIncomeAmount = 1;
+    // }
+    //
+    // if (maxOutcomeAmount === 0) {
+    //   maxOutcomeAmount = 1;
+    // }
 
     for (let i=0; i<daysInMonth(now.getYear(), now.getMonth()); i++) {
       categories.push(i);
 
       let transaction = this.get('transactions')
-        .rejectBy('isDeleted').rejectBy('isNew')
+        .rejectBy('isDeleted').rejectBy('isNew').filterBy('isLoaded')
         .find(function (transaction) {
         return transaction.get('createdAt').getYear() === now.getYear() &&
           transaction.get('createdAt').getMonth() === now.getMonth() &&
@@ -127,6 +126,7 @@ export default DS.Model.extend(Validations, {
         balance -= transaction.get('amount');
       }
     });
+
     return balance.toFixed(2);
   })
 });

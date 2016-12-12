@@ -3,10 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   renderTemplate: function(){
     this.render();
-    var myjquery = function(){
+    var addMainClass = function(){
       Ember.$('nav').parent().addClass('main');
     };
-    Ember.run.scheduleOnce('afterRender', myjquery);
+    Ember.run.scheduleOnce('afterRender', addMainClass);
   },
   model() {
     return Ember.RSVP.hash({
@@ -16,29 +16,11 @@ export default Ember.Route.extend({
       transaction: this.store.findAll('transaction')
     });
   },
-  setupController(controller, model) {
-    controller.set('hidden', true);
-    this._super(controller, model);
-    let wallets = model.wallet;
-    wallets.forEach(wallet => {
-      wallet.set('currency', model.currency.get('firstObject'));
-    });
-    let transactions = model.transaction;
-    transactions.forEach((transaction, index) => {
-      let wallet = index % 2 === 0 ? wallets.get('firstObject') : wallets.get('lastObject');
-      let category = this.store.peekRecord('category', index + 1);
-      transaction.set('wallet', wallet);
-      transaction.set('category', category);
-      category.set('transactions', [transaction]);
-      wallet.get('transactions').pushObject(transaction);
-    });
-  },
   actions: {
     resetDropdownModel(modelName) {
       this.get('controller').set(modelName, null);
     },
     transitionToDashboard() {
-      console.log('AAAA');
       this.transitionTo('dashboard');
     },
     toggleSidebar() {

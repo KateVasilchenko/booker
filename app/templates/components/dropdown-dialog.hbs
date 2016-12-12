@@ -24,7 +24,7 @@
             </div>
             <div class="input-wrapper-group">
                 <div class="input-wrapper">
-                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} transaction</button>
+                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
                 </div>
                 <div class="input-wrapper">
                     <button class="form-control btn btn--cancel" id="transaction-cancel-add" {{action 'close'}}>Cancel</button>
@@ -44,7 +44,7 @@
                 {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
             </div>
             <div class="input-wrapper">
-                <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
+                <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
             </div>
             <div class="input-wrapper">
                 <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>
