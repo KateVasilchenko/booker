@@ -1,0 +1,10 @@
+.chart-wrap {
+  padding: 15px;
+  &:first-child {
+    border-bottom: solid 1px #e2e2e2;
+    @media(min-width:992px) {
+      border-right: solid 1px #e2e2e2;
+      border-bottom: 0;
+    }
+  }
+}

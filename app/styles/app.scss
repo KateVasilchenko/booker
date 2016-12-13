@@ -13,7 +13,11 @@
 @import "list";
 @import "components/modal-window";
 @import "components/add-btns";
+<<<<<<< HEAD
+@import "components/charts";
+=======
 @import "ember-power-select";
+>>>>>>> ea674546d85f66926818f99f6b9345ab7b777477
 
 body,
 html {
@@ -27,6 +31,10 @@ body {
   & > .ember-view {
     height: 100%;
   }
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .modal {
@@ -45,6 +53,10 @@ div.input-error > div.error {
   -webkit-user-select: none;
   margin: 0 auto;
   @media (max-width: 480px) {
+    width: 100% !important;
+    height: auto !important;
+  }
+  @media (min-width: 1200px) and (max-width: 1460px) {
     width: 100% !important;
     height: auto !important;
   }
@@ -110,6 +122,13 @@ div.input-error > div.error {
     &.row--centered {
       align-items: center;
     }
+    .wallets & {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      @media (min-width:1240px) {
+        flex-direction: row;
+      }
+    }
   }
 }
 
@@ -153,7 +172,9 @@ div.input-error > div.error {
   }
 
   &--hidden {
-    visibility: hidden;
+    @media (min-width: 960px) {
+      visibility: hidden;
+    }
   }
 
   &-icon {
@@ -296,9 +317,6 @@ div.input-error > div.error {
 .balance {
   color: $balance-color;
   text-transform: uppercase;
-  //@media(max-width:1280px) {
-  //  display: none;
-  //}
 
   &-title {
     font-size: 14px;
@@ -336,11 +354,27 @@ div.alert {
   opacity: 0.2;
 }
 
-h5.balance-title {
-  color: $violet;
+.balance-title {
+  margin-bottom: 5px;
+  font-size: 18px;
   font-weight: bold;
+  color: $balance-color;
 }
 
-h5.light-date {
-  margin-top: 110px;
+.balance {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 }
+
+.transactions-link {
+  a {
+    color: $show-transaction-color;
+  }
+}
+
+.wallets-link {
+  a {
+    color: $show-wallets-color;
+  }
