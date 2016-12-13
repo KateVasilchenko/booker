@@ -11,11 +11,11 @@ export default Factory.extend({
     return faker.random.boolean();
   },
   createdAt(i) {
-    // if (i % 2 === 0) {
-    //   return faker.date.recent();
-    // } else {
+    if (i % 2 === 0) {
+      return faker.date.recent();
+    } else {
       return faker.date.past();
-    // }
+    }
   },
   updatedAt() {
     return faker.date.recent();

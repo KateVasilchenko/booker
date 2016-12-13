@@ -79,14 +79,6 @@ export default DS.Model.extend(Validations, {
       }
     });
 
-    // if (maxIncomeAmount === 0) {
-    //   maxIncomeAmount = 1;
-    // }
-    //
-    // if (maxOutcomeAmount === 0) {
-    //   maxOutcomeAmount = 1;
-    // }
-
     for (let i=0; i<daysInMonth(now.getYear(), now.getMonth()); i++) {
       categories.push(i);
 
