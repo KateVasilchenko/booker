@@ -58,6 +58,7 @@
     .list-cell {
       &.color-indicator {
         width: 25px;
+        min-width: 25px;
         height: 25px;
         margin-right: 20px;
         border-radius: 2px;

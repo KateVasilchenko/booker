@@ -17,11 +17,15 @@
     background: transparent;
     border: 0;
     outline: none;
+    padding: 0 3px;
+    @media (min-width: 768px) {
+      padding: 0 6px;
+    }
   }
 
   .wallet-btn {
     color: $add-wallet-color;
-    margin-left: 10px;
+    margin-left: 0;
     @media (min-width: 768px) {
       margin-left: 45px;
     }

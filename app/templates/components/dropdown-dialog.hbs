@@ -43,12 +43,14 @@
             <div class="input-wrapper">
                 {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
             </div>
-            <div class="input-wrapper">
-                <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
-            </div>
-            <div class="input-wrapper">
-                <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>
-            </div>
+            <div class="input-wrapper-group">
+              <div class="input-wrapper">
+                  <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
+              </div>
+              <div class="input-wrapper">
+                  <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>
+              </div>
+          </div>
         </div>
     {{/if}}
 </div>
