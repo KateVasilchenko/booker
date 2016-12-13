@@ -5,7 +5,6 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       transactions: this.store.findAll("transaction"),
       own: Ember.getOwner(this),
-      categories: this.store.peekAll('category')
     });
   }
 });
