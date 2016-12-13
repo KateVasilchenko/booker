@@ -5,7 +5,7 @@
         <h3 class="panel-title">Total balance</h3>
       </div>
       <div class="panel-body">
-        <h2 class="balance">{{balance}} USD</h2>
+        <h2 class="balance">{{model.balance}} USD</h2>
       </div>
     </div>
     <div class="panel panel-default panel-custom panel-wallets">
@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
         <ul class="list list-unstyled list-flex list-wallets">
-          {{#each wallets as |wallet index|}}
+          {{#each model.wallets as |wallet index|}}
             {{#if (lt index 2)}}
               <li class="list-item">
                 <span class="list-cell list-icon"></span>
@@ -26,7 +26,7 @@
             {{/if}}
           {{/each}}
         </ul>
-        {{#if (gt wallets.length 2)}}
+        {{#if (gt model.wallets.length 2)}}
           <div class="text-right wallets-link">
             {{#link-to 'wallets'}}Show all wallets{{/link-to}}
           </div>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  {{charts-transactions charts=charts transactionsRaw=transactions}}
+  {{charts-transactions charts=model.charts transactionsRaw=model.transactions}}
 </div>
 <div class="row">
   <div class="col-xs-12 col-xlg-6">
@@ -44,7 +44,7 @@
       </div>
       <div class="panel-body">
         <ul class="list list-unstyled list-flex list-transactions">
-          {{#each (reverse transactions) as |transaction index|}}
+          {{#each (reverse model.transactions) as |transaction index|}}
             {{#if (lt index 5)}}
               <li class="list-item">
                 <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
@@ -71,7 +71,7 @@
       </div>
       <div class="panel-body">
         <ul class="list list-unstyled list-flex list-transactions">
-          {{#each (reverse transactions) as |transaction index|}}
+          {{#each (reverse model.transactions) as |transaction index|}}
             {{#if (lt index 5)}}
               <li class="list-item">
                 <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>

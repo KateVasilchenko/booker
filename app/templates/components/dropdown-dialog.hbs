@@ -5,26 +5,22 @@
         </div>
         <div class="add-transaction-controls">
             {{switch-box model=model checkedProperty="isIncome" firstValueText="Expenses" secondValueText="Income"}}
-            <div class="input-wrapper">
-                {{#x-select value=model.category action="selectCategory" required=true classNames="form-control" }}
-                    {{#each categories as |category|}}
-                        {{#x-option value=category}}{{category.name}}{{/x-option}}
-                    {{/each}}
-                {{/x-select}}
+            <div class="input-wrapper select-box-wrapper">
+                {{#power-select selected=model.category options=categories searchField="name" onchange=(action "selectCategory") as |category|}}
+                    {{category.name}}
+                {{/power-select}}
             </div>
-            <div class="input-wrapper">
-                {{#x-select value=model.wallet action="selectWallet" required=true classNames="form-control" }}
-                    {{#each wallets as |wallet|}}
-                        {{#x-option value=wallet}}{{wallet.name}}{{/x-option}}
-                    {{/each}}
-                {{/x-select}}
+            <div class="input-wrapper select-box-wrapper">
+                {{#power-select selected=model.wallet options=wallets searchField="name" onchange=(action "selectWallet") as |wallet|}}
+                    {{wallet.name}}
+                {{/power-select}}
             </div>
             <div class="input-wrapper">
                 {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
             </div>
             <div class="input-wrapper-group">
                 <div class="input-wrapper">
-                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} transaction</button>
+                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
                 </div>
                 <div class="input-wrapper">
                     <button class="form-control btn btn--cancel" id="transaction-cancel-add" {{action 'close'}}>Cancel</button>
@@ -45,7 +41,7 @@
             </div>
             <div class="input-wrapper-group">
               <div class="input-wrapper">
-                  <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Add{{else}}{{if model.isNew "Add" "Edit"}}{{/if}} wallet</button>
+                  <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
               </div>
               <div class="input-wrapper">
                   <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>

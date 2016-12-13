@@ -25,7 +25,10 @@ export default Ember.Component.extend({
         color: 'white'
       },
       headerFormat: '',
-      pointFormat: '{point.y}'
+      shared: false,
+      formatter: function() {
+        return this.series.name === 'back' ? false : this.y.toString();
+      }
     },
     xAxis: {
       categories: [], // pass
@@ -57,7 +60,11 @@ export default Ember.Component.extend({
   },
 
   chartData: [{
+    name: 'back',
+    color: 'rgba(0, 0, 0, 0.20)',
+    data: []
    }, {
+    name: 'front',
     data: [] // pass
   }],
 
@@ -102,31 +109,25 @@ export default Ember.Component.extend({
     this.get('chartIncomeData').forEach(function (income) {
       totalIncome += income;
     });
-    incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toString() + ' USD';
+    incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toFixed(2).toString() + ' USD';
     incomeChart.chartOptions.title.style.color = '#63A9A9';
     incomeChart.chartOptions.tooltip.backgroundColor = '#63A9A9';
     incomeChart.chartTheme.plotOptions.series.color = '#63A9A9';
     incomeChart.chartOptions.xAxis.categories = this.get('chartCategories');
     incomeChart.chartData[1].data = this.get('chartIncomeData');
-    incomeChart.chartData[0] = {
-      data: this.get('chartMonthIncomeData'),
-      color: 'rgba(0, 0, 0, 0.20)'
-    };
+    incomeChart.chartData[0].data = this.get('chartMonthIncomeData');
 
     let outcomeChart = this.get('charts.outcome');
     let totalOutcome = 0;
     this.get('chartOutcomeData').forEach(function (outcome) {
       totalOutcome += outcome;
     });
-    outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toString() + ' USD';
+    outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toFixed(2).toString() + ' USD';
     outcomeChart.chartOptions.title.style.color = '#ae84c6';
     outcomeChart.chartOptions.tooltip.backgroundColor = '#ae84c6';
     outcomeChart.chartTheme.plotOptions.series.color = '#ae84c6';
     outcomeChart.chartOptions.xAxis.categories = this.get('chartCategories');
     outcomeChart.chartData[1].data = this.get('chartOutcomeData');
-    outcomeChart.chartData[0] = {
-      data: this.get('chartMonthOutcomeData'),
-      color: 'rgba(0, 0, 0, 0.20)'
-    };
+    outcomeChart.chartData[0].data = this.get('chartMonthOutcomeData');
   }
 });

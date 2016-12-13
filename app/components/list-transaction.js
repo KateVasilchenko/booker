@@ -6,6 +6,10 @@ export default Ember.Component.extend({
 
   transactionsRaw: null, //pass
 
+  categories: Ember.computed(function () {
+    return this.get('store').peekAll('category');
+  }),
+
   filterCategoryId: null,
   filterIsIncome: 'all',
   filterIsTime: 'month',
