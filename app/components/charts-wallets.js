@@ -109,7 +109,7 @@ export default Ember.Component.extend({
     this.get('chartIncomeData').forEach(function (income) {
       totalIncome += income;
     });
-    incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toString() + ' USD';
+    incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toFixed(2).toString() + ' USD';
     incomeChart.chartOptions.title.style.color = '#63A9A9';
     incomeChart.chartOptions.tooltip.backgroundColor = '#63A9A9';
     incomeChart.chartTheme.plotOptions.series.color = '#63A9A9';
@@ -122,7 +122,7 @@ export default Ember.Component.extend({
     this.get('chartOutcomeData').forEach(function (outcome) {
       totalOutcome += outcome;
     });
-    outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toString() + ' USD';
+    outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toFixed(2).toString() + ' USD';
     outcomeChart.chartOptions.title.style.color = '#ae84c6';
     outcomeChart.chartOptions.tooltip.backgroundColor = '#ae84c6';
     outcomeChart.chartTheme.plotOptions.series.color = '#ae84c6';
