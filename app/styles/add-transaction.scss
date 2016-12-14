@@ -78,13 +78,8 @@
       min-width: 125px;
     }
     .transaction-btn {
-      display: block;
-      width: 100%;
       color: #fff;
-      cursor: pointer;
       background: $add-transaction-color;
       border-color: $add-transaction-color;
-      text-transform: uppercase;
-      min-width: 170px;
     }
 }

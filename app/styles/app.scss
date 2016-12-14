@@ -14,7 +14,7 @@
 @import "components/modal-window";
 @import "components/add-btns";
 @import "components/charts";
-@import "ember-power-select";
+@import "components/custom-select";
 
 body,
 html {
@@ -27,6 +27,53 @@ body {
 
   & > .ember-view {
     height: 100%;
+  }
+}
+
+* {
+  outline: none;
+}
+
+.form-control {
+  box-shadow: none;
+  font-size: 16px;
+  color: #8c8c8d;
+  &--skimpy {
+    width: auto;
+  }
+  &:focus {
+    box-shadow: none;
+    border: solid 1px #4e6cb3;
+  }
+  .add-transaction-controls .input-group &,
+  .add-wallet-controls .input-group &  {
+    border-radius: 4px;
+    padding-right: 73px;
+  }
+}
+
+.input-group {
+  .add-transaction-controls &,
+  .add-wallet-controls & {
+    width: 210px;
+  }
+}
+
+.input-group-addon {
+  .add-transaction-controls &,
+  .add-wallet-controls & {
+    font-size: 16px;
+    color: #bab8bb;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 58px;
+    height: 100%;
+    z-index: 4;
+    border: 1px solid transparent;
+    border-left: solid 1px #ccc;
+    line-height: 22px;
   }
 }
 
@@ -129,12 +176,6 @@ div.input-error > div.error {
   }
 }
 
-.form-control {
-  &--skimpy {
-    width: auto;
-  }
-}
-
 .m-hidden {
   @media (max-width: 768px) {
     display: none;
@@ -171,6 +212,10 @@ div.input-error > div.error {
   &--hidden {
     @media (min-width: 960px) {
       visibility: hidden;
+    }
+    .list.list-flex .list-item:hover &,
+    .wallets-all:hover & {
+      visibility: visible;
     }
   }
 

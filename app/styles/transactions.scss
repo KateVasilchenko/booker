@@ -86,9 +86,9 @@
           background-color: #f9f9f9;
         }
 
-        .btn--hidden {
-          visibility: visible;
-        }
+        // .btn--hidden {
+        //   visibility: visible;
+        // }
       }
 
       .list-cell {
@@ -110,12 +110,12 @@
           }
         }
 
-        &--operation {
-          @media (min-width:768px) {
-            min-width: 180px;
-            flex: 0 0 180px;
-          }
-        }
+        // &--operation {
+        //   @media (min-width:768px) {
+        //     min-width: 180px;
+        //     flex: 0 0 180px;
+        //   }
+        // }
       }
     }
   }

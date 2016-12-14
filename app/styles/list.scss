@@ -26,26 +26,25 @@
           padding: 15px 20px;
         }
         .list-cell {
-          flex: 0 0 24%;
+          flex: 0 0 20%;
           padding-right: 10px;
           @media(min-width:960px) {
             padding-right: 20px;
-            flex: 0 0 25%;
+            flex: 0 0 23%;
           }
-          &:first-child {
-            flex: 0 0 24%;
-            @media(min-width:960px) {
-              flex: 0 0 20%;
-            }
-          }
-          &--operation {
-              flex: 0 0 28%;
-              @media(min-width:960px) {
-                flex: 0 0 30%;
-              }
-          }
+          // &:first-child {
+          //   flex: 0 0 20%;
+          // }
+          // &--operation {
+          //     flex: 0 0 20%;
+          // }
           &:last-child {
             padding-right: 0;
+            .transactions-wrapper & {
+              @media(min-width:960px) {
+                flex: 0 0 8%;
+              }
+            }
           }
         }
       }
@@ -91,6 +90,12 @@
         align-items: center;
         min-height: 60px;
         padding: 0 20px;
+        .transactions & {
+          height: 155px;
+          @media (min-width:768px) {
+            height: auto;
+          }
+        }
       }
     }
   }
