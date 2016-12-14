@@ -13,11 +13,8 @@
 @import "list";
 @import "components/modal-window";
 @import "components/add-btns";
-<<<<<<< HEAD
 @import "components/charts";
-=======
 @import "ember-power-select";
->>>>>>> ea674546d85f66926818f99f6b9345ab7b777477
 
 body,
 html {
@@ -378,3 +375,4 @@ div.alert {
   a {
     color: $show-wallets-color;
   }
+}
