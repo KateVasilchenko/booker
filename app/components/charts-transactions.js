@@ -16,22 +16,23 @@ export default Ember.Component.extend({
 
   actions: {
     filterTransactions(data) {
-      this.set('transactions', this.get('transactionsFilter').filterTransactions(
-        this.get('transactionsRaw'),
-        data
-      ));
+      Ember.run.once(() => {
+        this.set('transactions', this.get('transactionsFilter').filterTransactions(
+          this.get('transactionsRaw'),
+          data
+        ));
 
-      this.set('charts', this.get('chartsService').prepareData({
-        transactions: this.get('transactions'),
-        categories: this.get('store').peekAll('category')
-      }));
+        this.set('charts', this.get('chartsService').prepareData({
+          transactions: this.get('transactions'),
+          categories: this.get('store').peekAll('category')
+        }));
 
-      this.notifyPropertyChange('transactions');
-      this.set('drawCharts', false);
-
-      Ember.run.later(this, () => {
-        this.set('drawCharts',true)
-      }, 1);
+        this.notifyPropertyChange('transactions');
+        this.set('drawCharts', false);
+        Ember.run.later(() => {
+          this.set('drawCharts',true)
+        }, 1);
+      });
     }
   }
 });
