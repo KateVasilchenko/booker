@@ -7,6 +7,8 @@ export default Ember.Component.extend({
   charts: null, // pass
   transactionsRaw: null, // pass
 
+  drawCharts: true,
+
   transactions: Ember.computed('transactionsRaw.[]', function () {
       console.log('Transactions RAW changed');
       return this.get('transactionsRaw');
@@ -25,6 +27,11 @@ export default Ember.Component.extend({
       }));
 
       this.notifyPropertyChange('transactions');
+      this.set('drawCharts', false);
+
+      Ember.run.later(this, () => {
+        this.set('drawCharts',true)
+      }, 1);
     }
   }
 });
