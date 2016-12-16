@@ -2,54 +2,56 @@
   height: 100%;
   .content {
       min-height: 100%;
-      padding-top: 80px;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      padding-left: $sidebar-width;
       background: #e8e9eb;
-      @media(min-width:767px) {
-        padding-left: $sidebar-width;
-      }
+      overflow-x: hidden;
     }
+  .content-wrap {
+    position: relative;
+    padding-top: 80px;
+    transition: all 0.5s ease;
+    @media(min-width:768px) {
+      padding-left: $sidebar-width;
+    }
+  }
     &.toggled {
-      .add-transaction {
-      }
-      .content {
-        padding-left: 0;
-      }
       .sidebar {
-        transform: translateX(-100%);
-      }
-      .navbar {
-        padding-left: 0;
-      }
-      .content-wrapper {
-          padding-left: 15px;
+        left: -$sidebar-width;
       }
     }
   .content-wrapper {
       width: 100%;
       min-height: 100%;
-      padding: 20px 10px 0;
+      padding: 20px 0 0;
       background-color: $main-bg;
-      -webkit-transition: transform 0.5s ease;
-      -moz-transition: transform 0.5s ease;
-      -o-transition: transform 0.5s ease;
-      transition: transform 0.5s ease;
+      transition: all 0.5s ease;
+      @media(min-width:768px) {
+        padding: 20px 10px 0;
+      }
+  }
+}
+
+.container-fluid {
+  .navbar & {
+    position: relative;
+    background: #fff;
+    z-index: 4;
   }
 }
 
 @media(max-width:767px) {
     .wrapper {
-      .content {
-        padding-left: 0;
-        transform: translateX($sidebar-width);
+      .content-wrap {
+        left: $sidebar-width;
+      }
+      .navbar {
+        left: $sidebar-width;
       }
       &.toggled {
-        .content {
-          transform: translateX(0);
+        .content-wrap {
+          left: 0;
+        }
+        .navbar {
+          left: 0;
         }
       }
     }

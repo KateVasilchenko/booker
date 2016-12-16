@@ -8,9 +8,11 @@
   @media (min-width: 768px) {
     right: 35px;
   }
+}
 
-  .transaction-btn,
-  .wallet-btn {
+.transaction-btn,
+.wallet-btn {
+  .add-btns & {
     text-decoration: none;
     color: $add-transaction-color;
     cursor: pointer;
@@ -23,7 +25,20 @@
     }
   }
 
-  .wallet-btn {
+  .add-btns.disabled & {
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0.2;
+  }
+}
+
+.wallet-btn {
+  .add-btns & {
     color: $add-wallet-color;
     margin-left: 0;
     @media (min-width: 768px) {

@@ -30,6 +30,12 @@
       display: flex;
       align-items: center;
   }
+  .panel-charts & {
+    padding: 9px 15px;
+    @media(min-width:768px) {
+      padding: 9px 30px;
+    }
+  }
 }
 
 .panel-body {

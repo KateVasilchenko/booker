@@ -1,7 +1,3 @@
-.wallets-wrapper {
-
-}
-
 .wallets-info {
   flex: 0 0 auto;
   display: flex;
@@ -20,6 +16,16 @@
   padding: 0 15px;
 }
 
+.wallets-link {
+  a {
+    color: $show-wallets-color;
+  }
+}
+
 .wallets-balance {
   flex: 1 1 auto;
+}
+
+.light-date {
+  margin-bottom: 13px;
 }

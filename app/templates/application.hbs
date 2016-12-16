@@ -15,38 +15,43 @@
     <div class="sidebar-bottom-block"></div>
   </div>
   <div class="content">
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          {{#link-to "dashboard" classNames="navbar-brand" }}Booker{{/link-to}}
-          <div class="nav navbar-nav">
-            <span id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </span>
-            {{#each flashMessages.queue as |flash|}}
-              {{flash-message flash=flash}}
+    <div class="content-wrap">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            {{#link-to "dashboard" classNames="navbar-brand" }}Booker{{/link-to}}
+            <div class="nav navbar-nav">
+              <span id="hamburger" {{action 'toggleSidebar'}} class="navbar-toggle burger-btn">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </span>
+              {{#each flashMessages.queue as |flash|}}
+                {{#flash-message flash=flash as |component flash|}}
+                  <p class="alert-message">{{flash.message}}</p>
+                    <button type="button" class="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+                {{/flash-message}}
             {{/each}}
-            <div class='add-btns {{if disabledButtons "disabled" ""}}'>
-              <button {{action "addTransaction"}} class="transaction-btn" id="transaction-quick-add"><i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span></button>
-              <button {{action "addWallet"}} class="wallet-btn" id="wallet-quick-add"><i class="nav-icon nav-icon--green icon--circle"></i><span class="m-hidden">Add wallet</span></button>
+              <div class='add-btns {{if disabledButtons "disabled" ""}}'>
+                <button {{action "addTransaction"}} class="transaction-btn" id="transaction-quick-add"><i class="nav-icon icon--circle"></i><span class="m-hidden">Add transaction</span></button>
+                <button {{action "addWallet"}} class="wallet-btn" id="wallet-quick-add"><i class="nav-icon nav-icon--green icon--circle"></i><span class="m-hidden">Add wallet</span></button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-    {{dropdown-dialog
-        resetDropdownModel="resetDropdownModel"
-        disabledButtons=disabledButtons
-        transaction=transaction
-        wallet=wallet
-        isHidden=hidden
-        categories=model.categories
-        wallets=model.wallets}}
-    <div id="page-content-wrapper" class="content-wrapper">
-      <div class="container-fluid">
-        {{outlet}}
+        {{dropdown-dialog
+            resetDropdownModel="resetDropdownModel"
+            disabledButtons=disabledButtons
+            transaction=transaction
+            wallet=wallet
+            isHidden=hidden
+            categories=model.categories
+            wallets=model.wallets}}
+      </nav>
+      <div id="page-content-wrapper" class="content-wrapper">
+        <div class="container-fluid">
+          {{outlet}}
+        </div>
       </div>
     </div>
   </div>

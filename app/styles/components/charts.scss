@@ -8,3 +8,16 @@
     }
   }
 }
+
+.chart {
+  -webkit-user-select: none;
+  margin: 0 auto;
+  @media (max-width: 480px) {
+    width: 100% !important;
+    height: auto !important;
+  }
+  @media (min-width: 1200px) and (max-width: 1460px) {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
