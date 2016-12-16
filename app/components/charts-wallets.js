@@ -9,11 +9,12 @@ export default Ember.Component.extend({
 
   chartOptions: {
     chart: {
-      // width: 550,
       height: 200,
       type: 'column'
     },
     title: {
+      align: 'left',
+      x: 24,
       style: {
         color: '' // pass
       },
