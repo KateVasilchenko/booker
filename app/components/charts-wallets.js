@@ -25,9 +25,16 @@ export default Ember.Component.extend({
         color: 'white'
       },
       headerFormat: '',
+      useHTML: true,
       shared: false,
       formatter: function() {
-        return this.series.name === 'back' ? false : this.y.toString();
+        return this.series.name === 'back' ?
+          false :
+          '<span style="font-size: 10px; text-align: center">' +
+            this.point.name +
+          '</span></br><b style="font-size: 16px; text-align: center;">' +
+            this.y.toString() +
+          '</b>';
       }
     },
     xAxis: {
@@ -107,7 +114,7 @@ export default Ember.Component.extend({
     let incomeChart = this.get('charts.income');
     let totalIncome = 0;
     this.get('chartIncomeData').forEach(function (income) {
-      totalIncome += income;
+      totalIncome += income[1];
     });
     incomeChart.chartOptions.title.text = 'Income ' + totalIncome.toFixed(2).toString() + ' USD';
     incomeChart.chartOptions.title.style.color = '#63A9A9';
@@ -120,7 +127,7 @@ export default Ember.Component.extend({
     let outcomeChart = this.get('charts.outcome');
     let totalOutcome = 0;
     this.get('chartOutcomeData').forEach(function (outcome) {
-      totalOutcome += outcome;
+      totalOutcome += outcome[1];
     });
     outcomeChart.chartOptions.title.text = 'Expenses ' + totalOutcome.toFixed(2).toString() + ' USD';
     outcomeChart.chartOptions.title.style.color = '#ae84c6';

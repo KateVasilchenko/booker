@@ -100,9 +100,9 @@ export default DS.Model.extend(Validations, {
 
       if (transaction) {
         if (transaction.get('isIncome')) {
-          income.push(transaction.get('amount'));
+          income.push([moment(transaction.get('createdAt')).format('DD.MM.YYYY'), transaction.get('amount')]);
         } else {
-          outcome.push(transaction.get('amount'));
+          outcome.push([moment(transaction.get('createdAt')).format('DD.MM.YYYY'), transaction.get('amount')]);
         }
       }
 
