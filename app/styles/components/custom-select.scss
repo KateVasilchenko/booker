@@ -24,11 +24,16 @@ $ember-power-select-selected-background: #ececec!default;
   }
 }
 
+.ember-basic-dropdown-content {
+  z-index: 10000;
+}
+
 .ember-power-select-trigger {
   outline: none;
   padding-right: 50px;
   font-size: 14px;
   white-space: nowrap;
+  position: relative;
 
   &:before {
     content: "";

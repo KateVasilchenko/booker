@@ -1,38 +1,46 @@
 .sidebar {
-    z-index: 1031;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    height: 100%;
-    width: 135px;
-    // transform: translateX(0);
-    left: 0;
-    overflow-y: auto;
-    background: $aside-bg;
-    transition: all 0.5s ease;
+  z-index: 1031;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  height: 100%;
+  width: 135px;
+  // transform: translateX(0);
+  left: 0;
+  overflow-y: auto;
+  background: $aside-bg;
+  transition: all 0.5s ease;
 
-    &-top-block {
-      flex: 0 0 80px;
-      background: $aside-bg--head;
-    }
-    &-bottom-block {
-      flex: 0 0 80px;
-      background: $aside-bg--foot;
-    }
-    &-icon {
-      text-indent: 0;
-      font-size: 30px;
-      padding: 10px 15px;
-      &--wallets {
-        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAAAXNSR0IArs4c6QAAAtVJREFUSA3Flk1oE0EUx9+bTVJbakXraiyKtV6rBw8e1US9VPRiG0VBEQ+C4qWn+nFoj72LgiCIiEpsERXEVmuLIIoepBUPpS2CpdimVtqkHyRN5vmfrYmbeEs38ZHdnXlM3m//897MDpPLHvZMbLN8FVsUE7vcRTXTzExap5SOj0UO75wrDOIAoi/HN1gVVZ3EcoKI1xYOWlVfZEyI2ptDG++743A0+jWgNgWf4A2aRGSYhD6SomX3oGLbiLke8ZogxtKajrQcrO3NxvKRHTxmoETyKkGJyLnwjtk7T6dXpbrCr3i0cmixPRRKPx6YaVFEUVZyEdC/YOSz07xFRssNA+3q//kc2dmP6cGvOGMSbqTd06iZA8lF6llTJXGo3o5oJrVOXB9aDSY8YCsqRUaEOAi/GVS04c+TEuClZYqrSqnRhSp82ciKVNuj/snB5pDdCt+qoH9iOqzoix82VRphouHP8bl7YCbXEZI4iKMYkPYITiLsR6xdAE9pkdMtIXsAfcoDG0cpDQpTrPXl42H7dlnBRhSW7Dwt6z2o9PIaNrRq8qurZQcbmYCf/S9gw84tp1JMuAjNoZqTKKp/lmdJwCigCQi5tpSUXtZqIeCfLQdYEmni5pOh2g/dr6caMqTrNdckC2fUe8VCzwy0600sIsq6borIImosBHtfXEJDDkSp81rrKylJhjH1C/CZ6c5dnisWpjoHrPmdpahVUWASB5pqx+e6eb5zoYK/p9LpvacObY7hE3sG0HpN2ijOM8/BJjqmtg8fhEuRsD2cR3N1SgJegdMcMjqI9jyuvOWEg8I3z3OcFYWDxTq092X77ifSMaLwDf7sdpap/UlJhtvKBMtihHXmppKZvj6ofpD1lvyp5e6Xt7feO0mP9seqFVsdjKOJMNtwerqxIKcapR7DGr/3K5HquHC0bjGv2vACQUW8FadT7HIeGksmldHjWNtT2ai/AcGaF2oSa/lOAAAAAElFTkSuQmCC');
-        width: 60px;
-        height: 41px;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-    }
+  .toggled & {
+    left: -$sidebar-width;
+  }
 }
+
+.sidebar-top-block {
+  flex: 0 0 80px;
+  background: $aside-bg--head;
+}
+
+.sidebar-bottom-block {
+  flex: 0 0 80px;
+  background: $aside-bg--foot;
+}
+
+.sidebar-icon {
+  text-indent: 0;
+  font-size: 30px;
+  padding: 10px 15px;
+
+  &--wallets {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAAAXNSR0IArs4c6QAAAtVJREFUSA3Flk1oE0EUx9+bTVJbakXraiyKtV6rBw8e1US9VPRiG0VBEQ+C4qWn+nFoj72LgiCIiEpsERXEVmuLIIoepBUPpS2CpdimVtqkHyRN5vmfrYmbeEs38ZHdnXlM3m//897MDpPLHvZMbLN8FVsUE7vcRTXTzExap5SOj0UO75wrDOIAoi/HN1gVVZ3EcoKI1xYOWlVfZEyI2ptDG++743A0+jWgNgWf4A2aRGSYhD6SomX3oGLbiLke8ZogxtKajrQcrO3NxvKRHTxmoETyKkGJyLnwjtk7T6dXpbrCr3i0cmixPRRKPx6YaVFEUVZyEdC/YOSz07xFRssNA+3q//kc2dmP6cGvOGMSbqTd06iZA8lF6llTJXGo3o5oJrVOXB9aDSY8YCsqRUaEOAi/GVS04c+TEuClZYqrSqnRhSp82ciKVNuj/snB5pDdCt+qoH9iOqzoix82VRphouHP8bl7YCbXEZI4iKMYkPYITiLsR6xdAE9pkdMtIXsAfcoDG0cpDQpTrPXl42H7dlnBRhSW7Dwt6z2o9PIaNrRq8qurZQcbmYCf/S9gw84tp1JMuAjNoZqTKKp/lmdJwCigCQi5tpSUXtZqIeCfLQdYEmni5pOh2g/dr6caMqTrNdckC2fUe8VCzwy0600sIsq6borIImosBHtfXEJDDkSp81rrKylJhjH1C/CZ6c5dnisWpjoHrPmdpahVUWASB5pqx+e6eb5zoYK/p9LpvacObY7hE3sG0HpN2ijOM8/BJjqmtg8fhEuRsD2cR3N1SgJegdMcMjqI9jyuvOWEg8I3z3OcFYWDxTq092X77ifSMaLwDf7sdpap/UlJhtvKBMtihHXmppKZvj6ofpD1lvyp5e6Xt7feO0mP9seqFVsdjKOJMNtwerqxIKcapR7DGr/3K5HquHC0bjGv2vACQUW8FadT7HIeGksmldHjWNtT2ai/AcGaF2oSa/lOAAAAAElFTkSuQmCC');
+    width: 60px;
+    height: 41px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 .sidebar-nav {
   flex: 1 1 auto;
   width: 100%;
@@ -40,38 +48,45 @@
   padding: 0;
   margin: 0;
   list-style: none;
-    a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
-      font-size: 16px;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    font-size: 16px;
+    text-decoration: none;
+    color: $nav-link-color;
+
+    &:hover {
       text-decoration: none;
-      color: $nav-link-color;
-      &:hover {
-        text-decoration: none;
-        color: $nav-link-color--hover;
-        .sidebar-icon--wallets {
-          background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAAAXNSR0IArs4c6QAAAexJREFUSA3FljsvBFEYhnfcCrGCRFxCIhoNjUInRLEFhQYN0Uj8AJ34BQq/QCIKakJFFBqJEBFUYpeEiFshFpHFGs87ZmRmbWXn7L7Jk+/Mmez3zndue6yIT7ZtN/PYAJav+79N5XiHhGVZT1mTYFgD85CEsBUn4VimsUVnGZ0r0A+nsAcfEIaqSaK8xTBA5Zu/STEeckvcJFbpBTGaI5X8vsTNNUxbWv01paGKE8RWGOSL1nhep90DNvxXmt8H6AXN7xWcQyceTl59lUyl6E+InBHrIdcFdkuONyiCLwhKY+DqhNiut0SNRE54LuSphUc48PoUldw/pEn64vCpdxCGSknSAXcwylBvE53q5J0vpTCalG9mxeozrRcMOgthrMIWC2Vsa6kXQpZzuhh01uGRgj87xJTxNWYzoLP5NZuxiTl+xijGft1l6+hUrANVHZSBDbwkB/KOwLHLFzGAicV17JY2QZyGPvCGW3PtYGKOG0ku7cAU6M+iAgIyMceXOHTBPYxDC6jioBh7E9oiaVvQKfhkomLPQXv4CHQ2Z+7jC5PG3gdki2da1YfZ3hju21fFMUw2DBv50+vi0a2NXgzLkC8tYPRzftCogDm4hTSELeW8gVkoV/mB1UanbpdNoAt4mEqT7IrzW/cuR98quYzYG3mRtQAAAABJRU5ErkJggg==');
-        }
+      color: $nav-link-color--hover;
+
+      .sidebar-icon--wallets {
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcCAYAAAB2+A+pAAAAAXNSR0IArs4c6QAAAexJREFUSA3FljsvBFEYhnfcCrGCRFxCIhoNjUInRLEFhQYN0Uj8AJ34BQq/QCIKakJFFBqJEBFUYpeEiFshFpHFGs87ZmRmbWXn7L7Jk+/Mmez3zndue6yIT7ZtN/PYAJav+79N5XiHhGVZT1mTYFgD85CEsBUn4VimsUVnGZ0r0A+nsAcfEIaqSaK8xTBA5Zu/STEeckvcJFbpBTGaI5X8vsTNNUxbWv01paGKE8RWGOSL1nhep90DNvxXmt8H6AXN7xWcQyceTl59lUyl6E+InBHrIdcFdkuONyiCLwhKY+DqhNiut0SNRE54LuSphUc48PoUldw/pEn64vCpdxCGSknSAXcwylBvE53q5J0vpTCalG9mxeozrRcMOgthrMIWC2Vsa6kXQpZzuhh01uGRgj87xJTxNWYzoLP5NZuxiTl+xijGft1l6+hUrANVHZSBDbwkB/KOwLHLFzGAicV17JY2QZyGPvCGW3PtYGKOG0ku7cAU6M+iAgIyMceXOHTBPYxDC6jioBh7E9oiaVvQKfhkomLPQXv4CHQ2Z+7jC5PG3gdki2da1YfZ3hju21fFMUw2DBv50+vi0a2NXgzLkC8tYPRzftCogDm4hTSELeW8gVkoV/mB1UanbpdNoAt4mEqT7IrzW/cuR98quYzYG3mRtQAAAABJRU5ErkJggg==');
       }
-      &:active,
-      &:focus,
-      &.active {
-          text-decoration: none;
-          color: $nav-link-color--hover;
-        }
+    }
+
+    &.active,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: $nav-link-color--hover;
     }
   }
-  .sidebar-brand {
-      height: 65px;
-      font-size: 18px;
-      line-height: 60px;
-      a {
-          color: #999;
-          &:hover {
-              color: #fff;
-              background: none;
-          }
-      }
+}
+
+.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+
+  a {
+    color: #999;
+
+    &:hover {
+      color: #fff;
+      background: none;
+    }
   }
+}

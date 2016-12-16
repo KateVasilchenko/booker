@@ -1,12 +1,16 @@
 .add-btns {
   height: auto;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
   line-height: 24px;
-  @media (min-width: 768px) {
-    right: 35px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  @media (min-width: 480px) {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    right: 0;
   }
 }
 
@@ -20,8 +24,10 @@
     border: 0;
     outline: none;
     padding: 0 3px;
+    text-align: right;
     @media (min-width: 768px) {
       padding: 0 6px;
+      text-align: left;
     }
   }
 
@@ -40,7 +46,7 @@
 .wallet-btn {
   .add-btns & {
     color: $add-wallet-color;
-    margin-left: 0;
+    margin-left: 30px;
     @media (min-width: 768px) {
       margin-left: 45px;
     }

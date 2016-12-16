@@ -1,32 +1,15 @@
 .wrapper {
   height: 100%;
-  .content {
-      min-height: 100%;
-      background: #e8e9eb;
-      overflow-x: hidden;
-    }
-  .content-wrap {
-    position: relative;
-    padding-top: 80px;
-    transition: all 0.5s ease;
-    @media(min-width:768px) {
-      padding-left: $sidebar-width;
-    }
-  }
-    &.toggled {
-      .sidebar {
-        left: -$sidebar-width;
-      }
-    }
-  .content-wrapper {
-      width: 100%;
-      min-height: 100%;
-      padding: 20px 0 0;
-      background-color: $main-bg;
-      transition: all 0.5s ease;
-      @media(min-width:768px) {
-        padding: 20px 10px 0;
-      }
+}
+
+.content-wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding: 20px 0 0;
+  background-color: $main-bg;
+  transition: all 0.5s ease;
+  @media(min-width:768px) {
+    padding: 20px 10px 0;
   }
 }
 
@@ -38,21 +21,23 @@
   }
 }
 
-@media(max-width:767px) {
-    .wrapper {
-      .content-wrap {
-        left: $sidebar-width;
-      }
-      .navbar {
-        left: $sidebar-width;
-      }
-      &.toggled {
-        .content-wrap {
-          left: 0;
-        }
-        .navbar {
-          left: 0;
-        }
-      }
-    }
+.content {
+  min-height: 100%;
+  background: #e8edf9;
+  overflow-x: hidden;
+}
+
+.content-wrap {
+  position: relative;
+  padding-top: 80px;
+  transition: all 0.5s ease;
+  left: $sidebar-width;
+
+  .toggled & {
+    left: 0;
+  }
+  @media(min-width:768px) {
+    left: 0;
+    padding-left: $sidebar-width;
+  }
 }
