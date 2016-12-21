@@ -59,7 +59,7 @@
           {{/each}}
         </ul>
         <div class="text-right transactions-link">
-          {{#link-to 'transactions'}}Show all transactions{{/link-to}}
+          {{#link-to 'transactions' (query-params isIncome=false)}}Show all transactions{{/link-to}}
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
           {{/each}}
         </ul>
         <div class="text-right transactions-link">
-          {{#link-to 'transactions'}}Show all transactions{{/link-to}}
+          {{#link-to 'transactions' (query-params isIncome=true)}}Show all transactions{{/link-to}}
         </div>
       </div>
     </div>

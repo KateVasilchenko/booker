@@ -20,6 +20,9 @@ export default Ember.Service.extend({
     outcomeDataset.label = 'Outcome';
     let categoriesNames = [];
 
+    let totalIncome = 0;
+    let totalOutcome = 0;
+
     entities.categories.forEach(function (category) {
       if (category.get('transactions.length')) {
         categoriesNames.push(category.get('name'));
@@ -30,15 +33,17 @@ export default Ember.Service.extend({
         }).forEach(function (transaction) {
           if (transaction.get('isIncome')) {
             incomeBalance += parseFloat(transaction.get('amount'));
+            totalIncome += parseFloat(transaction.get('amount'));
           } else {
             outcomeBalance += parseFloat(transaction.get('amount'));
+            totalOutcome += parseFloat(transaction.get('amount'));
           }
         });
         incomeDataset.data.push(incomeBalance);
-        incomeDataset.backgroundColor = 'rgba(59, 103, 208, 0.61)';
-        incomeDataset.pointBackgroundColor = '#4e6cb3';
-        incomeDataset.pointBorderColor = 'rgba(59, 103, 208, 0.61)';
-        incomeDataset.borderColor = '#4e6cb3';
+        incomeDataset.backgroundColor = 'rgba(99, 168, 168, 0.61)';
+        incomeDataset.pointBackgroundColor = '#63A8A8';
+        incomeDataset.pointBorderColor = 'rgba(99, 168, 168, 0.61)';
+        incomeDataset.borderColor = '#63A8A8';
         outcomeDataset.data.push(outcomeBalance);
         outcomeDataset.backgroundColor = 'rgba(200, 116, 200, 0.48)';
         outcomeDataset.pointBackgroundColor = '#ca70c5';
@@ -47,8 +52,33 @@ export default Ember.Service.extend({
       }
     });
 
+    let options = {
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        position: 'top',
+        fontColor: '',
+        fontStyle: 'normal',
+        fontSize: 20,
+        text: ''
+      },
+      responsive: false
+    };
+
+    let optionsIncome = Ember.copy(options, true);
+    optionsIncome.title.fontColor = '#63A9A9';
+    optionsIncome.title.text = 'Income ' + totalIncome.toFixed(2).toString() + ' USD';
+
+
+    let optionsOutcome = Ember.copy(options, true);
+    optionsOutcome.title.fontColor = '#ae84c6';
+    optionsOutcome.title.text = 'Expenses ' + totalOutcome.toFixed(2).toString() + ' USD';
+
     return {
-      options: { responsive: false },
+      optionsIncome: optionsIncome,
+      optionsOutcome: optionsOutcome,
       incomeData: {
         labels: categoriesNames,
         datasets: [incomeDataset]

@@ -4,7 +4,9 @@
       <h3 class="panel-title">TRANSACTIONS</h3>
     </div>
     {{#unless isHidden}}
-      {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+        {{#ember-wormhole to="confirm-delete"}}
+            {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+        {{/ember-wormhole}}
     {{/unless}}
     <div class="panel-body">
       <div class="row--flex form-group transactions-filter">

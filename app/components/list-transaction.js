@@ -100,6 +100,7 @@ export default Ember.Component.extend({
       data['filterCategoryId'] = this.get('filterCategoryId');
       data['filterIsIncome'] = this.get('filterIsIncome');
 
+      this.set('filterIsIncome', data['filterIsIncome']);
       this.set('filterIsTime', data['filterIsTime']);
       this.set('periodChosen', data['periodChosen']);
 
@@ -107,8 +108,6 @@ export default Ember.Component.extend({
         this.get('transactionsRaw'),
         data
       ));
-
-
 
       this.notifyPropertyChange('transactions');
     }
@@ -119,10 +118,17 @@ export default Ember.Component.extend({
   },
   init() {
     this._super(...arguments);
-    this.send('filterTransactions', {
-      filterCategoryId: null,
-      filterIsIncome: 'all'
-    });
+    let filterIsIncome = 'all';
+    if (this.get('con.isIncome') !== undefined) {
+      if (this.get('con.isIncome') === 'false') {
+        filterIsIncome = 'expenses';
+      } else if (this.get('con.isIncome') === 'true') {
+        filterIsIncome = 'income';
+      }
+    }
+    this.set('filterIsIncome', filterIsIncome);
+    this.get('con').set('isIncome', null);
+    this.send('filterTransactions', {});
   },
   _setActive(activeElementKey, allElements) {
     for (var key in allElements) {

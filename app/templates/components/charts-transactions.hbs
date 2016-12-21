@@ -7,12 +7,14 @@
             </div>
         </div>
         <div class="panel-body row">
-            <div class="col-md-6 chart-wrap">
-                {{ember-chart type="radar" class="chart" data=charts.outcomeData options=charts.options width=300 height=295}}
-            </div>
-            <div class="col-md-6 chart-wrap">
-                {{ember-chart type="radar" class="chart" data=charts.incomeData options=charts.options width=300 height=295}}
-            </div>
+            {{#if drawCharts}}
+                <div class="col-md-6 chart-wrap">
+                    {{ember-chart type="radar" class="chart" data=charts.outcomeData options=charts.optionsOutcome width=300 height=295}}
+                </div>
+                <div class="col-md-6 chart-wrap">
+                    {{ember-chart type="radar" class="chart" data=charts.incomeData options=charts.optionsIncome width=300 height=295}}
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>
