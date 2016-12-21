@@ -6,14 +6,18 @@
   left: 0;
   height: 100%;
   width: 135px;
-  // transform: translateX(0);
+  transform: translateX(0);
   left: 0;
   overflow-y: auto;
   background: $aside-bg;
-  transition: all 0.5s ease;
+  will-change: left;
+  transition: all 0.3s linear 0s;
+
+  transform: translate3d(0, 0, 0);
 
   .toggled & {
-    left: -$sidebar-width;
+    // left: -$sidebar-width;
+    transform: translate3d(-$sidebar-width, 0, 0);
   }
 }
 

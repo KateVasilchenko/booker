@@ -15,7 +15,6 @@
     <div class="sidebar-bottom-block"></div>
   </div>
   <div class="content">
-    <div class="content-wrap">
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -47,11 +46,12 @@
         </div>
         {{dropdown-dialog resetDropdownModel="resetDropdownModel" disabledButtons=disabledButtons transaction=transaction wallet=wallet isHidden=hidden categories=model.categories wallets=model.wallets}}
       </nav>
-      <div id="page-content-wrapper" class="content-wrapper">
-        <div class="container-fluid">
-          {{outlet}}
+      <div class="content-wrap">
+        <div id="page-content-wrapper" class="content-wrapper">
+          <div class="container-fluid">
+            {{outlet}}
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

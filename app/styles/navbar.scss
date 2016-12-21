@@ -1,14 +1,16 @@
 .navbar {
   min-height: 80px;
   width: 100%;
-  transition: all 0.5s ease;
-  left: $sidebar-width;
+  transition: all 0.3s linear 0s;
+
+  transform: translate3d($sidebar-width, 0, 0);
+  will-change: left, padding-left;
   @media(min-width:767px) {
     padding-left: $sidebar-width;
-    left: 0;
+    transform: translate3d(0, 0, 0);
   }
   .toggled & {
-    left: 0;
+    transform: translate3d(0, 0, 0);
   }
 
   &.navbar-fixed-top {

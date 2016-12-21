@@ -10,7 +10,7 @@
 }
 
 .chart {
-  -webkit-user-select: none;
+  user-select: none;
   margin: 0 auto;
   @media (max-width: 480px) {
     width: 100% !important;
