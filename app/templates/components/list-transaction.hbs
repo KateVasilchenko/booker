@@ -31,7 +31,7 @@
       </div>
       <div class="row row--flex">
         <ul class="col-xs-12 list list-unstyled list-flex list-transactions">
-          {{#each transactions as |transaction|}}
+          {{#each transactionsSorted as |transaction|}}
             <li class="list-item">
               <span class="list-cell color-indicator" style="background-color: {{transaction.category.color}}"></span>
               <div class="list-cell list-cell--description">

@@ -23,9 +23,16 @@ export default Ember.Component.extend({
     });
   }),
 
-  transactions: Ember.computed('transactionsRaw.[]', function () {
-    return this.get('transactionsRaw').rejectBy('isDeleted').rejectBy('isNew');
+  transactions: Ember.computed(
+    'transactionsRaw.[]', 'transactionsRaw.each@.isDeleted',
+    'transactionsRaw.each@.isNew', 'transactionsRaw.each@.createdAt',
+    function () {
+      return this.get('transactionsRaw')
+        .rejectBy('isDeleted').rejectBy('isNew');
   }),
+
+  transactionsSorted: Ember.computed.sort('transactions', 'transactionsSorting'),
+  transactionsSorting: ['createdAt:desc'],
 
   modelToDelete: null,
   isHidden: true,
