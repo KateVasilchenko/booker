@@ -10,7 +10,6 @@ export default Ember.Component.extend({
   drawCharts: true,
 
   transactions: Ember.computed('transactionsRaw.[]', function () {
-      console.log('Transactions RAW changed');
       return this.get('transactionsRaw');
   }),
 

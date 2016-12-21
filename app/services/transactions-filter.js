@@ -8,7 +8,6 @@ export default Ember.Service.extend({
   },
   filterByIsIncome(transactionsList, value) {
     let transactions;
-    console.log(value);
     switch (value) {
       case 'expenses':
         transactions = transactionsList.filterBy('isIncome', false);

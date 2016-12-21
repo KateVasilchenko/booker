@@ -25,7 +25,6 @@ export default Ember.Component.extend(WalletDDMixin, TransactionDDMixin, {
     const owner = Ember.getOwner(this);
     const currentRoute = owner.lookup('router:main').currentRouteName;
     if (currentRoute === 'dashboard') {
-      console.log('SENDING ACTION');
       this.sendAction('updateDashboard');
     }
   },

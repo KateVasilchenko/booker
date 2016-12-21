@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.reopen({
   deactivate: function() {
-    console.log("DEACTIVATE");
     this._super(...arguments);
     const owner = Ember.getOwner(this);
     let controller = owner.lookup('controller:application');
