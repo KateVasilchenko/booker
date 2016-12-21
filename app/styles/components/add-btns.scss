@@ -1,16 +1,22 @@
 .add-btns {
   height: auto;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
   line-height: 24px;
-  @media (min-width: 768px) {
-    right: 35px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  @media (min-width: 480px) {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    right: 0;
   }
+}
 
-  .transaction-btn,
-  .wallet-btn {
+.transaction-btn,
+.wallet-btn {
+  .add-btns & {
     text-decoration: none;
     color: $add-transaction-color;
     cursor: pointer;
@@ -18,14 +24,29 @@
     border: 0;
     outline: none;
     padding: 0 3px;
+    text-align: right;
     @media (min-width: 768px) {
       padding: 0 6px;
+      text-align: left;
     }
   }
 
-  .wallet-btn {
+  .add-btns.disabled & {
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0.2;
+  }
+}
+
+.wallet-btn {
+  .add-btns & {
     color: $add-wallet-color;
-    margin-left: 0;
+    margin-left: 30px;
     @media (min-width: 768px) {
       margin-left: 45px;
     }

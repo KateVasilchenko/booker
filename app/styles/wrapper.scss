@@ -1,56 +1,45 @@
 .wrapper {
   height: 100%;
-  .content {
-      min-height: 100%;
-      padding-top: 80px;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      padding-left: $sidebar-width;
-      background: #e8e9eb;
-      @media(min-width:767px) {
-        padding-left: $sidebar-width;
-      }
-    }
-    &.toggled {
-      .add-transaction {
-      }
-      .content {
-        padding-left: 0;
-      }
-      .sidebar {
-        transform: translateX(-100%);
-      }
-      .navbar {
-        padding-left: 0;
-      }
-      .content-wrapper {
-          padding-left: 15px;
-      }
-    }
-  .content-wrapper {
-      width: 100%;
-      min-height: 100%;
-      padding: 20px 10px 0;
-      background-color: $main-bg;
-      -webkit-transition: transform 0.5s ease;
-      -moz-transition: transform 0.5s ease;
-      -o-transition: transform 0.5s ease;
-      transition: transform 0.5s ease;
+}
+
+.content-wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding: 20px 0 0;
+  background-color: $main-bg;
+  @media(min-width:768px) {
+    padding: 20px 10px 0;
   }
 }
 
-@media(max-width:767px) {
-    .wrapper {
-      .content {
-        padding-left: 0;
-        transform: translateX($sidebar-width);
-      }
-      &.toggled {
-        .content {
-          transform: translateX(0);
-        }
-      }
+.container-fluid {
+  .navbar & {
+    position: relative;
+    background: #fff;
+    z-index: 4;
+  }
+}
+
+.content {
+  min-height: 100%;
+  background: #e8edf9;
+  overflow-x: hidden;
+}
+
+.content-wrap {
+  position: relative;
+  padding-top: 80px;
+  transition: all 0.3s linear 0s;
+
+  .toggled & {
+    @media(max-width:767px) {
+    transform: translate3d(0, 0, 0);
     }
+  }
+  @media(max-width:767px) {
+    transform: translate3d($sidebar-width, 0, 0);
+  }
+  @media(min-width:768px) {
+    padding-left: $sidebar-width;
+  }
 }

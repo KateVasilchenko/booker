@@ -1,0 +1,50 @@
+$ember-power-select-border-color: #e0e0e0;
+$ember-power-select-border-radius: 4px; // $ember-power-select-background-color: #f8faff;
+$ember-power-select-background-color: #fff;
+$ember-power-select-line-height: 2.3;
+$ember-power-select-trigger-icon-color: #8f8f8f;
+$ember-power-select-text-color: #8f8f8f;
+$ember-power-select-highlighted-background: #4e6cb3;
+$ember-power-select-selected-background: #ececec!default;
+@import "../ember-power-select";
+
+.select-box-wrapper {
+  &--category {
+    width: 100%;
+    @media(min-width:480px) {
+      width: 140px;
+    }
+  }
+
+  &--wallet {
+    width: 100%;
+    @media(min-width:480px) {
+      width: 200px;
+    }
+  }
+}
+
+.ember-basic-dropdown-content {
+  z-index: 10000;
+}
+
+.ember-power-select-trigger {
+  outline: none;
+  padding-right: 50px;
+  font-size: 14px;
+  white-space: nowrap;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 40px;
+    border-left: solid 1px #e0e0e0;
+    height: 100%;
+  }
+}
+
+.ember-power-select-status-icon {
+  border-width: 6px 5px 0 5px;
+  right: 15px;
+}

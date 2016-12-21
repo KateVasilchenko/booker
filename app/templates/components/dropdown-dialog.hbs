@@ -5,22 +5,25 @@
         </div>
         <div class="add-transaction-controls">
             {{switch-box model=model checkedProperty="isIncome" firstValueText="Expenses" secondValueText="Income"}}
-            <div class="input-wrapper select-box-wrapper">
+            <div class="input-wrapper select-box-wrapper select-box-wrapper--category">
                 {{#power-select selected=model.category options=categories searchField="name" onchange=(action "selectCategory") as |category|}}
                     {{category.name}}
                 {{/power-select}}
             </div>
-            <div class="input-wrapper select-box-wrapper">
+            <div class="input-wrapper select-box-wrapper select-box-wrapper--wallet">
                 {{#power-select selected=model.wallet options=wallets searchField="name" onchange=(action "selectWallet") as |wallet|}}
                     {{wallet.name}}
                 {{/power-select}}
             </div>
             <div class="input-wrapper">
-                {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
+              <div class="input-group">
+                    {{input class="form-control" placeholder="Transaction Amount" value=model.amount}}
+                    <span class="input-group-addon">USD</span>
+              </div>
             </div>
             <div class="input-wrapper-group">
                 <div class="input-wrapper">
-                    <button class="form-control transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
+                    <button class="form-control btn transaction-btn" id="transaction-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
                 </div>
                 <div class="input-wrapper">
                     <button class="form-control btn btn--cancel" id="transaction-cancel-add" {{action 'close'}}>Cancel</button>
@@ -37,11 +40,14 @@
                 {{input class="form-control" placeholder="Wallet Name" value=model.name}}
             </div>
             <div class="input-wrapper">
-                {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
+              <div class="input-group">
+                    {{input class="form-control" placeholder="Wallet Amount" value=model.amount}}
+                    <span class="input-group-addon">USD</span>
+              </div>
             </div>
             <div class="input-wrapper-group">
               <div class="input-wrapper">
-                  <button class="form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
+                  <button class="btn form-control wallet-btn" id="wallet-quick-add" {{action 'save'}}>{{#if (or model.isDeleted (eq model null))}}Save{{else}}{{if model.isNew "Save" "Update"}}{{/if}}</button>
               </div>
               <div class="input-wrapper">
                   <button class="form-control btn btn--cancel" id="wallet-cancel-add" {{action 'close'}}>Cancel</button>

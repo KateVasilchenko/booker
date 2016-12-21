@@ -1,90 +1,64 @@
 .add-transaction {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translateY(-100%);
-    transition: all .5s ease;
-    z-index: 3;
-    width: 100%;
-    padding: 0 15px;
-    padding-top: 30px;
-    background-color: #fff;
-    box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
-    border-top: solid 1px #f4f4f4;
-    @media(min-width:767px) {
-      padding: 0 55px;
-      padding-left: $sidebar-width + 55px;
-    }
-    @media(min-width:1440px) {
-      flex-direction: row;
-      align-items: center;
-    }
-    &.open {
-      transform: translateY(0);
-    }
-    &-controls {
-      display: flex;
-      flex: 0 0 auto;
-      flex-direction: column;
-      padding: 15px 0;
-      @media(min-width:1240px) {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
-    &-label {
-      flex: 1 1 auto;
-      color: $add-transaction-color;
-      font-size: 18px;
-      white-space: nowrap;
-      margin-right: 10px;
-    }
-    .input-wrapper,
-    .switch-wrapper {
-      margin-bottom: 15px;
-      @media(min-width:1240px) {
-        margin-right: 15px;
-        margin-bottom: 0;
-      }
-    }
-    .input-wrapper {
-      &:last-child {
-        margin-right: 0;
-        @media(min-width:1240px) {
-          margin-right: 0;
-        }
-      }
-    }
-    .input-wrapper-group {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      @media(min-width:480px) {
-        flex-direction: row;
-      }
-      @media(min-width:1240px) {
-        flex: 1 1 auto;
-        justify-content: flex-end;
-      }
-      @media(min-width:1440px) {
-        margin-left: 45px;
-        justify-content: flex-start;
-      }
-    }
-    .switch-wrapper {
-      min-width: 125px;
-    }
-    .transaction-btn {
-      display: block;
-      width: 100%;
-      color: #fff;
-      cursor: pointer;
-      background: $add-transaction-color;
-      border-color: $add-transaction-color;
-      text-transform: uppercase;
-      min-width: 170px;
-    }
+  position: absolute;
+  top: 80px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  transition: all 0.5s ease;
+  z-index: 3;
+  width: 100%;
+  padding: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 5px 0 rgba(174, 198, 255, 0.19);
+  border-top: solid 1px #f4f4f4;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+  padding: 15px;
+  @media(min-width:768px) {
+    padding: 15px 55px 15px $sidebar-width + 55px;
+  }
+  @media(min-width:1440px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 55px 0 $sidebar-width + 55px;
+  }
+
+  &.open {
+    transform: translateY(0);
+  }
+}
+
+.add-transaction-controls {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  @media(min-width:768px) {
+    padding: 15px 0;
+  }
+  @media(min-width:1240px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.add-transaction-label {
+  flex: 1 1 auto;
+  color: $add-transaction-color;
+  font-size: 18px;
+  white-space: nowrap;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  @media(min-width:1240px) {
+    margin-bottom: 0;
+  }
+}
+
+.transaction-btn {
+  .add-transaction & {
+    color: #fff;
+    background: $add-transaction-color;
+    border-color: $add-transaction-color;
+  }
 }

@@ -3,28 +3,34 @@
   display: flex;
   justify-content: space-between;
   left: -86px;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
-  width: 224px;
+  width: 210px;
   padding: 3px 0;
+
   span {
     display: block;
     height: 100%;
     line-height: 28px;
+
     &.switch-label {
-      flex: 1 1 auto;
-      padding: 0 15px;
+      width: 93px;
       user-select: none;
+      text-align: center;
+
       &--center {
         padding: 0 3px;
-        flex: 0 0 39px;
+        width: 39px;
+        min-width: 39px;
       }
     }
   }
+
   &:hover {
     cursor: pointer;
   }
 }
+
 .switch-wrapper {
   width: 125px;
   min-width: 125px;
@@ -38,14 +44,16 @@
   display: inline-block;
   vertical-align: middle;
 }
+
 .checkbox--hidden {
   display: none;
+
   &:checked + .switch {
-      // transform: translateX(0);
-      left: 0;
-      background-color: $success-color;
-      .arrow {
-        color: $success-color;
-      }
+    left: 0;
+    background-color: $success-color;
+
+    .arrow {
+      color: $success-color;
+    }
   }
 }

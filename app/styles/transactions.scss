@@ -3,7 +3,7 @@
   color: $add-transaction-color;
   cursor: pointer;
   background: transparent;
-  border: 0;
+  border: 1px solid inherit;
   outline: none;
 }
 
@@ -15,6 +15,12 @@
   @media(min-width:1366px) {
     flex-direction: row;
     align-items: center;
+  }
+}
+
+.transactions-link {
+  a {
+    color: $show-transaction-color;
   }
 }
 
@@ -34,7 +40,7 @@
   }
 
   .transactions-wrapper & {
-    align-items: center;
+    align-items: flex-start;
     @media(min-width:1024px) {
       align-items: flex-end;
     }
@@ -49,10 +55,6 @@
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  .btn-group {
-    padding: 0;
   }
   @media(min-width:1024px) {
     margin-bottom: 0;
@@ -69,7 +71,7 @@
   }
 
   .transactions-wrapper & {
-    text-align: center;
+    text-align: left;
     @media(min-width:1024px) {
       text-align: right;
     }
@@ -84,10 +86,6 @@
 
         .list-cell--description {
           background-color: #f9f9f9;
-        }
-
-        .btn--hidden {
-          visibility: visible;
         }
       }
 
@@ -107,13 +105,6 @@
             @media (max-width: 480px) {
               padding-top: 15px;
             }
-          }
-        }
-
-        &--operation {
-          @media (min-width:768px) {
-            min-width: 180px;
-            flex: 0 0 180px;
           }
         }
       }
