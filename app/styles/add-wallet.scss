@@ -17,12 +17,12 @@
   max-height: calc(100vh - 80px);
   padding: 15px;
   @media(min-width:768px) {
-    padding: 15px 55px 15px $sidebar-width + 55px;
+    padding: 15px 70px 15px $sidebar-width + 55px;
   }
   @media(min-width:1240px) {
     flex-direction: row;
     align-items: center;
-    padding: 0 55px 0 $sidebar-width + 55px;
+    padding: 0 70px 0 $sidebar-width + 55px;
   }
 
   &.open {
