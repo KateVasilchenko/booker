@@ -6,8 +6,12 @@
   @media (min-width:480px) {
     flex-direction: row;
   }
+  @media (min-width:768px) {
+    margin-bottom: 20px;
+  }
   @media (min-width:1240px) {
     flex-direction: column;
+    margin-bottom: 0;
   }
 }
 
@@ -27,5 +31,6 @@
 }
 
 .light-date {
-  margin-bottom: 13px;
+  margin: 7px 0 13px;
+  color: #bab8bb;
 }
