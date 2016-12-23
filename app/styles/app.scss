@@ -155,20 +155,27 @@ div.input-error > div.error {
 }
 
 .balance {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
   color: $balance-color;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.2;
+  @media(min-width:768px){
+    font-size: 28px;
+    line-height: 1;
+  }
 }
 
 .balance-title {
   margin-bottom: 5px;
   margin-top: 7px;
-  font-size: 18px;
+  font-size: 14px;
   color: $balance-color;
+  @media(min-width:768px){
+    font-size: 18px;
+  }
 }
 
 .balance-amount {
