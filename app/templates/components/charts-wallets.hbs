@@ -1,14 +1,29 @@
 <div class="wallets-charts row">
-  <div class="col-xs-12 col-md-6">
-      {{high-charts
+  {{#if mobileView}}
+      <div class="col-xs-12 col-md-6">
+          {{high-charts
+          chartOptions=mobileCharts.outcome.chartOptions
+          content=mobileCharts.outcome.chartData
+          theme=mobileCharts.outcome.chartTheme}}
+      </div>
+      <div class="col-xs-12 col-md-6">
+          {{high-charts
+          chartOptions=mobileCharts.income.chartOptions
+          content=mobileCharts.income.chartData
+          theme=mobileCharts.income.chartTheme}}
+      </div>
+  {{else}}
+      <div class="col-xs-12 col-md-6">
+          {{high-charts
           chartOptions=charts.outcome.chartOptions
           content=charts.outcome.chartData
           theme=charts.outcome.chartTheme}}
-  </div>
-  <div class="col-xs-12 col-md-6">
-      {{high-charts
+      </div>
+      <div class="col-xs-12 col-md-6">
+          {{high-charts
           chartOptions=charts.income.chartOptions
           content=charts.income.chartData
           theme=charts.income.chartTheme}}
-  </div>
+      </div>
+  {{/if}}
 </div>
