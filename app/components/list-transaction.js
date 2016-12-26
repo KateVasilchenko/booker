@@ -23,9 +23,26 @@ export default Ember.Component.extend({
     });
   }),
 
-  transactions: Ember.computed('transactionsRaw.[]', function () {
-    return this.get('transactionsRaw').rejectBy('isDeleted').rejectBy('isNew');
-  }),
+  transactionsMedium: [],
+
+  transactions: Ember.computed(
+    'transactionsRaw.[]', 'transactionsRaw.each@.isDeleted',
+    'transactionsRaw.each@.createdAt', 'transactionsMedium.[]',
+    'transactionsMedium.each@.id',
+    {
+      get(key) {
+        this.send('filterTransactions', {});
+        return this.get('transactionsMedium').rejectBy('isDeleted');
+      },
+      set(key, value) {
+        this.set('transactionsMedium', value);
+        return value;
+      }
+    }
+  ),
+
+  transactionsSorted: Ember.computed.sort('transactions', 'transactionsSorting'),
+  transactionsSorting: ['createdAt:desc'],
 
   modelToDelete: null,
   isHidden: true,
@@ -100,9 +117,23 @@ export default Ember.Component.extend({
       data['filterCategoryId'] = this.get('filterCategoryId');
       data['filterIsIncome'] = this.get('filterIsIncome');
 
-      this.set('filterIsIncome', data['filterIsIncome']);
-      this.set('filterIsTime', data['filterIsTime']);
-      this.set('periodChosen', data['periodChosen']);
+      if (data['filterIsIncome'] === undefined) {
+        data['filterIsIncome'] = this.get('filterIsIncome');
+      } else {
+        this.set('filterIsIncome', data['filterIsIncome']);
+      }
+
+      if (data['filterIsTime'] === undefined) {
+        data['filterIsTime'] = this.get('filterIsTime');
+      } else {
+        this.set('filterIsTime', data['filterIsTime']);
+      }
+
+      if (data['periodChosen'] === undefined) {
+        data['periodChosen'] = this.get('periodChosen');
+      } else {
+        this.set('periodChosen', data['periodChosen']);
+      }
 
       this.set('transactions', this.get('transactionsFilter').filterTransactions(
         this.get('transactionsRaw'),

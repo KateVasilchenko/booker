@@ -5,9 +5,15 @@ export default Ember.Component.extend({
 
   walletsRaw: null, //pass
 
-  wallets: Ember.computed('walletsRaw.[]', function () {
-    return this.get('walletsRaw').rejectBy('isDeleted').rejectBy('isNew');
+  wallets: Ember.computed(
+    'walletsRaw.[]', 'walletsRaw.each@.isDeleted',
+    'walletsRaw.each@.isNew', 'walletsRaw.each@.createdAt',
+    function () {
+      return this.get('walletsRaw').rejectBy('isDeleted');
   }),
+
+  walletsSorted: Ember.computed.sort('wallets', 'walletsSorting'),
+  walletsSorting: ['createdAt'],
 
   modelToDelete: null,
   isHidden: true,

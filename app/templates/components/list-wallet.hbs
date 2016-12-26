@@ -1,9 +1,11 @@
 <div class="wallets-wrapper">
     {{#unless isHidden}}
-        {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+        {{#ember-wormhole to="confirm-delete"}}
+            {{confirm-delete model=modelToDelete close="cancelDelete" delete="deleteRecord"}}
+        {{/ember-wormhole}}
     {{/unless}}
 
-    {{#each wallets as |wallet|}}
+    {{#each walletsSorted as |wallet|}}
         <div class="panel panel-default panel-custom wallets wallets-all">
             <div class="panel-heading">
                 <h3 class="panel-title">
